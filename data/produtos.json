@@ -3,70 +3,70 @@
         "id": 1,
         "nome": "Placa Mae ASRock B450M Steel Legend DDR4 Socket AM4 Chipset AMD B450",
         "preco": 699.90,
-        "imagem": "assets/imagens/placa-mae-asrock-b450m-steel-legend.jpg",
+        "imagem": "/assets/images/products/placa-mae-asrock-b450m-steel-legend.jpg",
         "descricao": "A Placa Mãe Asrock B450M Steel Legend oferece uma base sólida para PCs compactos com excelente desempenho e durabilidade. Projetada para processadores AMD de socket AM4, suporta memória DDR4 e é ideal para jogos e tarefas intensivas"
     },
     {
         "id": 2,
         "nome": "Fonte Corsair RM850x Shift Series, 850W, Full-Modular, 80 Plus Gold, CP-9020252-BR",
         "preco": 749.99,
-        "imagem": "assets/imagens/Fonte Corsair RMx Series RM850x.jpg",
+        "imagem": "/assets/images/products/Fonte Corsair RMx Series RM850x.jpg",
         "descricao": "A Fonte Corsair RM850x Shift Series combina eficiência, flexibilidade e potência para sistemas que exigem alto desempenho e organização no gerenciamento de cabos. Com 850W de capacidade e certificação 80 Plus Gold, ela proporciona uma entrega de energia altamente eficiente e estável, ideal para configurações avançadas e uso prolongado em setups de alto consumo"
     },
     {
         "id": 3,
         "nome": "Placa de Vídeo RTX 3090 Asus NVIDIA GeForce, 24GB, GDDR6X - ROG-STRIX-RTX3090-O24G-GAMING",
         "preco": 12599.99,
-        "imagem": "assets/imagens/Placa-De-Video-Asus-Geforce-Rtx-3090-Oc.jpg",
+        "imagem": "/assets/images/products/Placa-De-Video-Asus-Geforce-Rtx-3090-Oc.jpg",
         "descricao": "A Placa de Vídeo Asus ROG Strix RTX 3090 é uma das GPUs mais poderosas já lançadas pela NVIDIA, voltada para entusiastas, gamers e profissionais que demandam desempenho extremo. Com 24GB de memória GDDR6X e a arquitetura Ampere, essa placa é capaz de lidar com jogos em resoluções 4K e 8K, além de tarefas pesadas como renderização 3D, edição de vídeo e machine learning."
     },
     {
         "id": 4,
         "nome": "Processador AMD Ryzen 9 5950X, 16-Core, 32-Threads, 3.4GHz (4.9GHz Turbo), Cache 72MB, AM4, 100-100000059WOF",
         "preco": 2576.51,
-        "imagem": "assets/imagens/Processador-AMD-Ryzen-9-5950X.jpg",
+        "imagem": "/assets/images/products/Processador-AMD-Ryzen-9-5950X.jpg",
         "descricao": "Socket AM4.16 núcleos de processamento @ 3,4GHz.Suporta a tecnologia AMD Max Boost (overclock automático @ 4,9GHz).Modelo X: multiplicador destravado.Processador com tecnologia de núcleos lógicos (até dezesseis núcleos lógicos).Controladora DDR4 (Dual Channel - até 3.200MHz).Sem processador de vídeo (GPU) integrado.TDP de 105W.Sistema de refrigeração não incluso. Imbatível no jogo - Seja para jogos ou criação, os processadores AMD Ryzen oferecem o melhor desempenho:Os processadores AMD Ryzen série 5000 capacitam a próxima geração de jogos exigentes, proporcionando experiências imersivas únicas e dominando qualquer tarefa multithread como 3D e renderização de vídeo e compilação de software. As últimas tecnologias - Os processadores AMD Ryzen possuem os melhores recursos para mantê-lo no jogo:Com grande poder de processamento, vêm as tecnologias de ponta para oferecer suporte. Todos os processadores AMD Ryzen série 5000 vêm com um conjunto completo de tecnologias projetadas para elevar a capacidade de processamento do seu PC, incluindo Precision Boost 2, Precision Boost Overdrive4 e PCIe 4.0."
     },
     {
         "id": 5,
         "nome": "Memoria Corsair Dominator Platinum RGB, 32GB (2x16GB), DDR5, 5600MHz, C36, Preto, CMT32GX5M2X5600C36",
         "preco": 2004.90,
-        "imagem": "assets/imagens/memoria-corsair-dominator-rgb-32gb.jpg",
+        "imagem": "/assets/images/products/memoria-corsair-dominator-rgb-32gb.jpg",
         "descricao": "Desafie os limites de desempenho do seu sistema com a Memória CORSAIR DOMINATOR PLATINUM RGB DDR5 otimizada para Intel, que oferece frequências mais altas e maiores capacidades de DDR5, controlada com precisão pelo software CORSAIR iCUE."
     },
     {
         "id": 6,
         "nome": "SSD Gigabyte Aorus Gen4, 1TB, M.2 2280, PCIe 4.0 x4, Leitura 5000 MB/s, Gravacao 4400 MB/s, GP-AG41TB",
         "preco": 2311.90,
-        "imagem": "assets/imagens/SSD-M-2-Gigabyte-Aorus-Gen4-2TB.jpg",
+        "imagem": "/assets/images/products/SSD-M-2-Gigabyte-Aorus-Gen4-2TB.jpg",
         "descricao": "O SSD Gigabyte Aorus Gen4 é uma unidade de armazenamento de alto desempenho que utiliza a interface PCIe 4.0 x4 e o formato M.2 2280. Com capacidade de 1TB, ele oferece velocidades impressionantes de leitura e gravação, chegando a 5000 MB/s e 4400 MB/s, respectivamente. Essas características o tornam ideal para usuários que demandam alta performance, como gamers, profissionais de edição de vídeo ou qualquer pessoa que precise de transferências rápidas de dados."
     },
     {
         "id": 7,
         "nome": "Monitor Gamer MSI Optix G271 27 1ms 144Hz FHD FreeSync HDMI/DP",
         "preco": 1775.00,
-        "imagem": "assets/imagens/Monitor Gamer MSI Optix G272.jpg",
+        "imagem": "/assets/images/products/Monitor Gamer MSI Optix G272.jpg",
         "descricao": "O Monitor Gamer MSI Optix G272 é uma excelente opção para jogadores que buscam desempenho e qualidade visual. Com um painel IPS de 27 polegadas e resolução Full HD (1920x1080), ele oferece cores vibrantes e ótimos ângulos de visão. Além disso, o monitor possui um tempo de resposta de 1ms e uma taxa de atualização de 144Hz, garantindo uma experiência suave e sem ghosting em jogos rápidos e competitivos."
     },
     {
         "id": 8,
         "nome": "Placa de Vídeo Asus Rog Astral NVIDIA GeForce RTX 5090 OC, 32GB, GDDR7, DLSS, Ray Tracing",
         "preco": 23999.90,
-        "imagem": "assets/imagens/rog-astral-rtx5090-o32g-gaming9.jpg",
+        "imagem": "/assets/images/products/rog-astral-rtx5090-o32g-gaming9.jpg",
         "descricao": "A nova família ROG Astral foi inspirada pela vastidão ilimitada e pela beleza do cosmos, sendo um testemunho de uma dedicação incansável para explorar e definir novas fronteiras. Nesse espírito, o ROG Astral GeForce RTX 5090 apresenta a primeira placa gráfica quad-fan da ROG, acompanhada de uma câmara de vapor patenteada, maior densidade das aletas do dissipador de calor, uma almofada térmica de GPU de mudança de fase, velocidades de clock padrão elevadas, entrega de energia aprimorada e muito mais."
     },
     {
         "id": 9,
         "nome": "Cadeira Gamer Cougar Hotrod Royal, Preto, 3MARXGLB.0001",
         "preco": 1975.00,
-        "imagem": "assets/imagens/3marxglb0001.jpg",
+        "imagem": "/assets/images/products/3marxglb0001.jpg",
         "descricao": "A Cadeira Gamer Cougar Hotrod Royal é uma opção de cadeira gamer que combina estilo, conforto e funcionalidade, ideal para jogadores que passam longas horas em frente ao computador. Com um design inspirado em assentos de carros esportivos, ela oferece um visual premium e características ergonômicas para garantir uma experiência confortável durante maratonas de jogos ou trabalho."
     },
     {
         "id": 10,
         "nome": "Gabinete Lian Li O11 Dynamic XL ROG Lateral Vidro Temp Preto, O11DXL-X",
         "preco": 1900.00,
-        "imagem": "assets/imagens/o11dxl-x00110_2.jpg",
+        "imagem": "/assets/images/products/o11dxl-x00110_2.jpg",
         "descricao": "O Gabinete Lian Li O11 Dynamic XL ROG é um dos gabinetes mais icônicos e populares entre entusiastas de PCs, especialmente para montagens high-end e com foco em estética. Desenvolvido em colaboração com a Republic of Gamers (ROG) da ASUS, ele combina um design premium, excelente fluxo de ar e versatilidade para montagens complexas, incluindo setups com refrigeração líquida personalizada."
     }
 ]

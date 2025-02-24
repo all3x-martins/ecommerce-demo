@@ -7,109 +7,134 @@
     <meta name="keywords" content="hardware, computadores, periféricos, monitores, notebooks, tecnologia">
     <title>PC Master - Encontre os melhores preços e promoções!</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="assets/imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/logos/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="site_header">
-        <a href="index.html">
-            <picture>
-                <source media="(max-width: 520px)" srcset="assets/imagens/logo-p.png">
-                <img class="site_logo" src="assets/imagens/logo.png" alt="Logo PC Master">
-            </picture>
-        </a> 
-        
-        <div class="header_menu">
-            <ul class="menu_items">
-                <li>
-                    <span>Minha conta</span>
-                    <br>
-                    <strong>
-                        <a href="pages/login.html" class="account_link">Entrar</a> / 
-                        <a href="pages/cadastro.html" class="account_link">Cadastro</a>
-                    </strong>
-                </li>
-                <li>
-                   <a href="pages/carrinho.html">
-                        <button class="btn-carrinho">
-                            <svg class="svg_icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg> Carrinho
-                        </button>
-                    </a>
-                </li>
-            </ul>
+    <header class="header-max-width">
+        <div class="site-header">
+            <a href="index.html">
+                <picture>
+                    <source media="(max-width: 520px)" srcset="assets/images/logos/logo-p.png">
+                    <img class="site_logo" src="assets/images/logos/logo.png" alt="Logo PC Master">
+                </picture>
+            </a> 
+            
+            <div class="header-menu">
+                <ul class="menu-items">
+                    <li>
+                        <span>Minha conta</span>
+                        <br>
+                        <strong>
+                            <a href="pages/login.html" class="account_link">Entrar</a> / 
+                            <a href="pages/cadastro.html" class="account_link">Cadastro</a>
+                        </strong>
+                    </li>
+                    <li>
+                       <a href="pages/carrinho.html">
+                            <button class="btn-carrinho">
+                                <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg> Carrinho
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <nav>
+            <div class="navigation-menu">
+                <div class="search-bar">
+                    <input type="search" id="search" placeholder="Digite o que você procura">
+                </div>
+                <button id="menu-toggle" class="mobile-menu-button">☰ TODOS OS DEPARTAMENTOS</button>
+                <ul id="nav-list" class="nav-list" role="menu">
+                    <picture>
+                        <source media="(max-width: 520px)" srcset="assets/images/logos/logo-p.png">
+                        <img class="site-logo" src="assets/images/logos/logo.png" alt="Logo PC Master">
+                    </picture>
+                    <li class="category-title"><h3>CATEGORIAS</h3></li>
+                    <li><a href="#">Hardware</a></li>
+                    <li><a href="#">Monitores</a></li>
+                    <li><a href="#">Periféricos</a></li>
+                    <li><a href="#">Computadores</a></li>
+                    <li><a href="#">Rede & Wireless</a></li>
+                    <li><a href="#">Notebooks e portáteis</a></li>
+                    <li><a href="#">Kit Upgrade</a></li>
+                    <li class="category-title"><h3>AJUDA E CONFIGURAÇÕES</h3></li>
+                    <li><a href="pages/login.html">Minha Conta</a></li>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Atendimento ao Cliente</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    
-    <nav class="navigation_menu">
-        <div class="search_bar">
-            <input type="search" id="search" placeholder="Digite o que você procura">
-        </div>
-        <button id="menu_toggle" class="mobile_menu_button">☰ TODOS OS DEPARTAMENTOS</button>
-        <ul id="nav_list" class="nav_list" role="menu">
-            <li class="category_title"><h3>CATEGORIAS</h3></li>
-            <li><a href="#">Hardware</a></li>
-            <li><a href="#">Monitores</a></li>
-            <li><a href="#">Periféricos</a></li>
-            <li><a href="#">Computadores</a></li>
-            <li><a href="#">Rede & Wireless</a></li>
-            <li><a href="#">Notebooks e portáteis</a></li>
-            <li><a href="#">Kit Upgrade</a></li>
-            <li class="category_title"><h3>AJUDA E CONFIGURAÇÕES</h3></li>
-            <li><a href="#">Minha Conta</a></li>
-            <li><a href="#">Quem Somos</a></li>
-            <li><a href="#">Atendimento ao Cliente</a></li>
-        </ul>
-    </nav>
-    <main class="produtos">
-        <div class="card_container" id="card_container">
-            <!-- Os cards serão inseridos aqui pelo JavaScript -->
+
+    <main>
+        <div class="produtos">
+            <div class="card_container" id="card_container">
+                <!-- Os cards serão inseridos aqui pelo JavaScript -->
+            </div>
         </div>
     </main>
 
-    <section class="newsletter">
-        <div>
-            <h4 class="newsletter_title">Newsletter</h4>
-            <p>Receba ofertas exclusivas no seu e-mail</p>
+    <section class="newsletter-wrapper">
+        <div  class="newsletter">
+            <div>
+                <h4 class="newsletter-title">Newsletter</h4>
+                <p>Receba ofertas exclusivas no seu e-mail</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="name" class="newsletter-input newsletter-input--name" placeholder="Qual é o seu nome?">
+                <input type="email" class="newsletter-input newsletter-input--email" placeholder="Digite seu email">
+                <button class="newsletter-button">Cadastrar</button>
+            </form>
         </div>
-        <form class="newsletter_form">
-            <input class="newsletter_input newsletter_input--name" placeholder="Qual é o seu nome?">
-            <input type="email" class="newsletter_input newsletter_input--email" placeholder="Digite seu email">
-            <button class="newsletter_button">Cadastrar</button>
-        </form>
-    </section>    
-<footer>
-    <div class="footer_menu">
-        <div class="footer_section">
-            <h4 class="footer_section_title">Institucional</h4>
-            <ul class="footer_list">
-                <li><a href="#">Quem somos</a></li>
-                <li><a href="#">Localização</a></li>
-                <li><a href="#">Nossas Lojas</a></li>
-            </ul>
+    </section>  
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-menu">
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Institucional</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Localização</a></li>
+                        <li><a href="#">Nossas Lojas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Dúvidas</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Entrega</a></li>
+                        <li><a href="#">Garantia</a></li>
+                        <li><a href="#">Como comprar</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Ajuda</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">SAC</a></li>
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Termos de aceite</a></li>
+                        <li><a href="#">Políticas de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section ">
+                    <h4 class="footer-section-title">Pagamento</h4>
+                    <ul class="footer-list payment-methods">
+                        <li class="payment-icons"><img src="assets/images/payments/visa.webp" alt="Visa"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/mastercard.webp" alt="Mastercard"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/pix.webp" alt="Pix"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/boleto.webp" alt="Boleto Bancário"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/american.webp" alt="american"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/nubank.svg" alt="nubank"></li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+            <p>Desenvolvido por <a href="https://github.com/all3x-martins" target="_blank" rel="noopener noreferrer">Allex Martins</a></p>
+            </div>
         </div>
-        <div class="footer_section">
-            <h4 class="footer_section_title">Dúvidas</h4>
-            <ul class="footer_list">
-                <li><a href="#">Entrega</a></li>
-                <li><a href="#">Garantia</a></li>
-                <li><a href="#">Como comprar</a></li>
-                <li><a href="#">Formas de Pagamento</a></li>
-            </ul>
-        </div>
-        <div class="footer_section">
-            <h4 class="footer_section_title">Ajuda</h4>
-            <ul class="footer_list">
-                <li><a href="#">SAC</a></li>
-                <li><a href="#">Fale conosco</a></li>
-                <li><a href="#">Termos de aceite</a></li>
-                <li><a href="#">Políticas de Privacidade</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer_bottom">
-    <p>Desenvolvido por <a href="https://github.com/all3x-martins" target="_blank" rel="noopener noreferrer">Allexander</a></p>
-    </div>
-</footer>
+    </footer>
 </body>
 <script src="js/script.js"></script>
 </html>
