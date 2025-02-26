@@ -1,0 +1,51 @@
+/* Newsletter */
+.newsletter-wrapper {
+    background-color: #222;
+}
+
+.newsletter {
+    color: white;
+    padding: 1.875rem 1.25rem; 
+    text-align: center;
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.newsletter-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.625rem;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem; 
+    justify-content: center;
+    flex-wrap: wrap;
+    -webkit-box-align:center;
+}
+
+.newsletter-input {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    width: 100%;
+    max-width: 350px;
+}
+
+.newsletter-button {
+    padding: 1rem;
+    background-color: #F2A81D;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 150px;
+}
+
+.newsletter-button:hover {
+    background-color: #ce901c;
+}

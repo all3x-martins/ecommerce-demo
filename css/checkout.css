@@ -1,0 +1,73 @@
+/* Checkout Page */
+#carrinho {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.625rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.carrinho_button {
+    padding: 0.625rem 1.25rem;
+    background-color: #00a000;
+    color: white;
+    border-radius: 5px;
+}
+
+.carrinho_button:hover {
+    background-color: #019201;
+}
+
+#total-container {
+    margin-top: 1.25rem;
+    text-align: right;
+}
+
+#total-preco {
+    font-size: 1.5rem;
+    color: #00a000;
+}
+
+.carrinho_container {
+    min-height: 90vh;
+}
+
+#checkout-wrapper {
+    padding: 1.25rem;
+}
+
+#checkout-wrapper .form-group {
+    margin-bottom: 1.25rem;
+}
+
+#checkout-wrapper input[type="text"],
+#checkout-wrapper input[type="email"],
+#checkout-wrapper input[type="phone"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#checkout-wrapper button {
+    padding: 1rem 2rem;
+    background-color: #00a000;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

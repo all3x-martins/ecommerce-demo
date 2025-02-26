@@ -73,9 +73,3 @@
     text-decoration: underline;
 }
 
-/* Estilos de responsividade */
-@media (max-width: 480px) {
-    .login-form {
-        width: 90%;
-    }
-}

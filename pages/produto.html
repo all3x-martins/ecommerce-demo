@@ -6,31 +6,33 @@
     <meta name="description" content="PC Master - Loja online de hardware, periféricos e tecnologia. Encontre os melhores preços e promoções!">
     <meta name="keywords" content="hardware, computadores, periféricos, monitores, notebooks, tecnologia">
     <title>PC Master - Encontre os melhores preços e promoções!</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="assets/images/logos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/newsletter.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="icon" href="../assets/imagens/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="header-max-width">
         <div class="site-header">
-            <a href="index.html">
-                <picture>
-                    <source media="(max-width: 520px)" srcset="assets/images/logos/logo-p.png">
-                    <img class="site_logo" src="assets/images/logos/logo.png" alt="Logo PC Master">
-                </picture>
-            </a> 
-            
+            <a href="/index.html">
+                <img class="site_logo" src="../assets/images/logos/logo.png" alt="Logo PC Master">
+            </a>  
             <div class="header-menu">
                 <ul class="menu-items">
                     <li>
                         <span>Minha conta</span>
                         <br>
                         <strong>
-                            <a href="pages/login.html" class="account_link">Entrar</a> / 
-                            <a href="pages/cadastro.html" class="account_link">Cadastro</a>
+                            <a href="/pages/login.html" class="account_link">Entrar</a> / 
+                            <a href="/pages/cadastro.html" class="account_link">Cadastro</a>
                         </strong>
                     </li>
                     <li>
-                       <a href="pages/carrinho.html">
+                       <a href="/pages/carrinho.html">
                             <button class="btn-carrinho">
                                 <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg> Carrinho
                             </button>
@@ -41,15 +43,9 @@
         </div>
         <nav>
             <div class="navigation-menu">
-                <div class="search-bar">
-                    <input type="search" id="search" placeholder="Digite o que você procura">
-                </div>
                 <button id="menu-toggle" class="mobile-menu-button">☰ TODOS OS DEPARTAMENTOS</button>
                 <ul id="nav-list" class="nav-list" role="menu">
-                    <picture>
-                        <source media="(max-width: 520px)" srcset="assets/images/logos/logo-p.png">
-                        <img class="site-logo" src="assets/images/logos/logo.png" alt="Logo PC Master">
-                    </picture>
+                    <img class="site-logo" src="../assets/images/logos/logo.png" alt="Logo PC Master">
                     <li class="category-title"><h3>CATEGORIAS</h3></li>
                     <li><a href="#">Hardware</a></li>
                     <li><a href="#">Monitores</a></li>
@@ -59,39 +55,54 @@
                     <li><a href="#">Notebooks e portáteis</a></li>
                     <li><a href="#">Kit Upgrade</a></li>
                     <li class="category-title"><h3>AJUDA E CONFIGURAÇÕES</h3></li>
-                    <li><a href="pages/login.html">Minha Conta</a></li>
+                    <li><a href="/pages/login.html">Minha Conta</a></li>
                     <li><a href="#">Quem Somos</a></li>
                     <li><a href="#">Atendimento ao Cliente</a></li>
                 </ul>
+                <div class="search-bar">
+                    <input type="search" id="search" placeholder="Digite o que você procura">
+                </div>
             </div>
         </nav>
     </header>
 
-<body>
-    <nav class="breadcrumbs">
+    <nav class="breadcrumbs" aria-label="Navegação">
         <a href="../index.html">Home</a> &gt; <a href="#">Categoria</a> &gt; Produto
     </nav>
 
     <main id="produto-detalhes">
-       
+        <!-- Conteúdo do produto aqui -->
     </main>
+
     <section id="avaliacoes">
-        <h2>Avaliações dos usuários</h2>
-        <p>⭐⭐⭐⭐☆ (4.5/5)</p>
+        <h2><!-- Conteúdo do produto aqui --></h2>
+        <p class="rating"><!-- Conteúdo do produto aqui --></p>
+        <div class="review">
+            <p><!-- Conteúdo do produto aqui --></p>
+            <span class="user"><!-- Conteúdo do produto aqui --></span>
+        </div>
+        <div class="review">
+            <p><!-- Conteúdo do produto aqui --></p>
+            <span class="user"><!-- Conteúdo do produto aqui --></span>
+        </div>
     </section>
+
     <section class="newsletter-wrapper">
-        <div  class="newsletter">
+        <div class="newsletter">
             <div>
                 <h4 class="newsletter-title">Newsletter</h4>
                 <p>Receba ofertas exclusivas no seu e-mail</p>
             </div>
-            <form class="newsletter-form">
-                <input type="name" class="newsletter-input newsletter-input--name" placeholder="Qual é o seu nome?">
-                <input type="email" class="newsletter-input newsletter-input--email" placeholder="Digite seu email">
-                <button class="newsletter-button">Cadastrar</button>
+            <form class="newsletter-form" aria-label="Inscreva-se na newsletter do PC Master!" action="/subscribe" method="post">
+                <label for="newsletter-name" class="visually-hidden">Seu nome</label>
+                <input type="text" id="newsletter-name" class="newsletter-input newsletter-input--name" placeholder="Qual é o seu nome?" required>
+                <label for="newsletter-email" class="visually-hidden">Seu e-mail</label>
+                <input type="email" id="newsletter-email" class="newsletter-input newsletter-input--email" placeholder="Digite seu email" required>
+                <button type="submit" class="newsletter-button">Cadastrar</button>
             </form>
         </div>
-    </section>  
+    </section>
+
     <footer>
         <div class="footer-wrapper">
             <div class="footer-menu">
@@ -139,7 +150,10 @@
             </div>
         </div>
     </footer>
-    <script src="../js/carrinho.js" id="carrinho-script"></script>
-    <script src="../js/script.js"></script>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/products.js"></script>
+    <script src="/js/ui.js"></script>
 </body>
 </html>
