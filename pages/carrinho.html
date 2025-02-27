@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/login-form.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/products.css">
-    <link rel="stylesheet" href="../css/newsletter.css">
     <link rel="stylesheet" href="../css/checkout.css">
     <link rel="icon" href="../assets/imagens/favicon.ico" type="image/x-icon">
 </head>
@@ -24,9 +22,10 @@
             <div class="header-menu">
                 <ul class="menu-items">
                     <li>
-                       <a href="../pages/carrinho.html">
+                        <a href="../index.html">
                             <button class="btn-carrinho">
                                 <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                                Carrinho <span class="carrinho-contador"></span>
                             </button>
                         </a>
                     </li>
@@ -35,15 +34,16 @@
         </div>
     </header>
 
-    <main class="carrinho_container">
-        <a href="../index.html"><button>Voltar</button></a>
+    <main class="carrinho_container max-width">
+        <a href="../index.html"><button class="btn-voltar">Continuar Comprando</button></a>
         <div id="carrinho">
             <table id="tabela-carrinho">
                 <thead>
                     <tr>
                         <th>Produto</th>
-                        <th>Preço</th>
+                        <th>Preço Unitário</th>
                         <th>Quantidade</th>
+                        <th>Parcelas</th>
                         <th>Total</th>
                         <th>Remover</th>
                     </tr>
@@ -51,13 +51,14 @@
                 <tbody></tbody>
             </table>
             <div id="total-container">
-                <h3>Total: <span id="total-preco">R$ 0,00</span></h3>
+                <h3>Total à Vista: <span id="total-a-vista">R$ 0,00</span> (Economia: <span id="economia">R$ 0,00</span>)</h3>
+                <h3>Total Parcelado: <span id="total-preco">R$ 0,00</span></h3>
                 <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
             </div>
         </div>
     </main>
 
-    <script src="../js/carrinho.js" id="carrinho-script"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>
