@@ -1,25 +1,27 @@
-import { precoFormatado, handleFetchError } from './utils.js';
-import { adicionarAoCarrinho } from './cart.js';
-
 function loadProductDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     const produtoDetalhes = document.getElementById('produto-detalhes');
 
-    if (!produtoDetalhes) return;
+    if (!produtoDetalhes) {
+        console.error('Elemento #produto-detalhes não encontrado');
+        return;
+    }
 
     produtoDetalhes.innerHTML = '<p>Carregando detalhes do produto...</p>';
+    console.log('Iniciando fetch de produtos...');
 
     fetch('/data/produtos.json')
         .then(res => {
-            if (!res.ok) throw new Error('Erro ao carregar o produto.');
+            if (!res.ok) throw new Error(`Erro ${res.status}: Não foi possível carregar produtos.json`);
             return res.json();
         })
         .then(produtos => {
             const produto = produtos.find(p => p.id == productId);
             if (produto) {
                 const valorParcela = produto.precoParcelado / produto.parcelas;
-                const mediaAvaliacoes = produto.avaliacoes.length > 0 
+                const precoComDesconto = produto.precoAVista * 0.95;
+                const mediaAvaliacoes = produto.avaliacoes && produto.avaliacoes.length > 0 
                     ? (produto.avaliacoes.reduce((soma, aval) => soma + aval.nota, 0) / produto.avaliacoes.length).toFixed(1) 
                     : 0;
 
@@ -33,7 +35,7 @@ function loadProductDetails() {
                         <p class="marca">Marca: ${produto.marca}</p>
                         <p>${produto.descricaoCompleta}</p>
                         <div class="price-info">
-                            <span class="price">${precoFormatado(produto.precoAVista)}</span>
+                            <span class="price">${precoFormatado(precoComDesconto)}</span>
                             <span class="price-label">À vista</span>
                             <div class="installments">
                                 ou <strong>${produto.parcelas}x</strong> de <strong>${precoFormatado(valorParcela)}</strong> sem juros
@@ -52,23 +54,36 @@ function loadProductDetails() {
                                 `).join('')}
                             </ul>
                         </div>
-                        <button class="btn-comprar" 
+                        <button class="btn-add-carrinho" 
                                 data-id="${produto.id}" 
                                 data-nome="${produto.nome}" 
-                                data-preco="${produto.precoAVista}" 
+                                data-preco="${precoComDesconto}" 
                                 data-imagem="${produto.imagem}"
-                                aria-label="Adicionar ${produto.nome} ao carrinho"
                                 ${produto.estoque === 0 ? 'disabled' : ''}>
-                            ${produto.estoque === 0 ? 'Indisponível' : 'Adicionar ao Carrinho'}
+                                ${produto.estoque === 0 ? 'Indisponível' : 'Adicionar ao Carrinho'}
                         </button>
                     </div>
                 `;
+
                 if (produto.estoque > 0) {
-                    document.querySelector('.btn-comprar').addEventListener('click', adicionarAoCarrinho);
+                    document.querySelector('.btn-add-carrinho').addEventListener('click', () => {
+                        console.log('Botão clicado na página de detalhes:', {
+                            id: produto.id,
+                            nome: produto.nome,
+                            preco: precoComDesconto,
+                            imagem: produto.imagem
+                        });
+                        adicionarAoCarrinho({
+                            id: produto.id,
+                            nome: produto.nome,
+                            preco: precoComDesconto,
+                            imagem: produto.imagem
+                        });
+                    });
                 }
 
                 const avaliacoesSection = document.getElementById('avaliacoes');
-                if (produto.avaliacoes && produto.avaliacoes.length > 0) {
+                if (avaliacoesSection && produto.avaliacoes && produto.avaliacoes.length > 0) {
                     avaliacoesSection.innerHTML = `
                         <h2>Avaliações dos usuários</h2>
                         <p class="rating">${renderStars(mediaAvaliacoes)} (${mediaAvaliacoes}/5)</p>
@@ -79,22 +94,14 @@ function loadProductDetails() {
                             </div>
                         `).join('')}
                     `;
-                } else {
+                } else if (avaliacoesSection) {
                     avaliacoesSection.innerHTML = '<p>Sem avaliações disponíveis.</p>';
                 }
+            } else {
+                produtoDetalhes.innerHTML = '<p>Produto não encontrado.</p>';
             }
         })
-        .catch(error => {
-            console.error('Erro:', error);
-            produtoDetalhes.innerHTML = '<p>Erro ao carregar o produto.</p>';
-        });
-}
-
-function precoFormatado(preco) {
-    return preco.toLocaleString('pt-BR', { 
-        style: 'currency', 
-        currency: 'BRL' 
-    });
+        .catch(error => handleFetchError(error, produtoDetalhes));
 }
 
 function formatKey(key) {
@@ -134,15 +141,7 @@ function renderStars(nota) {
     return '★'.repeat(estrelas) + '☆'.repeat(5 - estrelas);
 }
 
-function adicionarAoCarrinho(event) {
-    const button = event.target;
-    const produto = {
-        id: button.dataset.id,
-        nome: button.dataset.nome,
-        preco: button.dataset.preco,
-        imagem: button.dataset.imagem
-    };
-    console.log('Produto adicionado ao carrinho:', produto);
-}
-
-window.addEventListener('load', loadProductDetails);
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM carregado, chamando loadProductDetails');
+    loadProductDetails();
+});
