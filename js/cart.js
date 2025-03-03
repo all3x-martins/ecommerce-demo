@@ -18,6 +18,30 @@ function saveCarrinho(carrinho) {
     }
 }
 
+function mostrarFeedback(mensagem, tipo = 'sucesso') {
+    const feedback = document.createElement('div');
+    feedback.textContent = mensagem;
+    feedback.classList.add('feedback-visual');
+    feedback.style.position = 'fixed';
+    feedback.style.top = '20px';
+    feedback.style.right = '20px';
+    feedback.style.padding = '10px 20px';
+    feedback.style.backgroundColor = tipo === 'sucesso' ? '#28a745' : '#e74c3c';
+    feedback.style.color = '#fff';
+    feedback.style.borderRadius = '5px';
+    feedback.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+    feedback.style.zIndex = '1001';
+    feedback.style.transition = 'opacity 0.5s ease';
+    feedback.style.opacity = '1';
+
+    document.body.appendChild(feedback);
+
+    setTimeout(() => {
+        feedback.style.opacity = '0';
+        setTimeout(() => feedback.remove(), 500);
+    }, 3000);
+}
+
 function adicionarAoCarrinho(produto) {
     fetch('/data/produtos.json')
         .then(res => {
@@ -34,20 +58,25 @@ function adicionarAoCarrinho(produto) {
                     existente.quantidade++;
                     saveCarrinho(carrinho);
                     console.log('Quantidade atualizada:', existente);
+                    mostrarFeedback(`${produto.nome} atualizado no carrinho!`, 'sucesso');
                 } else {
-                    alert('Quantidade máxima atingida para este produto.');
+                    mostrarFeedback('Quantidade máxima atingida para este produto.', 'erro');
                 }
             } else if (produtoOriginal.estoque > 0) {
                 produto.quantidade = 1;
-                produto.parcelasEscolhidas = 1; // Inicializa com 1 parcela
+                produto.parcelasEscolhidas = 1;
                 carrinho.push(produto);
                 saveCarrinho(carrinho);
                 console.log('Produto adicionado:', produto);
+                mostrarFeedback(`${produto.nome} adicionado ao carrinho!`, 'sucesso');
             } else {
-                alert('Produto fora de estoque.');
+                mostrarFeedback('Produto fora de estoque.', 'erro');
             }
         })
-        .catch(error => console.error('Erro ao verificar estoque:', error));
+        .catch(error => {
+            console.error('Erro ao verificar estoque:', error);
+            mostrarFeedback('Erro ao adicionar ao carrinho.', 'erro');
+        });
 }
 
 function renderizarCarrinho() {
@@ -64,8 +93,8 @@ function renderizarCarrinho() {
     let totalVista = 0;
 
     carrinho.forEach((item, index) => {
-        const precoOriginal = item.preco / 0.95; // Remove o desconto de 5% aplicado originalmente
-        const precoAVista = item.preco; // Preço com desconto já aplicado
+        const precoOriginal = item.preco / 0.95;
+        const precoAVista = item.preco;
         const precoParcelado = precoOriginal * item.quantidade;
         const valorParcela = precoParcelado / item.parcelasEscolhidas;
         totalParcelado += precoParcelado;
