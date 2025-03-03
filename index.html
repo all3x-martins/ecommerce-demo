@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PC Master - Loja online de hardware, periféricos e tecnologia. Encontre os melhores preços e promoções!">
-    <meta name="keywords" content="hardware, computadores, periféricos, monitores, notebooks, tecnologia">
-    <title>PC Master - Encontre os melhores preços e promoções!</title>
+    <meta name="description" content="PC Master: Compre hardware, periféricos, computadores, monitores com os melhores preços e promoções. Entregamos para todo o Brasil. Confira!">
+    <meta name="keywords" content="PC Master, hardware, computadores gamer, monitores 144hz, placa de vídeo RTX, SSD, comprar peças de computador, loja de informática">
+    <title>PC Master - Sua Loja de Hardware e Tecnologia com os Melhores Preços!</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="/css/navigation.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -20,8 +20,9 @@
     <header class="header-max-width">
         <div class="site-header">
             <a href="index.html">
-                <img class="site_logo" src="assets/images/logos/logo.png" alt="Logo PC Master">
+                <img class="site_logo" src="assets/images/logos/logo.png" alt="Logo PC Master - Loja de informática">
             </a>  
+            <h1  class="visually-hidden">PC Master - Sua Loja de Hardware e Tecnologia</h1>
             <div class="header-menu">
                 <ul class="menu-items">
                     <li>
@@ -35,8 +36,11 @@
                     <li>
                        <a href="pages/carrinho.html">
                             <button class="btn-carrinho">
-                                <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg> Carrinho
-                            </button>
+                                <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
+                                </svg>
+                                <span class="texto">Carrinho</span>
+                          </button> 
                         </a>
                     </li>
                 </ul>
@@ -44,7 +48,12 @@
         </div>
         <nav>
             <div class="navigation-menu">
-                <button id="menu-toggle" class="mobile-menu-button" aria-expanded="false" aria-controls="nav-list">☰ TODOS OS DEPARTAMENTOS</button>
+                <button id="menu-toggle" class="mobile-menu-button" aria-expanded="false" aria-controls="nav-list">
+                    <svg class="svg-icon" role="img" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                    <span>TODOS OS DEPARTAMENTOS</span>
+                </button>
                 <ul id="nav-list" class="nav-list" role="menu">
                     <li class="category-title"><h3>CATEGORIAS</h3></li>
                     <li><a href="#">Hardware</a></li>
@@ -56,7 +65,7 @@
                     <li><a href="#">Kit Upgrade</a></li>
                     <li class="category-title"><h3>AJUDA E CONFIGURAÇÕES</h3></li>
                     <li><a href="pages/login.html">Minha Conta</a></li>
-                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="pages/quem-somos.html">Quem Somos</a></li>
                     <li><a href="#">Atendimento ao Cliente</a></li>
                 </ul>
                 <div class="search-bar">
@@ -84,10 +93,11 @@
             <form class="newsletter-form">
                 <input type="text" class="newsletter-input newsletter-input--name" placeholder="Qual é o seu nome?">
                 <input type="email" class="newsletter-input newsletter-input--email" placeholder="Digite seu email">
-                <button class="newsletter-button">Cadastrar</button>
+                <button class="newsletter-button" aria-label="Cadastrar para receber as novidades da PC Master por email">Cadastrar</button>
             </form>
         </div>
     </section>  
+    
 
     <footer>
         <div class="footer-wrapper">
@@ -121,12 +131,12 @@
                 <div class="footer-section">
                     <h4 class="footer-section-title">Pagamento</h4>
                     <ul class="footer-list payment-methods">
-                        <li class="payment-icons"><img src="assets/images/payments/visa.webp" alt="Visa"></li>
-                        <li class="payment-icons"><img src="assets/images/payments/mastercard.webp" alt="Mastercard"></li>
-                        <li class="payment-icons"><img src="assets/images/payments/pix.webp" alt="Pix"></li>
-                        <li class="payment-icons"><img src="assets/images/payments/boleto.webp" alt="Boleto Bancário"></li>
-                        <li class="payment-icons"><img src="assets/images/payments/american.webp" alt="American Express"></li>
-                        <li class="payment-icons"><img src="assets/images/payments/nubank.svg" alt="Nubank"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/visa.webp" alt="Cartão de crédito Visa"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/mastercard.webp" alt="Cartão de crédito Mastercard"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/pix.webp" alt="Pagamento via Pix"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/boleto.webp" alt="Pagamento via Boleto Bancário"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/american.webp" alt="Cartão de crédito American Express"></li>
+                        <li class="payment-icons"><img src="assets/images/payments/nubank.svg" alt="Pagamento via Nubank"></li>
                     </ul>
                 </div>
             </div>
