@@ -109,9 +109,55 @@ function loadProducts() {
     }
 }
 
+function handleProductSearch() {
+    const searchInput = document.getElementById('search');
+    if (!searchInput) {
+        console.warn('Campo de busca #search não encontrado');
+        return;
+    }
+
+    const debounce = (func, delay) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    };
+
+    const buscarProdutos = debounce((termo) => {
+        const cards = document.querySelectorAll('.card');
+        let nenhumProdutoEncontrado = true;
+
+        cards.forEach(card => {
+            const titulo = card.querySelector('h3').textContent.toLowerCase();
+            if (titulo.includes(termo)) {
+                card.style.display = 'block';
+                nenhumProdutoEncontrado = false;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        const feedbackBusca = document.createElement('p');
+        feedbackBusca.classList.add('feedback-busca');
+        feedbackBusca.textContent = nenhumProdutoEncontrado ? 'Nenhum produto encontrado.' : '';
+        feedbackBusca.style.color = 'red';
+
+        const feedbackAnterior = document.querySelector('.feedback-busca');
+        if (feedbackAnterior) feedbackAnterior.remove();
+        document.getElementById('card_container').appendChild(feedbackBusca);
+    }, 300);
+
+    searchInput.addEventListener('input', (e) => {
+        const termo = e.target.value.toLowerCase();
+        buscarProdutos(termo);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('card_container')) {
-        console.log('DOM carregado, chamando loadProducts');
+        console.log('DOM carregado, chamando loadProducts e handleProductSearch');
         loadProducts();
+        handleProductSearch();
     }
 });
