@@ -91,9 +91,37 @@
                 <p>Receba ofertas exclusivas no seu e-mail</p>
             </div>
             <form class="newsletter-form">
-                <input type="text" class="newsletter-input newsletter-input--name" placeholder="Qual é o seu nome?">
-                <input type="email" class="newsletter-input newsletter-input--email" placeholder="Digite seu email">
-                <button class="newsletter-button" aria-label="Cadastrar para receber as novidades da PC Master por email">Cadastrar</button>
+                <div class="form-group">
+                    <label for="newsletter-name" class="visually-hidden">Nome</label>
+                    <input 
+                        type="text" 
+                        id="newsletter-name" 
+                        name="name" 
+                        class="newsletter-input newsletter-input--name" 
+                        placeholder="Qual é o seu nome?" 
+                        autocomplete="name" 
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="newsletter-email" class="visually-hidden">Email</label>
+                    <input 
+                        type="email" 
+                        id="newsletter-email" 
+                        name="email" 
+                        class="newsletter-input newsletter-input--email" 
+                        placeholder="Digite seu email" 
+                        autocomplete="email" 
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+                <button 
+                    type="submit" 
+                    class="newsletter-button" 
+                    aria-label="Cadastrar para receber as novidades da PC Master por email"
+                >Cadastrar</button>
             </form>
         </div>
     </section>  

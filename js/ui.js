@@ -65,8 +65,8 @@ function handleNewsletterForm() {
         return;
     }
 
-    const nomeInput = newsletterForm.querySelector('.newsletter_input--name');
-    const emailInput = newsletterForm.querySelector('.newsletter_input--email');
+    const nomeInput = newsletterForm.querySelector('.newsletter-input--name');
+    const emailInput = newsletterForm.querySelector('.newsletter-input--email');
 
     if (!nomeInput || !emailInput) {
         console.warn('Campos de entrada do formulário de newsletter não encontrados');
@@ -80,12 +80,15 @@ function handleNewsletterForm() {
         const feedback = document.createElement('div');
         feedback.classList.add('feedback-message');
 
-        const emailValido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+$/.test(email);
+        const emailValido = emailInput.checkValidity(); // Usa validação nativa do HTML5.
 
         const isValid = nome && email && emailValido;
-        feedback.textContent = isValid 
-            ? `Obrigado por se inscrever, ${nome}!` 
-            : 'Por favor, preencha todos os campos corretamente.';
+        let mensagemErro = '';
+        if (!nome) mensagemErro = 'Por favor, preencha o nome.';
+        else if (!email) mensagemErro = 'Por favor, preencha o email.';
+        else if (!emailValido) mensagemErro = 'Por favor, insira um email válido.';
+
+        feedback.textContent = isValid ? `Obrigado por se inscrever, ${nome}!` : mensagemErro;
         feedback.style.color = isValid ? 'green' : 'red';
         feedback.style.padding = '10px';
         feedback.style.backgroundColor = isValid ? '#e6ffe6' : '#ffe6e6';
