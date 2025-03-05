@@ -109,15 +109,15 @@ function loadProducts() {
     }
 
     // Faz fetch do arquivo JSON com os produtos.
-    fetch('/data/produtos.json')
+    fetch('data/produtos.json')
         .then(res => {
-            if (!res.ok) throw new Error(`Erro ${res.status}: Não foi possível carregar produtos.json`); // Lança erro se a resposta não for OK.
-            return res.json(); // Converte a resposta para JSON.
+            if (!res.ok) throw new Error(`Erro ${res.status}: Não foi possível carregar produtos.json`);
+            return res.json();
         })
         .then(produtos => {
-            produtosCache = produtos; // Armazena no cache.
+            produtosCache = produtos;
             console.log('Produtos carregados:', produtos);
-            renderProdutos(produtos); // Renderiza os produtos.
+            renderProdutos(produtos);
         })
         .catch(error => { // Trata erros do fetch.
             console.error('Erro ao carregar produtos:', error);
@@ -186,7 +186,7 @@ function handleProductSearch() {
                 setTimeout(() => feedbackBusca.remove(), 500);
             }, 3000);
         }
-    }, 300); // Delay de 300ms para debounce.
+    }, 300);
 
     // Adiciona listener ao campo de busca para disparar a filtragem ao digitar.
     searchInput.addEventListener('input', (e) => {
