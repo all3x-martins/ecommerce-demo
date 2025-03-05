@@ -9,12 +9,12 @@
     margin: 0 auto;
 }
 
-.header-max-width {
+.header-container {
     background-color: #1a1a1a;
 }
 
 .site-header .site-logo {
-    max-width: 200px;
+    max-width: 12.5rem;
 }
 
 .header-menu .menu-items {
@@ -31,6 +31,7 @@
     color: white;
     font-size: 1rem;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .header-menu .account_link:hover {
@@ -40,18 +41,22 @@
 .navigation-menu .search-bar {
     display: block;
     width: 100%;
-    padding: 10px 1.25rem;
+    padding: 0.625rem 1.25rem;
     background-color: #303030;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
 .navigation-menu .search-bar input {
     width: 100%;
     padding: 1rem;
     border: 1px solid #424242;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-size: 1rem;
     background-color: #424242;
-    outline: #424242;
     color: white;
+}
+
+.navigation-menu .search-bar input:focus {
+    outline: 2px solid #F2A81D;
+    outline-offset: 2px;
 }

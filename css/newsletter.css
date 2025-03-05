@@ -5,7 +5,7 @@
 
 .newsletter {
     color: white;
-    padding: 1.875rem 1.25rem; 
+    padding: 1.875rem 1.25rem;
     text-align: center;
     max-width: 1480px;
     width: 100%;
@@ -21,31 +21,29 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1.25rem; 
+    gap: 1.25rem;
     justify-content: center;
     flex-wrap: wrap;
-    -webkit-box-align:center;
 }
 
 .newsletter-input {
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    outline: none;
     width: 100%;
-    max-width: 350px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 .newsletter-button {
-    padding: 1rem;
-    background-color: #F2A81D;
-    color: white;
-    border-radius: 8px;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%;
-    max-width: 150px;
 }
 
 .newsletter-button:hover {
-    background-color: #ce901c;
+    background-color: #2980b9;
 }

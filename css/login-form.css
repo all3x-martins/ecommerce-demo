@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 80vh;
     background-color: #f0f0f0;
 }
 
@@ -39,7 +39,6 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1rem;
-    box-sizing: border-box;
 }
 
 .btn-login {
@@ -56,7 +55,7 @@
 }
 
 .btn-login:hover {
-    background-color: rgb(3, 93, 3);
+    background-color: #035D03;
 }
 
 .links {
@@ -67,9 +66,9 @@
     color: #00a202;
     font-size: 0.9rem;
     text-decoration: none;
+    transition: text-decoration 0.3s ease;
 }
 
 .links a:hover {
     text-decoration: underline;
 }
-
