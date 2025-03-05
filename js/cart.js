@@ -43,7 +43,7 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
 }
 
 function adicionarAoCarrinho(produto) {
-    fetch('/data/produtos.json')
+    fetch('data/produtos.json')
         .then(res => {
             if (!res.ok) throw new Error('Erro ao carregar produtos.json');
             return res.json();
@@ -57,17 +57,14 @@ function adicionarAoCarrinho(produto) {
                 if (existente.quantidade + 1 <= produtoOriginal.estoque) {
                     existente.quantidade++;
                     saveCarrinho(carrinho);
-                    console.log('Quantidade atualizada:', existente);
                     mostrarFeedback(`${produto.nome} atualizado no carrinho!`, 'sucesso');
                 } else {
                     mostrarFeedback('Quantidade máxima atingida para este produto.', 'erro');
                 }
             } else if (produtoOriginal.estoque > 0) {
                 produto.quantidade = 1;
-                produto.parcelasEscolhidas = 1;
                 carrinho.push(produto);
                 saveCarrinho(carrinho);
-                console.log('Produto adicionado:', produto);
                 mostrarFeedback(`${produto.nome} adicionado ao carrinho!`, 'sucesso');
             } else {
                 mostrarFeedback('Produto fora de estoque.', 'erro');
@@ -82,51 +79,87 @@ function adicionarAoCarrinho(produto) {
 function renderizarCarrinho() {
     const carrinho = getCarrinho();
     const tabelaCorpo = document.querySelector('#tabela-carrinho tbody');
-    const totalPreco = document.querySelector('#total-preco');
-    const totalAVista = document.querySelector('#total-a-vista');
-    const economia = document.querySelector('#economia');
+    const totalContainer = document.querySelector('#total-container');
+    const carrinhoContainer = document.querySelector('#carrinho');
 
-    if (!tabelaCorpo || !totalPreco || !totalAVista || !economia) return;
+    if (!tabelaCorpo || !totalContainer || !carrinhoContainer) return;
+
+    tabelaCorpo.innerHTML = '';
+    totalContainer.innerHTML = ''; // Limpa o container
+    totalContainer.style.display = 'none'; // Esconde por padrão
+
+    if (carrinho.length === 0) {
+        const mensagemVazio = document.createElement('p');
+        mensagemVazio.id = 'carrinho-vazio';
+        mensagemVazio.textContent = 'Seu carrinho está vazio.';
+        mensagemVazio.style.textAlign = 'center';
+        mensagemVazio.style.fontSize = '18px';
+        mensagemVazio.style.color = '#666';
+        mensagemVazio.style.margin = '20px 0';
+        carrinhoContainer.innerHTML = ''; // Limpa tudo
+        carrinhoContainer.appendChild(tabelaCorpo); // Reinsere a tabela vazia
+        carrinhoContainer.appendChild(mensagemVazio);
+        carrinhoContainer.appendChild(totalContainer); // Mantém a estrutura
+        return;
+    }
 
     const fragment = document.createDocumentFragment();
-    let totalParcelado = 0;
     let totalVista = 0;
 
     carrinho.forEach((item, index) => {
-        const precoOriginal = item.preco / 0.95;
         const precoAVista = item.preco;
-        const precoParcelado = precoOriginal * item.quantidade;
-        const valorParcela = precoParcelado / item.parcelasEscolhidas;
-        totalParcelado += precoParcelado;
         totalVista += precoAVista * item.quantidade;
 
         const linha = document.createElement('tr');
         linha.innerHTML = `
             <td><img src="${item.imagem}" alt="${item.nome}" class="carrinho-imagem">${item.nome}</td>
-            <td>${precoFormatado(precoOriginal)}</td>
+            <td>${precoFormatado(precoAVista)}</td>
             <td>
                 <button class="btn-menos" data-index="${index}">-</button>
                 ${item.quantidade}
                 <button class="btn-mais" data-index="${index}">+</button>
             </td>
-            <td>
-                <select class="parcelas-select" data-index="${index}">
-                    ${Array.from({ length: 12 }, (_, i) => i + 1).map(n => `
-                        <option value="${n}" ${item.parcelasEscolhidas === n ? 'selected' : ''}>${n}x ${precoFormatado(valorParcela)}</option>
-                    `).join('')}
-                </select>
-            </td>
-            <td>${precoFormatado(precoParcelado)}</td>
+            <td>${precoFormatado(precoAVista * item.quantidade)}</td>
             <td><button data-index="${index}" class="btn-remover">Remover</button></td>
         `;
         fragment.appendChild(linha);
     });
 
-    tabelaCorpo.innerHTML = '';
     tabelaCorpo.appendChild(fragment);
-    totalPreco.textContent = precoFormatado(totalParcelado);
-    totalAVista.textContent = precoFormatado(totalVista);
-    economia.textContent = precoFormatado(totalParcelado - totalVista);
+
+    const totalParcelado = totalVista / 0.95; // Preço total com 5% de acréscimo
+    totalContainer.innerHTML = `
+        <div class="total-info">
+            <p>Total à Vista: <span id="total-a-vista">${precoFormatado(totalVista)}</span></p>
+            <p>Economia: <span id="economia">${precoFormatado(totalParcelado - totalVista)}</span></p>
+            <label for="parcelas-select-total">Total Parcelado:</label>
+            <select id="parcelas-select-total">
+                ${Array.from({ length: 12 }, (_, i) => i + 1).map(n => `
+                    <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
+                `).join('')}
+            </select>
+            <p><span id="total-preco">${precoFormatado(totalParcelado)}</span></p>
+        </div>
+        <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
+    `;
+    totalContainer.style.display = 'block'; // Exibe quando há itens
+
+    // Reatacha o evento ao botão "Finalizar Compra" gerado dinamicamente
+    const finalizarCompra = totalContainer.querySelector('#finalizar-compra');
+    if (finalizarCompra) {
+        finalizarCompra.addEventListener('click', () => {
+            const carrinhoAtual = getCarrinho();
+            if (carrinhoAtual.length > 0) {
+                if (confirm('Deseja finalizar a compra?')) {
+                    localStorage.removeItem('carrinho');
+                    renderizarCarrinho();
+                    mostrarFeedback('Compra finalizada com sucesso!', 'sucesso');
+                }
+            } else {
+                mostrarFeedback('Seu carrinho está vazio!', 'erro');
+            }
+        });
+    }
 }
 
 function atualizarContadorCarrinho() {
@@ -161,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             carrinho[index].quantidade++;
                             saveCarrinho(carrinho);
                         } else {
-                            alert('Quantidade máxima atingida para este produto.');
+                            mostrarFeedback('Quantidade máxima atingida para este produto.', 'erro');
                         }
                     });
             } else if (e.target.classList.contains('btn-menos')) {
@@ -172,37 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     carrinho.splice(index, 1);
                     saveCarrinho(carrinho);
                 }
-            }
-        });
-
-        tabelaCorpo.addEventListener('change', (e) => {
-            if (e.target.classList.contains('parcelas-select')) {
-                const index = parseInt(e.target.getAttribute('data-index'), 10);
-                const carrinho = getCarrinho();
-                carrinho[index].parcelasEscolhidas = parseInt(e.target.value, 10);
-                saveCarrinho(carrinho);
-            }
-        });
-    }
-
-    const finalizarCompra = document.getElementById('finalizar-compra');
-    if (finalizarCompra) {
-        finalizarCompra.addEventListener('click', () => {
-            const carrinho = getCarrinho();
-            if (carrinho.length > 0) {
-                if (confirm('Deseja finalizar a compra?')) {
-                    localStorage.removeItem('carrinho');
-                    renderizarCarrinho();
-                    const mensagem = document.createElement('p');
-                    mensagem.textContent = 'Compra finalizada com sucesso!';
-                    mensagem.style.color = 'green';
-                    mensagem.style.textAlign = 'center';
-                    mensagem.style.marginTop = '20px';
-                    document.querySelector('.carrinho_container').appendChild(mensagem);
-                    setTimeout(() => mensagem.remove(), 3000);
-                }
-            } else {
-                alert('Seu carrinho está vazio!');
             }
         });
     }
