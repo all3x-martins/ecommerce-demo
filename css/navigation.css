@@ -1,45 +1,27 @@
-/* Navegação */
-.navigation-menu {
+/* navigation.css */
+
+.header-nav {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    background-color: #1a1a1a;
     padding: 1.25rem;
     max-width: 1480px;
-    width: 100%;
     margin: 0 auto;
-    gap: 1rem;
+    justify-content: space-between;
 }
 
-.navigation-menu .search-bar {
+.header-nav .header-button-mobile {
     display: block;
-    width: 100%;
-    padding: 0.625rem 1.25rem;
-    background-color: #303030;
-    border-radius: 0.5rem;
-}
-
-.navigation-menu .mobile-menu-button {
-    display: block;
-    width: 30%;
-    text-align: left;
-    padding: 0.625rem;
-    background-color: beige;
-    color: #333;
     border: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    height: 4.6875rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
+    background-color: transparent;
 }
 
-.mobile-menu-button svg,
-.mobile-menu-button span {
+.header-button-mobile i {
     pointer-events: none;
+    font-size: 25px;
+    color: #fff;
 }
 
-.nav-list {
+.header-nav-list {
     display: none;
     position: fixed;
     top: 0;
@@ -56,25 +38,25 @@
     box-shadow: 0.125rem 0 0.625rem rgba(0, 0, 0, 0.2);
 }
 
-.nav-list.show {
+.header-nav-list.show {
     display: flex;
     flex-direction: column;
     transform: translateX(0);
     gap: 0.85rem;
 }
 
-.nav-list a {
+.header-nav-list a {
     color: #aaa;
     display: block;
     padding: 0.625rem;
     transition: color 0.3s ease;
 }
 
-.nav-list a:hover {
-    color: #F2A81D;
+.header-nav-list a:hover {
+    color: #FF7F00;
 }
 
-.category-title {
+.header-nav-title {
     color: white;
     font-size: 1rem;
     margin-bottom: 0.625rem;
@@ -94,4 +76,55 @@
 
 #close-menu:hover {
     color: #e74c3c;
+}
+/* Logo */
+.site_logo {
+    max-height: 60px;
+    width: auto;
+}
+
+.menu-items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account_link{
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Botão do Carrinho */
+.header-cart-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.header-cart-counter {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
 }

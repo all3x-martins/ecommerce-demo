@@ -1,30 +1,11 @@
 /* Componentes */
-.btn-carrinho {
+
+.header-cart-button {
     display: flex;
-    background-color: #F2A81D;
-    color: #ffffff;
-    font-size: 1rem;
-    border-radius: 8px;
     padding: 0.75rem 1.5rem;
     align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    gap: 0.4rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.btn-carrinho:hover {
-    background-color: #019201;
-}
-
-.svg-icon {
-    fill: currentColor;
-    width: 1em;
-    height: 1em;
-    font-size: 1.5rem;
-    vertical-align: middle;
 }
 
 .visually-hidden {
@@ -37,4 +18,58 @@
     white-space: nowrap;
     clip: rect(0 0 0 0);
     overflow: hidden;
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 20px;
+    max-width: 600px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.search-bar .search-icon {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: #ff6200;
+}
+
+.header-actions-auth i {
+    font-size: 34px;
+    padding: 8px;
+    color: #ffffff;
+}
+
+.header-cart-button i {
+    pointer-events: none;
+    font-size: 25px;
+    color: #fff;
+}
+
+
+.search-bar .search-icon i {
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #F2A81D;
+}
+
+.footer-bottom a:hover {
+    color: white;
 }
