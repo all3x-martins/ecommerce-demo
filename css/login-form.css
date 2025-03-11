@@ -1,14 +1,15 @@
 /* Estilos do formulário de login */
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    background-color: #f0f0f0;
+    background-color: #F5F5F5;
 }
 
 .login-form {
-    background-color: white;
+    background-color: #FFFFFF;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -24,6 +25,10 @@
 
 .input-group {
     margin-bottom: 20px;
+}
+
+.links p {
+    color: #333333;
 }
 
 .input-group label {
@@ -42,8 +47,8 @@
 }
 
 .btn-login {
-    background-color: #00a202;
-    color: white;
+    background-color: #0060b1;
+    color: #FFFFFF;
     font-size: 1rem;
     font-weight: bold;
     padding: 12px;
@@ -55,7 +60,7 @@
 }
 
 .btn-login:hover {
-    background-color: #035D03;
+    background-color: #004d8e;
 }
 
 .links {
@@ -63,7 +68,7 @@
 }
 
 .links a {
-    color: #00a202;
+    color: #0060B1;
     font-size: 0.9rem;
     text-decoration: none;
     transition: text-decoration 0.3s ease;
@@ -71,4 +76,5 @@
 
 .links a:hover {
     text-decoration: underline;
+    color: #004D8E;
 }

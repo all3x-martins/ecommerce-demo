@@ -1,3 +1,5 @@
+/* products.css */
+
 /* Cards */
 .card_container {
     display: flex;
@@ -28,7 +30,7 @@
 .card img {
     width: 100%;
     height: 270px;
-    object-fit: cover;
+    object-fit: fill;
     border-bottom: 1px solid #eee;
 }
 
@@ -41,11 +43,15 @@
 
 .card h3 {
     font-size: 1rem;
-    color: #333;
+    color:#333333;
     margin: 0.625rem 0;
     text-align: left;
     height: 75px;
     overflow: hidden;
+}
+
+.produto-parcelas {
+    color: #FF7F00;
 }
 
 .product_info {
@@ -57,30 +63,30 @@
 
 .produto_preco {
     font-size: 1.5rem;
-    color: #00a000;
+    color: #0060b1;
     font-weight: 700;
 }
 
 .produto_pagamento {
     font-size: 1rem;
-    color: #00a000;
+    color: #0060b1;
 }
 
 .btn-add-carrinho {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #FF7F00;
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
     margin: 1rem 0;
-    width: 100%;
+    width: 90%;
     transition: background-color 0.3s ease;
 }
 
 .btn-add-carrinho:hover {
-    background-color: #218838;
+    background-color: #F2A900;
 }
 
 .btn-add-carrinho:disabled {

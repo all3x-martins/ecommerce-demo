@@ -36,8 +36,8 @@
 }
 
 .newsletter-button {
-    background-color: #3498db;
-    color: #fff;
+    background-color: #FF7F00;
+    color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -46,5 +46,5 @@
 }
 
 .newsletter-button:hover {
-    background-color: #2980b9;
+    background-color: #F2A900;
 }
