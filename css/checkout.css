@@ -1,3 +1,5 @@
+/* checkout.css */
+
 .carrinho_container {
     max-width: 1200px;
     margin: 20px auto;
@@ -30,11 +32,20 @@
 }
 
 .btn-menos,
-.btn-mais,
-.btn-remover {
+.btn-mais {
     padding: 5px 10px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remover  {
+    padding: 5px 10px;
+    background-color: #0060B1;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -42,22 +53,25 @@
 }
 
 .btn-menos:hover,
-.btn-mais:hover,
-.btn-remover:hover {
-    background-color: #2980b9;
+.btn-mais:hover {
+    background-color: #004D8E;
+}
+
+.btn-remover:hover{
+background-color: #004D8E;
 }
 
 .btn-menos:focus,
 .btn-mais:focus,
 .btn-remover:focus {
-    outline: 2px solid #3498db;
+    outline: 2px solid #333333;
     outline-offset: 2px;
 }
 
 #total-container {
     text-align: right;
     margin-top: 20px;
-    display: none; /* Escondido por padrão */
+    display: none;
 }
 
 .total-info {
@@ -80,8 +94,8 @@
 .btn-finalizar {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #28a745;
-    color: #fff;
+    background-color: #FF7F00;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -90,11 +104,11 @@
 }
 
 .btn-finalizar:hover {
-    background-color: #218838;
+    background-color: #F2A900;
 }
 
 .btn-finalizar:focus {
-    outline: 2px solid #28a745;
+    outline: 2px solid #FF7F00;
     outline-offset: 2px;
 }
 
