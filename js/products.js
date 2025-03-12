@@ -52,30 +52,42 @@ function createProductCard(product) {
         <span class="produto_pagamento"> à vista</span>
         <br>
         <span>ou até</span>
-        <span>${product.parcelas || 1}x</span>
-        <small>de</small>
-        <span>${typeof precoFormatado === 'function' ? precoFormatado(valorParcela) : valorParcela.toFixed(2)}</span>
+        <span class= "produto-parcelas">${product.parcelas || 1}x</span>
+        <small class= "produto-parcelas">de</small>
+        <span class= "produto-parcelas">${typeof precoFormatado === 'function' ? precoFormatado(valorParcela) : valorParcela.toFixed(2)}</span>
     `;
 
-    // Cria o botão "Adicionar ao Carrinho".
+    // Cria o botão "COMPRAR".
     const addButton = document.createElement('button');
     addButton.classList.add('btn-add-carrinho');
-    addButton.textContent = 'Adicionar ao Carrinho';
-    addButton.dataset.id = product.id; // Armazena o ID do produto no dataset para referência.
 
-    // Define a função que será chamada ao clicar no botão.
-    function handleAddToCart() {
-        if (typeof adicionarAoCarrinho === 'function') { // Verifica se a função existe.
-            adicionarAoCarrinho({
-                id: product.id,
-                nome: product.nome,
-                preco: precoComDesconto,
-                imagem: product.imagem || 'placeholder.jpg'
-            });
-        } else {
-            console.error('Função adicionarAoCarrinho não definida'); // Avisa se a função não estiver disponível.
-        }
+    // Cria o ícone e adiciona ao botão (antes do texto).
+    const iconElement = document.createElement('i');
+    iconElement.classList.add('fas');
+    iconElement.classList.add('fa-shopping-cart');
+
+    // Adiciona o ícone ao botão antes do texto.
+    addButton.appendChild(iconElement); // Adiciona o ícone primeiro.
+    addButton.appendChild(document.createTextNode(' COMPRAR')); // Depois adiciona o texto.
+
+    addButton.dataset.id = product.id; // Armazena o ID do produto no dataset para referência.
+    
+// Define a função que será chamada ao clicar no botão.
+function handleAddToCart() {
+    if (typeof adicionarAoCarrinho === 'function') { // Verifica se a função existe.
+        adicionarAoCarrinho({
+            id: product.id,
+            nome: product.nome,
+            preco: precoComDesconto,
+            imagem: product.imagem || 'placeholder.jpg'
+        });
+
+        // Redireciona para a página do carrinho após adicionar o item
+        window.location.href = 'pages/carrinho';
+    } else {
+        console.error('Função adicionarAoCarrinho não definida'); // Avisa se a função não estiver disponível.
     }
+}
 
     // Remove qualquer listener anterior para evitar duplicação e adiciona o novo.
     addButton.removeEventListener('click', handleAddToCart);

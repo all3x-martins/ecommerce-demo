@@ -13,7 +13,7 @@
 }
 
 .card {
-    background-color: white;
+    background-color: var(--cor-primaria-branco);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -43,7 +43,7 @@
 
 .card h3 {
     font-size: 1rem;
-    color:#333333;
+    color: var(--cor-cinza-escuro);
     margin: 0.625rem 0;
     text-align: left;
     height: 75px;
@@ -51,47 +51,44 @@
 }
 
 .produto-parcelas {
-    color: #FF7F00;
+    color: var(--cor-primaria-laranja);
 }
 
 .product_info {
     margin: 1.25rem;
     text-align: left;
-    color: #777;
+    color: var(--cor-cinza-texto);
     font-size: 0.75rem;
 }
 
 .produto_preco {
     font-size: 1.5rem;
-    color: #0060b1;
+    color: var(--cor-primaria-azul);
     font-weight: 700;
 }
 
 .produto_pagamento {
     font-size: 1rem;
-    color: #0060b1;
+    color: var(--cor-primaria-azul);
 }
 
 .btn-add-carrinho {
-    padding: 10px 20px;
-    background-color: #FF7F00;
-    color: white;
+    width: 90%;
+    height: 2.25rem;
+    background-color: var(--cor-primaria-laranja);
+    color: var(--cor-primaria-branco);
     border: none;
     border-radius: 8px;
     font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
     cursor: pointer;
     margin: 1rem 0;
-    width: 90%;
     transition: background-color 0.3s ease;
 }
 
 .btn-add-carrinho:hover {
-    background-color: #F2A900;
-}
-
-.btn-add-carrinho:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    background-color: var(--cor-laranja-claro-hover);
 }
 
 #produto-detalhes {
@@ -101,9 +98,18 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background-color: #fff;
+    background-color: var(--cor-primaria-branco);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbs {
+max-width:1200px;
+margin: 0 auto;
+}
+
+.breadcrumbs a {
+    margin-left: 0.75rem;
 }
 
 .product-image {
@@ -124,52 +130,50 @@
 }
 
 .product-details h1 {
-    font-size: 28px;
-    color: #333;
+    font-size: 1.7rem;
+    line-height: 2.125rem;
+    font-weight: 700;
+    color: var(--cor-cinza-escuro);
     margin-bottom: 10px;
 }
 
 .product-details .price {
-    font-size: 24px;
-    color: #e74c3c;
-    font-weight: bold;
+    font-size: 2.3rem;
+    color: var(--cor-primaria-azul);
+    font-weight: 700;
     margin-bottom: 15px;
 }
 
 .product-details p {
     font-size: 16px;
-    color: #666;
+    color: var(--cor-cinza-medio);
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
-.product-details .btn-comprar {
-    background-color: #3498db;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.avaliacoes {
+    max-width: 1200px;
+    margin: 1rem auto;
 }
 
-.product-details .btn-comprar:hover {
-    background-color: #2980b9;
+.rating {
+    font-size: 1.5rem;
+    color: var(--cor-primaria-laranja);
 }
 
-.product-details .btn-voltar {
-    background-color: #ccc;
-    color: #333;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    font-size: 0.875rem;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
+.review {
+    background-color: var(--cor-primaria-branco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
 }
 
-.product-details .btn-voltar:hover {
-    background-color: #bbb;
+.stars {
+    font-size: 1.4rem;
+    color: var(--cor-primaria-laranja);
+}
+
+.avaliacoes p {
+    margin-top: 1rem;
 }

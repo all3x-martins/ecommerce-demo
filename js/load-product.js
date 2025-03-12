@@ -30,7 +30,6 @@ function loadProductDetails() {
                         <img src="${produto.imagem}" alt="${produto.nome}" onerror="this.src='placeholder.jpg'">
                     </div>
                     <div class="product-details">
-                        <button onclick="window.history.back()" class="btn-voltar">Voltar</button>
                         <h1>${produto.nome}</h1>
                         <p class="marca">Marca: ${produto.marca}</p>
                         <p>${produto.descricaoCompleta}</p>
@@ -89,8 +88,10 @@ function loadProductDetails() {
                         <p class="rating">${renderStars(mediaAvaliacoes)} (${mediaAvaliacoes}/5)</p>
                         ${produto.avaliacoes.map(aval => `
                             <div class="review">
-                                <p>${aval.comentario}</p>
-                                <span class="user">${aval.usuario} - ${aval.data} (${renderStars(aval.nota)})</span>
+                                <span class="user">${aval.usuario} - ${aval.data}</span>
+                                <br>
+                                <span class= "stars">${renderStars(aval.nota)}</span>
+                                <p>${aval.comentario}</p>                              
                             </div>
                         `).join('')}
                     `;

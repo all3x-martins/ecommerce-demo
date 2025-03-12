@@ -1,7 +1,7 @@
 /* Layouts e Containers */
 
 .header {
-    background-color: #0060b1;
+    background-color: var(--cor-primaria-azul);
     width: 100%;
     position: relative;
     z-index: 100;
@@ -27,7 +27,7 @@
 }
 
 .header-menu .menu-items li {
-    color: white;
+    color: var(--cor-primaria-branco);
 }
 
 .header-actions {
@@ -42,29 +42,30 @@
 
 .header-actions-auth span {
     font-size: 0.75rem;
-    color: white;
+    color: var(--cor-primaria-branco);
 }
 
 .header-actions-auth span a {
     font-size: 0.75rem;
     font-weight: 700;
+    color: var(--cor-primaria-branco);
 }
 
 .header-menu .account_link {
-    color: white;
+    color: var(--cor-primaria-branco);
     font-size: 1rem;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .header-menu .account_link:hover {
-    color: #F2A81D;
+    color: var(--cor-laranja-claro-hover);
 }
 
 /* Footer */
 footer {
-    background-color: #004d8e;
-    color: white;
+    background-color: var(--cor-azul-footer);
+    color: var(--cor-primaria-branco);
 }
 
 .footer-wrapper {
@@ -116,7 +117,7 @@ footer {
     flex-basis: 30%;
     display: flex;
     padding: 0.5rem 1rem;
-    background: white;
+    background: var(--cor-primaria-branco);
     align-items: center;
     border-radius: 5px;
     margin-bottom: 1rem;

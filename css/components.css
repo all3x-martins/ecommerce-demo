@@ -25,7 +25,7 @@
     flex: 1;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--cor-primaria-branco);
     border-radius: 5px;
     overflow: hidden;
     margin: 0 20px;
@@ -38,7 +38,7 @@
     border: none;
     outline: none;
     font-size: 14px;
-    color: #666;
+    color: var(--cor-cinza-medio);
 }
 
 .search-bar .search-icon {
@@ -46,19 +46,19 @@
     border: none;
     padding: 10px;
     cursor: pointer;
-    color: #ff6200;
+    color: var(--cor-primaria-laranja);
 }
 
 .header-actions-auth i {
     font-size: 34px;
     padding: 8px;
-    color: #ffffff;
+    color: var(--cor-primaria-branco);
 }
 
 .header-cart-button i {
     pointer-events: none;
     font-size: 25px;
-    color: #fff;
+    color: var(--cor-primaria-branco);
 }
 
 
@@ -67,9 +67,9 @@
 }
 
 .footer-bottom a {
-    color: #F2A900;
+    color: var(--cor-laranja-claro-hover);
 }
 
 .footer-bottom a:hover {
-    color: #FF7F00;
+    color: var(--cor-primaria-laranja);
 }

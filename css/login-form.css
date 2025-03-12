@@ -5,11 +5,11 @@
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    background-color: #F5F5F5;
+    background-color: var(--cor-primaria-cinza-claro);
 }
 
 .login-form {
-    background-color: #FFFFFF;
+    background-color: var(--cor-primaria-branco);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
 
 .login-form h2 {
     margin-bottom: 20px;
-    color: #303030;
+    color: var(--cor-cinza-escuro);
 }
 
 .input-group {
@@ -28,13 +28,13 @@
 }
 
 .links p {
-    color: #333333;
+    color: var(--cor-cinza-escuro);
 }
 
 .input-group label {
     display: block;
     font-size: 1rem;
-    color: #303030;
+    color: var(--cor-cinza-escuro);
     margin-bottom: 8px;
 }
 
@@ -42,13 +42,13 @@
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cor-cinza-borda);
     font-size: 1rem;
 }
 
 .btn-login {
-    background-color: #0060b1;
-    color: #FFFFFF;
+    background-color: var(--cor-primaria-azul);
+    color: var(--cor-primaria-branco);
     font-size: 1rem;
     font-weight: bold;
     padding: 12px;
@@ -60,7 +60,7 @@
 }
 
 .btn-login:hover {
-    background-color: #004d8e;
+    background-color: var(--cor-azul-escuro-hover);
 }
 
 .links {
@@ -68,7 +68,7 @@
 }
 
 .links a {
-    color: #0060B1;
+    color: var(--cor-primaria-azul);
     font-size: 0.9rem;
     text-decoration: none;
     transition: text-decoration 0.3s ease;
@@ -76,5 +76,5 @@
 
 .links a:hover {
     text-decoration: underline;
-    color: #004D8E;
+    color: var(--cor-azul-escuro-hover);
 }
