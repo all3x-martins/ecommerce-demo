@@ -93,14 +93,6 @@
     .product-details p {
         font-size: 14px;
     }
-    .product-details .btn-comprar {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-    .product-details .btn-voltar {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
 
     /* Layout */
     .site-header {
@@ -138,7 +130,6 @@
         left: 0;
         width: 300px;
         height: 100vh;
-        background-color: #303030;
         z-index: 1000;
         padding: 20px;
         overflow-y: auto;
@@ -204,12 +195,6 @@
     .carrinho_container {
         min-height: auto;
     }
-    #checkout-wrapper input[type="text"],
-    #checkout-wrapper input[type="email"],
-    #checkout-wrapper input[type="phone"] {
-        padding: 8px;
-        font-size: 12.8px;
-    }
 
     .carrinho_container {
         padding: 10px;
@@ -245,12 +230,7 @@
 
 /* Breakpoint adicional (até 900px) */
 @media (max-width: 900px) {
-    .menu-items {
-        display: none;
-    }
-    .texto {
-        display: none;
-    }
+   
 }
 
 /* Tablets grandes e laptops pequenos (769px - 1024px) */
@@ -282,10 +262,5 @@
     }
     .card {
         width: calc(33.33% - 20px);
-    }
-    #nav-list {
-        max-width: 328px;
-        height: 100vh;
-        top: 0;
     }
 }

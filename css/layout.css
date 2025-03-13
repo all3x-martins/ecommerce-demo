@@ -20,16 +20,6 @@
     height: 100%;
 }
 
-.header-menu .menu-items {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.header-menu .menu-items li {
-    color: var(--cor-primaria-branco);
-}
-
 .header-actions {
     display: flex;
     gap: 50px;
@@ -46,20 +36,7 @@
 }
 
 .header-actions-auth span a {
-    font-size: 0.75rem;
     font-weight: 700;
-    color: var(--cor-primaria-branco);
-}
-
-.header-menu .account_link {
-    color: var(--cor-primaria-branco);
-    font-size: 1rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.header-menu .account_link:hover {
-    color: var(--cor-laranja-claro-hover);
 }
 
 /* Footer */
