@@ -35,8 +35,14 @@
     height: 3rem;
     padding: 8px;
     border: 1px solid var(--cor-cinza-borda);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-input:focus {
+    border-color: var(--cor-primaria-laranja);
+    outline: none;
 }
 
 .newsletter-button {
@@ -45,7 +51,7 @@
     color: var(--cor-primaria-branco);
     padding: 0px 3rem;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
     flex: 0 0 15.375rem;
@@ -55,4 +61,9 @@
 
 .newsletter-button:hover {
     background-color: var(--cor-laranja-claro-hover);
+}
+
+.newsletter-button:focus {
+    outline: 2px solid var(--cor-primaria-laranja);
+    outline-offset: 2px;
 }

@@ -21,10 +21,10 @@
     <header class="header">
         <nav class="header-nav">
             <div class="header-nav-content">
-                <button id="menu-toggle" class="header-button-mobile" aria-expanded="false" aria-controls="header-nav-list">
+                <button id="menu-toggle" class="header-menu-toggle" aria-expanded="false" aria-controls="header-nav-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <ul id="nav-list" class="header-nav-list" role="menu">
+                <ul id="nav-list" class="header-nav-menu" role="menu">
                     <div>
                         <h3 class="header-nav-title">CATEGORIAS</h3>
                         <li><a href="#">Hardware</a></li>
@@ -38,7 +38,7 @@
                         <li><a href="#">Kit Upgrade</a></li>
                         <li><a href="#">Marcas</a></li>
                         <h3 class="header-nav-title">AJUDA E CONFIGURAÇÕES</h3>
-                        <li><a href="login.html">Minha Conta</a></li>
+                        <li><a href="pages/login.html">Minha Conta</a></li>
                         <li><a href="#">Quem Somos</a></li>
                         <li><a href="#">Atendimento ao Cliente</a></li>
                     </div>
@@ -48,13 +48,6 @@
                 </a> 
             </div> 
             <h1  class="visually-hidden">PC Master - Sua Loja de Hardware e Tecnologia</h1>
-            <div class="search-bar">
-                <label for="search" class="visually-hidden">Pesquisar produtos</label>
-                <input type="search" id="search" placeholder="Digite o que você procura">
-                <button class="search-icon">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
             <div class="header-actions">
                 <div class="header-actions-auth">
                     <i class="fa-solid fa-circle-user"></i>
@@ -65,7 +58,7 @@
                 </div>
                 <a class="header-cart-button" href="carrinho.html">
                     <i class="fas fa-shopping-cart" title="Carrinho"></i>
-                    <span class="header-cart-counter"></span>
+                    <span class="header-cart-item-count"></span>
                 </a>
             </div>
         </nav>

@@ -37,7 +37,7 @@
     background-color: var(--cor-cinza-escuro);
     color: var(--cor-primaria-branco);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -47,7 +47,7 @@
     background-color: var(--cor-primaria-azul);
     color: var(--cor-primaria-branco);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -86,7 +86,7 @@
 #parcelas-select-total {
     padding: 8px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     margin-left: 10px;
     vertical-align: middle;
 }
@@ -97,7 +97,7 @@
     background-color: var(--cor-primaria-laranja);
     color: var(--cor-primaria-branco);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px;
@@ -118,7 +118,7 @@
     background-color: var(--cor-cinza-claro);
     color: var(--cor-cinza-escuro);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 20px;

@@ -1,58 +1,12 @@
 /* Componentes */
 
+/* Botão do Carrinho */
 .header-cart-button {
     display: flex;
     padding: 0.75rem 1.5rem;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
-
-/* Barra de Pesquisa */
-.search-bar {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    background-color: var(--cor-primaria-branco);
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 20px;
-    max-width: 600px;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 15px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    color: var(--cor-cinza-medio);
-}
-
-.search-bar .search-icon {
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    color: var(--cor-primaria-laranja);
-}
-
-.header-actions-auth i {
-    font-size: 34px;
-    padding: 8px;
-    color: var(--cor-primaria-branco);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-cart-button i {
@@ -61,15 +15,51 @@
     color: var(--cor-primaria-branco);
 }
 
+/* Barra de Pesquisa */
+.header-search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--cor-primaria-branco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin: 0 20px;
+    max-width: 600px;
+}
 
-.search-bar .search-icon i {
+.header-search-bar input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: var(--cor-cinza-medio);
+}
+
+.header-search-bar .search-button-icon {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--cor-primaria-laranja);
+}
+
+.header-search-bar .search-button-icon i {
     font-size: 14px;
 }
 
-.footer-bottom a {
+/* Ações de Autenticação no Header */
+.header-actions-auth i {
+    font-size: 34px;
+    padding: 8px;
+    color: var(--cor-primaria-branco);
+}
+
+/* Links do Footer */
+.footer-copyright a {
     color: var(--cor-laranja-claro-hover);
 }
 
-.footer-bottom a:hover {
+.footer-copyright a:hover {
     color: var(--cor-primaria-laranja);
 }

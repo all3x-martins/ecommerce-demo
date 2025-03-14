@@ -1,5 +1,6 @@
-/* navigation.css */
+/* Navegação */
 
+/* Menu de navegação no cabeçalho */
 .header-nav {
     display: flex;
     align-items: center;
@@ -9,19 +10,21 @@
     justify-content: space-between;
 }
 
-.header-nav .header-button-mobile {
+/* Botão de alternância do menu móvel */
+.header-menu-toggle {
     display: block;
     border: none;
     background-color: transparent;
 }
 
-.header-button-mobile i {
+.header-menu-toggle i {
     pointer-events: none;
     font-size: 25px;
     color: var(--cor-primaria-branco);
 }
 
-.header-nav-list {
+/* Menu de navegação móvel */
+.header-nav-menu {
     display: none;
     position: fixed;
     top: 0;
@@ -38,30 +41,25 @@
     box-shadow: 0.125rem 0 0.625rem rgba(0, 0, 0, 0.2);
 }
 
-.header-nav-list.show {
+.header-nav-menu.show {
     display: flex;
     flex-direction: column;
     transform: translateX(0);
     gap: 0.85rem;
 }
 
-.header-nav-list a {
+.header-nav-menu a {
     color: var(--cor-primaria-branco);
     display: block;
     padding: 0.625rem;
     transition: color 0.3s ease;
 }
 
-.header-nav-list a:hover {
+.header-nav-menu a:hover {
     color: var(--cor-primaria-laranja);
 }
 
-.header-nav-title {
-    color: var(--cor-primaria-branco);
-    font-size: 1rem;
-    margin-bottom: 0.625rem;
-}
-
+/* Fechar o menu */
 #close-menu {
     font-size: 1.5rem;
     background: none;
@@ -77,34 +75,18 @@
 #close-menu:hover {
     color: var(--cor-vermelha-hover);
 }
-/* Logo */
-.site_logo {
-    max-height: 60px;
-    width: auto;
-}
 
-.menu-items {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.account_link {
-    padding: 0.625rem;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: transparent;
+/* Título da navegação */
+.header-nav-title { 
     color: var(--cor-primaria-branco);
-    font-weight: bold;
-    text-decoration: none;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
+    margin: 0.625rem 0px 0.625rem 0px;
+    border-bottom: 1px solid #1a70b9;
+    padding-bottom: 1rem;
 }
 
-/* Botão do Carrinho */
-.header-cart-button {
+/* Botão do carrinho */
+.header-cart-button-wrapper {
     position: relative;
     display: flex;
     align-items: center;
@@ -118,9 +100,9 @@
     text-decoration: none;
 }
 
-.header-cart-counter {
-    position: absolute;
-    top: -5px;
+.header-cart-item-count {
+    position: relative;
+    top: -15px;
     right: -5px;
     background-color: var(--cor-vermelho-carrinho);
     color: var(--cor-primaria-branco);

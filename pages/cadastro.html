@@ -23,10 +23,10 @@
     <header class="header">
         <nav class="header-nav">
             <div class="header-nav-content">
-                <button id="menu-toggle" class="header-button-mobile" aria-expanded="false" aria-controls="header-nav-list">
+                <button id="menu-toggle" class="header-menu-toggle" aria-expanded="false" aria-controls="header-nav-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <ul id="nav-list" class="header-nav-list" role="menu">
+                <ul id="nav-list" class="header-nav-menu" role="menu">
                     <div>
                         <h3 class="header-nav-title">CATEGORIAS</h3>
                         <li><a href="#">Hardware</a></li>
@@ -40,7 +40,7 @@
                         <li><a href="#">Kit Upgrade</a></li>
                         <li><a href="#">Marcas</a></li>
                         <h3 class="header-nav-title">AJUDA E CONFIGURAÇÕES</h3>
-                        <li><a href="login.html">Minha Conta</a></li>
+                        <li><a href="pages/login.html">Minha Conta</a></li>
                         <li><a href="#">Quem Somos</a></li>
                         <li><a href="#">Atendimento ao Cliente</a></li>
                     </div>
@@ -50,10 +50,10 @@
                 </a> 
             </div> 
             <h1  class="visually-hidden">PC Master - Sua Loja de Hardware e Tecnologia</h1>
-            <div class="search-bar">
+            <div class="header-search-bar">
                 <label for="search" class="visually-hidden">Pesquisar produtos</label>
                 <input type="search" id="search" placeholder="Digite o que você procura">
-                <button class="search-icon">
+                <button class="search-button-icon">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -67,7 +67,7 @@
                 </div>
                 <a class="header-cart-button" href="carrinho.html">
                     <i class="fas fa-shopping-cart" title="Carrinho"></i>
-                    <span class="header-cart-counter"></span>
+                    <span class="header-cart-item-count"></span>
                 </a>
             </div>
         </nav>
@@ -75,29 +75,29 @@
 
     <!-- Formulário de Cadastro -->
     <main>
-        <section class="login-container">
+        <section class="login-page-container">
             <div class="login-form">
                 <h2>Criar uma conta</h2>
                 <form action="#" method="POST">
-                    <div class="input-group">
+                    <div class="login-input-group">
                         <label for="nome">Nome Completo:</label>
                         <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
                     </div>
-                    <div class="input-group">
+                    <div class="login-input-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" placeholder="Digite seu email" required>
                     </div>
-                    <div class="input-group">
+                    <div class="login-input-group">
                         <label for="senha">Senha:</label>
                         <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
                     </div>
-                    <div class="input-group">
+                    <div class="login-input-group">
                         <label for="confirmar-senha">Confirmar Senha:</label>
                         <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
                     </div>
                     <button type="submit" class="btn-login">Cadastrar</button>
                 </form>
-                <div class="links">
+                <div class="login-links">
                     <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
                 </div>
             </div>
@@ -178,16 +178,16 @@
                 <div class="footer-section">
                     <h4 class="footer-section-title">Pagamento</h4>
                     <ul class="footer-list payment-methods">
-                        <li class="payment-icons"><img src="../assets/images/payments/visa.webp" alt="Cartão de crédito Visa" loading="lazy"></li>
-                        <li class="payment-icons"><img src="../assets/images/payments/mastercard.webp" alt="Cartão de crédito Mastercard" loading="lazy"></li>
-                        <li class="payment-icons"><img src="../assets/images/payments/pix.webp" alt="Pagamento via Pix" loading="lazy"></li>
-                        <li class="payment-icons"><img src="../assets/images/payments/boleto.webp" alt="Pagamento via Boleto Bancário" loading="lazy"></li>
-                        <li class="payment-icons"><img src="../assets/images/payments/american.webp" alt="Cartão de crédito American Express" loading="lazy"></li>
-                        <li class="payment-icons"><img src="../assets/images/payments/nubank.svg" alt="Pagamento via Nubank" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/visa.webp" alt="Cartão de crédito Visa" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/mastercard.webp" alt="Cartão de crédito Mastercard" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/pix.webp" alt="Pagamento via Pix" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/boleto.webp" alt="Pagamento via Boleto Bancário" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/american.webp" alt="Cartão de crédito American Express" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/nubank.svg" alt="Pagamento via Nubank" loading="lazy"></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-copyright">
                 <p>Desenvolvido por <a href="https://github.com/all3x-martins" target="_blank" rel="noopener noreferrer">Allex Martins</a></p>
             </div>
         </div>

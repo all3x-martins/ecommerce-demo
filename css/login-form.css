@@ -1,6 +1,7 @@
 /* Estilos do formulário de login */
 
-.login-container {
+/* Container principal do formulário de login */
+.login-page-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,44 +9,44 @@
     background-color: var(--cor-primaria-cinza-claro);
 }
 
+/* Formulário de login */
 .login-form {
     background-color: var(--cor-primaria-branco);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     text-align: center;
 }
 
+/* Título do formulário */
 .login-form h2 {
     margin-bottom: 20px;
     color: var(--cor-cinza-escuro);
 }
 
-.input-group {
+/* Grupo de entrada (inputs) */
+.login-input-group {
     margin-bottom: 20px;
 }
 
-.links p {
-    color: var(--cor-cinza-escuro);
-}
-
-.input-group label {
+.login-input-group label {
     display: block;
     font-size: 1rem;
     color: var(--cor-cinza-escuro);
     margin-bottom: 8px;
 }
 
-.input-group input {
+.login-input-group input {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid var(--cor-cinza-borda);
     font-size: 1rem;
 }
 
+/* Estilos do botão de login */
 .btn-login {
     background-color: var(--cor-primaria-azul);
     color: var(--cor-primaria-branco);
@@ -54,27 +55,30 @@
     padding: 12px;
     width: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-login:hover {
     background-color: var(--cor-azul-escuro-hover);
+    color: var(--cor-primaria-branco);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.links {
+/* Links na página de login */
+.login-links {
     margin-top: 20px;
 }
 
-.links a {
+.login-links a {
     color: var(--cor-primaria-azul);
     font-size: 0.9rem;
     text-decoration: none;
-    transition: text-decoration 0.3s ease;
+    transition: text-decoration 0.3s ease, color 0.3s ease;
 }
 
-.links a:hover {
+.login-links a:hover {
     text-decoration: underline;
     color: var(--cor-azul-escuro-hover);
 }

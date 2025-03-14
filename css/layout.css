@@ -3,11 +3,22 @@
 .header {
     background-color: var(--cor-primaria-azul);
     width: 100%;
-    position: relative;
     z-index: 100;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 .header-nav-content {
@@ -15,8 +26,8 @@
     gap: 50px;
 }
 
-.header .site-logo {
-    max-width: 12.5rem;
+.header .header-site-logo {
+    max-width: 13.5rem;
     height: 100%;
 }
 
@@ -86,21 +97,20 @@ footer {
     padding: 0;
     flex-wrap: wrap;
     list-style: none;
-    justify-content: space-around;
     gap: 1rem;
 }
 
-.payment-icons {
+.payment-icons-wrapper {
     flex-basis: 30%;
     display: flex;
     padding: 0.5rem 1rem;
     background: var(--cor-primaria-branco);
     align-items: center;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     margin-bottom: 1rem;
     justify-content: center;
 }
 
-.footer-bottom {
+.footer-copyright {
     text-align: center;
 }
