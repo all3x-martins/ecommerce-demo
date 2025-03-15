@@ -64,11 +64,11 @@
         </nav>
     </header>
 
-    <main class="carrinho_container max-width">
-        <a href="../index.html"><button class="btn-voltar">Continuar Comprando</button></a>
-        <div id="carrinho">
-            <table id="tabela-carrinho">
-                <thead>
+    <main class="cart-page-container">
+        <a href="../index.html"><button class="cart-back-button">Continuar Comprando</button></a>
+        <div id="carrinho" class="cart-container">
+            <table id="cart-table">
+                <thead class="cart-table-header">
                     <tr>
                         <th>Produto</th>
                         <th>Preço Unitário</th>
@@ -77,13 +77,59 @@
                         <th>Remover</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody class="cart-table-body"></tbody>
             </table>
-            <div id="total-container">
+            <div id="cart-total-container">
                 <!-- Preço total e parcelamento serão inseridos via JS -->
             </div>
         </div>
     </main>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-menu">
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Institucional</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Localização</a></li>
+                        <li><a href="#">Nossas Lojas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Dúvidas</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Entrega</a></li>
+                        <li><a href="#">Garantia</a></li>
+                        <li><a href="#">Como comprar</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Ajuda</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">SAC</a></li>
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Termos de aceite</a></li>
+                        <li><a href="#">Políticas de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Pagamento</h4>
+                    <ul class="footer-list payment-methods">
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/visa.webp" alt="Cartão de crédito Visa" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/mastercard.webp" alt="Cartão de crédito Mastercard" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/pix.webp" alt="Pagamento via Pix" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/boleto.webp" alt="Pagamento via Boleto Bancário" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/american.webp" alt="Cartão de crédito American Express" loading="lazy"></li>
+                        <li class="payment-icons-wrapper"><img src="../assets/images/payments/nubank.svg" alt="Pagamento via Nubank" loading="lazy"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>Desenvolvido por <a href="https://github.com/all3x-martins" target="_blank" rel="noopener noreferrer">Allex Martins</a></p>
+            </div>
+        </div>
+    </footer>
     <script src="../js/cart.js"></script> 
     <script src="../js/utils.js"></script>
     <script src="../js/ui.js"></script>

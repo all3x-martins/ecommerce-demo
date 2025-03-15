@@ -21,7 +21,7 @@ function saveCarrinho(carrinho) {
 function mostrarFeedback(mensagem, tipo = 'sucesso') {
     const feedback = document.createElement('div');
     feedback.textContent = mensagem;
-    feedback.classList.add('feedback-visual');
+    feedback.classList.add('feedback-message');
     feedback.style.position = 'fixed';
     feedback.style.top = '20px';
     feedback.style.right = '20px';
@@ -43,7 +43,7 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
 }
 
 function adicionarAoCarrinho(produto) {
-    fetch('data/produtos.json')
+    fetch('../data/produtos.json')
         .then(res => {
             if (!res.ok) throw new Error('Erro ao carregar produtos.json');
             return res.json();
@@ -78,8 +78,8 @@ function adicionarAoCarrinho(produto) {
 
 function renderizarCarrinho() {
     const carrinho = getCarrinho();
-    const tabelaCorpo = document.querySelector('#tabela-carrinho tbody');
-    const totalContainer = document.querySelector('#total-container');
+    const tabelaCorpo = document.querySelector('#cart-table tbody');
+    const totalContainer = document.querySelector('#cart-total-container');
     const carrinhoContainer = document.querySelector('#carrinho');
 
     if (!tabelaCorpo || !totalContainer || !carrinhoContainer) return;
@@ -112,40 +112,59 @@ function renderizarCarrinho() {
 
         const linha = document.createElement('tr');
         linha.innerHTML = `
-            <td><img src="${item.imagem}" alt="${item.nome}" class="carrinho-imagem">${item.nome}</td>
+            <td><img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">${item.nome}</td>
             <td>${precoFormatado(precoAVista)}</td>
             <td>
-                <button class="btn-menos" data-index="${index}">-</button>
-                ${item.quantidade}
-                <button class="btn-mais" data-index="${index}">+</button>
+                <div class="cart-item-quantity-container">
+                    <button class="cart-item-qty-decrease" data-index="${index}"><i class="fa-solid fa-angle-left"></i></button>
+                    <span class="cart-item-quantity">${item.quantidade}</span>
+                    <button class="cart-item-qty-increase" data-index="${index}"><i class="fa-solid fa-angle-right"></i></button>
+                </div>
             </td>
             <td>${precoFormatado(precoAVista * item.quantidade)}</td>
-            <td><button data-index="${index}" class="btn-remover">Remover</button></td>
+            <td><button data-index="${index}" class="cart-item-remove">Remover</button></td>
         `;
         fragment.appendChild(linha);
     });
 
     tabelaCorpo.appendChild(fragment);
 
+    // Calcula o desconto de 5% para pagamento à vista
+    const desconto = 0.05; // Mudança aqui: 0.05 para 5%
+    const totalComDesconto = totalVista * (1 - desconto);
     const totalParcelado = totalVista / 0.95; // Preço total com 5% de acréscimo
+
     totalContainer.innerHTML = `
-        <div class="total-info">
-            <p>Total à Vista: <span id="total-a-vista">${precoFormatado(totalVista)}</span></p>
-            <p>Economia: <span id="economia">${precoFormatado(totalParcelado - totalVista)}</span></p>
-            <label for="parcelas-select-total">Total Parcelado:</label>
-            <select id="parcelas-select-total">
-                ${Array.from({ length: 12 }, (_, i) => i + 1).map(n => `
+        <div class="cart-total-info">
+            <p>Total à Vista (com 5% de desconto): <span id="total-a-vista">${precoFormatado(totalComDesconto)}</span></p>
+            <p>Economia: <span id="economia">${precoFormatado(totalVista - totalComDesconto)}</span></p>
+            <label for="cart-installment-select">Total Parcelado:</label>
+            <select id="cart-installment-select">
+                <option value="1">1x ${precoFormatado(totalComDesconto)} (com 5% de desconto)</option>
+                ${Array.from({ length: 12 }, (_, i) => i + 1).filter(n => n > 1).map(n => `
                     <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
                 `).join('')}
             </select>
-            <p><span id="total-preco">${precoFormatado(totalParcelado)}</span></p>
+            <p>Total: <span id="total-preco">${precoFormatado(totalComDesconto)}</span></p>
         </div>
-        <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
+        <button id="cart-finalize-button" class="cart-finalize-button">Finalizar Compra</button>
     `;
     totalContainer.style.display = 'block'; // Exibe quando há itens
 
+    // Atualiza o valor total quando o select de parcelas mudar
+    const selectParcelas = document.getElementById('cart-installment-select');
+    const totalPrecoSpan = document.getElementById('total-preco');
+    selectParcelas.addEventListener('change', () => {
+        const numParcelas = parseInt(selectParcelas.value, 10);
+        if (numParcelas === 1) {
+            totalPrecoSpan.textContent = precoFormatado(totalComDesconto);
+        } else {
+            totalPrecoSpan.textContent = precoFormatado(totalParcelado);
+        }
+    });
+
     // Reatacha o evento ao botão "Finalizar Compra" gerado dinamicamente
-    const finalizarCompra = totalContainer.querySelector('#finalizar-compra');
+    const finalizarCompra = totalContainer.querySelector('#cart-finalize-button');
     if (finalizarCompra) {
         finalizarCompra.addEventListener('click', () => {
             const carrinhoAtual = getCarrinho();
@@ -164,10 +183,10 @@ function renderizarCarrinho() {
 
 function atualizarContadorCarrinho() {
     const carrinho = getCarrinho();
-    const contador = document.querySelector('.carrinho-contador');
+    const contador = document.querySelector('.header-cart-item-count');
     if (contador) {
         const totalItens = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
-        contador.textContent = totalItens > 0 ? totalItens : '';
+        contador.textContent = totalItens > 0 ? totalItens : '0';
     }
 }
 
@@ -176,16 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrinho();
     atualizarContadorCarrinho();
 
-    const tabelaCorpo = document.querySelector('#tabela-carrinho tbody');
+    const tabelaCorpo = document.querySelector('#cart-table tbody');
     if (tabelaCorpo) {
         tabelaCorpo.addEventListener('click', (e) => {
             const carrinho = getCarrinho();
             const index = parseInt(e.target.getAttribute('data-index'), 10);
 
-            if (e.target.classList.contains('btn-remover')) {
+            if (e.target.classList.contains('cart-item-remove')) {
                 carrinho.splice(index, 1);
                 saveCarrinho(carrinho);
-            } else if (e.target.classList.contains('btn-mais')) {
+            } else if (e.target.classList.contains('cart-item-qty-increase')) {
                 fetch('/data/produtos.json')
                     .then(res => res.json())
                     .then(produtos => {
@@ -197,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             mostrarFeedback('Quantidade máxima atingida para este produto.', 'erro');
                         }
                     });
-            } else if (e.target.classList.contains('btn-menos')) {
+            } else if (e.target.classList.contains('cart-item-qty-decrease')) {
                 if (carrinho[index].quantidade > 1) {
                     carrinho[index].quantidade--;
                     saveCarrinho(carrinho);

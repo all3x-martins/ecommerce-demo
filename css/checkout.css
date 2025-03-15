@@ -1,38 +1,51 @@
 /* checkout.css */
 
-.carrinho_container {
-    max-width: 1200px;
+.cart-page-container {
+    max-width: 1480px;
     margin: 20px auto;
     padding: 20px;
 }
 
-#tabela-carrinho {
+#cart-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 
-#tabela-carrinho th,
-#tabela-carrinho td {
+#cart-table th,
+#cart-table td {
     padding: 12px;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid var(--cor-cinza-borda);
 }
 
-#tabela-carrinho th {
+#cart-table th {
     background-color: var(--cor-cinza-tabela-carrinho);
     font-weight: bold;
 }
 
-.carrinho-imagem {
+.cart-item-image {
     width: 50px;
     height: 50px;
     vertical-align: middle;
     margin-right: 10px;
 }
 
-.btn-menos,
-.btn-mais {
+.cart-item-quantity-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-item-quantity {
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+.cart-item-qty-decrease,
+.cart-item-qty-increase {
     padding: 5px 10px;
     background-color: var(--cor-cinza-escuro);
     color: var(--cor-primaria-branco);
@@ -42,7 +55,11 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-remover  {
+button i {
+    pointer-events: none;
+}
+
+.cart-item-remove  {
     padding: 5px 10px;
     background-color: var(--cor-primaria-azul);
     color: var(--cor-primaria-branco);
@@ -52,38 +69,40 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-menos:hover,
-.btn-mais:hover {
+.cart-item-qty-decrease:hover,
+.cart-item-qty-increase:hover {
     background-color: var(--cor-azul-escuro-hover);
 }
 
-.btn-remover:hover{
+.cart-item-remove:hover{
     background-color: var(--cor-azul-escuro-hover);
 }
 
-.btn-menos:focus,
-.btn-mais:focus,
-.btn-remover:focus {
+.cart-item-qty-decrease:focus,
+.cart-item-qty-increase:focus,
+.cart-item-remove:focus {
     outline: 2px solid var(--cor-cinza-escuro);
     outline-offset: 2px;
 }
 
-#total-container {
+#cart-total-container {
     text-align: right;
-    margin-top: 20px;
     display: none;
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 
-.total-info {
+.cart-total-info
+{
     margin-bottom: 20px;
 }
 
-.total-info p {
+.cart-total-info p {
     margin: 10px 0;
     font-size: 18px;
 }
 
-#parcelas-select-total {
+#cart-installment-select {
     padding: 8px;
     font-size: 16px;
     border-radius: var(--border-radius);
@@ -91,7 +110,7 @@
     vertical-align: middle;
 }
 
-.btn-finalizar {
+.cart-finalize-button {
     display: inline-block;
     padding: 12px 24px;
     background-color: var(--cor-primaria-laranja);
@@ -103,16 +122,16 @@
     font-size: 16px;
 }
 
-.btn-finalizar:hover {
+.cart-finalize-button:hover {
     background-color: var(--cor-laranja-claro-hover);
 }
 
-.btn-finalizar:focus {
+.cart-finalize-button:focus {
     outline: 2px solid var(--cor-primaria-laranja);
     outline-offset: 2px;
 }
 
-.btn-voltar {
+.cart-back-button {
     display: inline-block;
     padding: 8px 16px;
     background-color: var(--cor-cinza-claro);
@@ -124,11 +143,11 @@
     margin-bottom: 20px;
 }
 
-.btn-voltar:hover {
+.cart-back-button:hover {
     background-color: var(--cor-cinza-borda-hover);
 }
 
-.btn-voltar:focus {
+.cart-back-button:focus {
     outline: 2px solid var(--cor-cinza-claro);
     outline-offset: 2px;
 }
