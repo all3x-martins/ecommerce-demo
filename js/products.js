@@ -27,6 +27,7 @@ function createProductCard(product) {
     const productLink = document.createElement('a');
     productLink.href = `/pages/produto.html?id=${product.id}`;
     productLink.setAttribute('aria-label', `Ver detalhes do produto ${product.nome}`);
+    productLink.setAttribute('tabindex', `0`);
 
     // Cria a imagem do produto com carregamento lazy e fallback para erro.
     const productImage = document.createElement('img');
@@ -216,3 +217,25 @@ document.addEventListener('DOMContentLoaded', () => {
         handleProductSearch(); 
     }
 });
+
+// Função para lazy load de componentes
+function lazyLoadComponent(componentId, loadFunction) {
+    const component = document.getElementById(componentId);
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadFunction();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(component);
+    } else {
+        // Fallback para navegadores antigos
+        loadFunction();
+    }
+}
+
+// Exemplo de uso para carregar uma seção de produtos
+lazyLoadComponent('product-section', loadProducts);

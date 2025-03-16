@@ -154,7 +154,7 @@ function renderizarCarrinho() {
             </select>
             <p>Total: <span id="total-price">${precoFormatado(totalComDesconto)}</span></p>
         </div>
-        <button id="cart-finalize-button" class="cart-finalize-button">Finalizar Compra</button>
+        <button id="cart-finalize-button" class="cart-finalize-button" aria-label="Finalizar Compra" tabindex="0">Finalizar Compra</button>
     `;
     totalContainer.style.display = 'block';
 

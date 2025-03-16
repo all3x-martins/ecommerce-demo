@@ -53,7 +53,9 @@ function loadProductDetails() {
                                 `).join('')}
                             </ul>
                         </div>
-                        <button class="btn-add-carrinho" 
+                        <button class="btn-add-cart"
+                                aria-label="Adicionar ao carrinho"
+                                tabindex="0"
                                 data-id="${produto.id}" 
                                 data-nome="${produto.nome}" 
                                 data-preco="${precoComDesconto}" 
@@ -65,7 +67,7 @@ function loadProductDetails() {
                 `;
 
                 if (produto.estoque > 0) {
-                    document.querySelector('.btn-add-carrinho').addEventListener('click', () => {
+                    document.querySelector('.btn-add-cart').addEventListener('click', () => {
                         console.log('Botão clicado na página de detalhes:', {
                             id: produto.id,
                             nome: produto.nome,
