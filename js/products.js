@@ -44,13 +44,13 @@ function createProductCard(product) {
     productLink.appendChild(productImage);
     productLink.appendChild(productTitle);
 
-    // Cria o contêiner para informações de preço com classe 'product_info'.
+    // Cria o contêiner para informações de preço com classe 'product-info'.
     const productInfo = document.createElement('div');
-    productInfo.classList.add('product_info');
+    productInfo.classList.add('product-info');
     // Usa template string para inserir preços formatados (se precoFormatado existir) ou valores brutos.
     productInfo.innerHTML = `
-        <span class="produto_preco">${typeof precoFormatado === 'function' ? precoFormatado(precoComDesconto) : precoComDesconto.toFixed(2)}</span>
-        <span class="produto_pagamento"> à vista</span>
+        <span class="produto-price">${typeof precoFormatado === 'function' ? precoFormatado(precoComDesconto) : precoComDesconto.toFixed(2)}</span>
+        <span class="produto-payment"> à vista</span>
         <br>
         <span>ou até</span>
         <span class="installment-product">${product.parcelas || 1}x</span>
@@ -60,7 +60,7 @@ function createProductCard(product) {
 
     // Cria o botão "COMPRAR".
     const addButton = document.createElement('button');
-    addButton.classList.add('btn-add-carrinho');
+    addButton.classList.add('btn-add-cart');
     addButton.setAttribute('aria-label', `Adicionar ${product.nome} ao carrinho`);
 
     // Cria o ícone e adiciona ao botão (antes do texto).
@@ -103,11 +103,11 @@ function handleAddToCart(id, nome, preco, imagem) {
     }
 }
 
-// Função para carregar e exibir os produtos no contêiner #card_container.
+// Função para carregar e exibir os produtos no contêiner #card-container.
 function loadProducts() {
-    const cardContainer = document.getElementById('card_container');
+    const cardContainer = document.getElementById('card-container');
     if (!cardContainer) { // Verifica se o contêiner existe, senão para a execução.
-        console.error('Elemento #card_container não encontrado');
+        console.error('Elemento #card-container não encontrado');
         return;
     }
 
@@ -190,7 +190,7 @@ function handleProductSearch() {
         // Remove feedback anterior, se existir.
         const feedbackAnterior = document.querySelector('.feedback-busca');
         if (feedbackAnterior) feedbackAnterior.remove();
-        document.getElementById('card_container').appendChild(feedbackBusca);
+        document.getElementById('card-container').appendChild(feedbackBusca);
 
         // Limpa o feedback automaticamente após 3 segundos, apenas se houver mensagem.
         if (nenhumProdutoEncontrado) {
@@ -210,7 +210,7 @@ function handleProductSearch() {
 
 // Evento que inicializa as funções quando o DOM está carregado.
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('card_container')) {
+    if (document.getElementById('card-container')) {
         console.log('DOM carregado, chamando loadProducts e handleProductSearch');
         loadProducts(); 
         handleProductSearch(); 
