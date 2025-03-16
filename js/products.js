@@ -26,6 +26,7 @@ function createProductCard(product) {
     // Cria um link <a> que leva à página de detalhes do produto com o ID na URL.
     const productLink = document.createElement('a');
     productLink.href = `/pages/produto.html?id=${product.id}`;
+    productLink.setAttribute('aria-label', `Ver detalhes do produto ${product.nome}`);
 
     // Cria a imagem do produto com carregamento lazy e fallback para erro.
     const productImage = document.createElement('img');
@@ -52,14 +53,15 @@ function createProductCard(product) {
         <span class="produto_pagamento"> à vista</span>
         <br>
         <span>ou até</span>
-        <span class= "produto-parcelas">${product.parcelas || 1}x</span>
-        <small class= "produto-parcelas">de</small>
-        <span class= "produto-parcelas">${typeof precoFormatado === 'function' ? precoFormatado(valorParcela) : valorParcela.toFixed(2)}</span>
+        <span class="installment-product">${product.parcelas || 1}x</span>
+        <small class="installment-product">de</small>
+        <span class="installment-product">${typeof precoFormatado === 'function' ? precoFormatado(valorParcela) : valorParcela.toFixed(2)}</span>
     `;
 
     // Cria o botão "COMPRAR".
     const addButton = document.createElement('button');
     addButton.classList.add('btn-add-carrinho');
+    addButton.setAttribute('aria-label', `Adicionar ${product.nome} ao carrinho`);
 
     // Cria o ícone e adiciona ao botão (antes do texto).
     const iconElement = document.createElement('i');
@@ -71,27 +73,9 @@ function createProductCard(product) {
     addButton.appendChild(document.createTextNode(' COMPRAR')); // Depois adiciona o texto.
 
     addButton.dataset.id = product.id; // Armazena o ID do produto no dataset para referência.
-    
-// Define a função que será chamada ao clicar no botão.
-function handleAddToCart() {
-    if (typeof adicionarAoCarrinho === 'function') { // Verifica se a função existe.
-        adicionarAoCarrinho({
-            id: product.id,
-            nome: product.nome,
-            preco: precoComDesconto,
-            imagem: product.imagem || 'placeholder.jpg'
-        });
 
-        // Redireciona para a página do carrinho após adicionar o item
-        window.location.href = 'pages/carrinho';
-    } else {
-        console.error('Função adicionarAoCarrinho não definida'); // Avisa se a função não estiver disponível.
-    }
-}
-
-    // Remove qualquer listener anterior para evitar duplicação e adiciona o novo.
-    addButton.removeEventListener('click', handleAddToCart);
-    addButton.addEventListener('click', handleAddToCart);
+    // Define a função que será chamada ao clicar no botão.
+    addButton.addEventListener('click', () => handleAddToCart(product.id, product.nome, precoComDesconto, product.imagem));
 
     // Adiciona o link, informações de preço e botão ao card.
     cardDiv.appendChild(productLink);
@@ -100,6 +84,23 @@ function handleAddToCart() {
 
     // Retorna o card completo para ser usado em renderização.
     return cardDiv;
+}
+
+// Função para adicionar um produto ao carrinho
+function handleAddToCart(id, nome, preco, imagem) {
+    if (typeof adicionarAoCarrinho === 'function') { // Verifica se a função existe.
+        adicionarAoCarrinho({
+            id: id,
+            nome: nome,
+            preco: preco,
+            imagem: imagem || 'placeholder.jpg'
+        });
+
+        // Redireciona para a página do carrinho após adicionar o item
+        window.location.href = 'pages/carrinho';
+    } else {
+        console.error('Função adicionarAoCarrinho não definida'); // Avisa se a função não estiver disponível.
+    }
 }
 
 // Função para carregar e exibir os produtos no contêiner #card_container.
