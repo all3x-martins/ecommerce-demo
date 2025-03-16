@@ -1,7 +1,9 @@
 // Funções de gerenciamento do carrinho
 function getCarrinho() {
     try {
-        return JSON.parse(localStorage.getItem('carrinho')) || [];
+        const dados = JSON.parse(localStorage.getItem('carrinho')) || [];
+        // Filtra itens inválidos, garantindo que tenham id, quantidade e preço
+        return dados.filter(item => item.id && item.quantidade && item.preco);
     } catch (error) {
         console.error('Erro ao carregar carrinho:', error);
         return [];
@@ -72,7 +74,8 @@ function adicionarAoCarrinho(produto) {
         })
         .catch(error => {
             console.error('Erro ao verificar estoque:', error);
-            mostrarFeedback('Erro ao adicionar ao carrinho.', 'erro');
+            // Feedback visual para o usuário em caso de erro
+            mostrarFeedback('Erro ao adicionar ao carrinho. Tente novamente.', 'erro');
         });
 }
 
@@ -85,8 +88,8 @@ function renderizarCarrinho() {
     if (!tabelaCorpo || !totalContainer || !carrinhoContainer) return;
 
     tabelaCorpo.innerHTML = '';
-    totalContainer.innerHTML = ''; // Limpa o container
-    totalContainer.style.display = 'none'; // Esconde por padrão
+    totalContainer.innerHTML = '';
+    totalContainer.style.display = 'none';
 
     if (carrinho.length === 0) {
         const mensagemVazio = document.createElement('p');
@@ -96,10 +99,10 @@ function renderizarCarrinho() {
         mensagemVazio.style.fontSize = '18px';
         mensagemVazio.style.color = '#666';
         mensagemVazio.style.margin = '20px 0';
-        carrinhoContainer.innerHTML = ''; // Limpa tudo
-        carrinhoContainer.appendChild(tabelaCorpo); // Reinsere a tabela vazia
+        carrinhoContainer.innerHTML = '';
+        carrinhoContainer.appendChild(tabelaCorpo);
         carrinhoContainer.appendChild(mensagemVazio);
-        carrinhoContainer.appendChild(totalContainer); // Mantém a estrutura
+        carrinhoContainer.appendChild(totalContainer);
         return;
     }
 
@@ -116,32 +119,35 @@ function renderizarCarrinho() {
             <td>${precoFormatado(precoAVista)}</td>
             <td>
                 <div class="cart-item-quantity-container">
-                    <button class="cart-item-qty-decrease" data-index="${index}"><i class="fa-solid fa-angle-left"></i></button>
+                    <button class="cart-item-qty-decrease" data-index="${index}" aria-label="Diminuir quantidade de ${item.nome}">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
                     <span class="cart-item-quantity">${item.quantidade}</span>
-                    <button class="cart-item-qty-increase" data-index="${index}"><i class="fa-solid fa-angle-right"></i></button>
+                    <button class="cart-item-qty-increase" data-index="${index}" aria-label="Aumentar quantidade de ${item.nome}">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
                 </div>
             </td>
             <td>${precoFormatado(precoAVista * item.quantidade)}</td>
-            <td><button data-index="${index}" class="cart-item-remove">Remover</button></td>
+            <td><button data-index="${index}" class="cart-item-remove" aria-label="Remover ${item.nome} do carrinho">Remover</button></td>
         `;
         fragment.appendChild(linha);
     });
 
     tabelaCorpo.appendChild(fragment);
 
-    // Calcula o desconto de 5% para pagamento à vista
-    const desconto = 0.05; 
+    const desconto = 0.05;
     const totalComDesconto = totalVista * (1 - desconto);
-    const totalParcelado = totalVista / 0.95; // Preço total com 5% de acréscimo
+    const totalParcelado = totalVista / 0.95;
 
     totalContainer.innerHTML = `
         <div class="cart-total-info">
             <h1 class="cart-total-title">Resumo</h1>
             <p>Total à Vista: <span id="discounted-total">${precoFormatado(totalComDesconto)}</span></p>
             <p>Economia: <span id="discount">${precoFormatado(totalVista - totalComDesconto)}</span></p>
-            <label for="cart-installment-select">Total Parcelado:</label>
+            <label for="cart-installment-select">Parcelamento:</label>
             <select id="cart-installment-select">
-                <option value="1">1x ${precoFormatado(totalComDesconto)} (com 5% de desconto)</option>
+                <option value="1">1x ${precoFormatado(totalComDesconto)}</option>
                 ${Array.from({ length: 12 }, (_, i) => i + 1).filter(n => n > 1).map(n => `
                     <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
                 `).join('')}
@@ -150,21 +156,22 @@ function renderizarCarrinho() {
         </div>
         <button id="cart-finalize-button" class="cart-finalize-button">Finalizar Compra</button>
     `;
-    totalContainer.style.display = 'block'; // Exibe quando há itens
+    totalContainer.style.display = 'block';
 
-    // Atualiza o valor total quando o select de parcelas mudar
+    // Verifica a existência dos elementos antes de adicionar eventos
     const selectParcelas = document.getElementById('cart-installment-select');
     const totalPrecoSpan = document.getElementById('total-price');
-    selectParcelas.addEventListener('change', () => {
-        const numParcelas = parseInt(selectParcelas.value, 10);
-        if (numParcelas === 1) {
-            totalPrecoSpan.textContent = precoFormatado(totalComDesconto);
-        } else {
-            totalPrecoSpan.textContent = precoFormatado(totalParcelado);
-        }
-    });
+    if (selectParcelas && totalPrecoSpan) {
+        selectParcelas.addEventListener('change', () => {
+            const numParcelas = parseInt(selectParcelas.value, 10);
+            if (numParcelas === 1) {
+                totalPrecoSpan.textContent = precoFormatado(totalComDesconto);
+            } else {
+                totalPrecoSpan.textContent = precoFormatado(totalParcelado);
+            }
+        });
+    }
 
-    // Reatacha o evento ao botão "Finalizar Compra" gerado dinamicamente
     const finalizarCompra = totalContainer.querySelector('#cart-finalize-button');
     if (finalizarCompra) {
         finalizarCompra.addEventListener('click', () => {
@@ -206,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 carrinho.splice(index, 1);
                 saveCarrinho(carrinho);
             } else if (e.target.classList.contains('cart-item-qty-increase')) {
-                fetch('/data/produtos.json')
+                fetch('../data/produtos.json')
                     .then(res => res.json())
                     .then(produtos => {
                         const produtoOriginal = produtos.find(p => p.id === carrinho[index].id);

@@ -27,20 +27,20 @@
                 <ul id="nav-list" class="header-nav-menu" role="menu">
                     <div>
                         <h3 class="header-nav-title">CATEGORIAS</h3>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Monitores</a></li>
-                        <li><a href="#">Periféricos</a></li>
-                        <li><a href="#">Computadores</a></li>
-                        <li><a href="#">Cadeiras e Mesas Gamer e Escritório</a></li>
-                        <li><a href="#">Rede & Wireless</a></li>
-                        <li><a href="#">Notebooks e portáteis</a></li>
-                        <li><a href="#">Eletronicos</a></li>
-                        <li><a href="#">Kit Upgrade</a></li>
-                        <li><a href="#">Marcas</a></li>
+                        <li role="menuitem"><a href="#">Hardware</a></li>
+                        <li role="menuitem"><a href="#">Monitores</a></li>
+                        <li role="menuitem"><a href="#">Periféricos</a></li>
+                        <li role="menuitem"><a href="#">Computadores</a></li>
+                        <li role="menuitem"><a href="#">Cadeiras e Mesas Gamer e Escritório</a></li>
+                        <li role="menuitem"><a href="#">Rede & Wireless</a></li>
+                        <li role="menuitem"><a href="#">Notebooks e portáteis</a></li>
+                        <li role="menuitem"><a href="#">Eletronicos</a></li>
+                        <li role="menuitem"><a href="#">Kit Upgrade</a></li>
+                        <li role="menuitem"><a href="#">Marcas</a></li>
                         <h3 class="header-nav-title">AJUDA E CONFIGURAÇÕES</h3>
-                        <li><a href="pages/login.html">Minha Conta</a></li>
-                        <li><a href="#">Quem Somos</a></li>
-                        <li><a href="#">Atendimento ao Cliente</a></li>
+                        <li role="menuitem"><a href="login.html">Minha Conta</a></li>
+                        <li role="menuitem"><a href="#">Quem Somos</a></li>
+                        <li role="menuitem"><a href="#">Atendimento ao Cliente</a></li>
                     </div>
                 </ul>
                 <a href="/index.html">
@@ -63,10 +63,11 @@
             </div>
         </nav>
     </header>
-
+    <section class="cart-back-button-container">
+        <a href="../index.html"><button class="cart-back-button"><i class="fa-solid fa-angle-left"></i> Continuar Comprando</button></a>
+    </section>
     <main class="cart-page-container">
-        <a href="../index.html"><button class="cart-back-button">Continuar Comprando</button></a>
-        <div id="carrinho" class="cart-container">
+        <section id="carrinho" class="cart-container">
             <table id="cart-table">
                 <thead class="cart-table-header">
                     <tr>
@@ -82,7 +83,7 @@
             <div id="cart-total-container">
                 <!-- Preço total e parcelamento serão inseridos via JS -->
             </div>
-        </div>
+        </section>
     </main>
     <footer>
         <div class="footer-wrapper">
