@@ -19,8 +19,9 @@ function loadProductDetails() {
         .then(produtos => {
             const produto = produtos.find(p => p.id == productId);
             if (produto) {
-                const valorParcela = produto.precoParcelado / produto.parcelas;
-                const precoComDesconto = produto.precoAVista * 0.95;
+                const precoAVista = produto.precoAVista;
+                const precoParcelado = precoAVista * 1.05;
+                const valorParcela = precoParcelado / (produto.parcelas || 12);
                 const mediaAvaliacoes = produto.avaliacoes && produto.avaliacoes.length > 0 
                     ? (produto.avaliacoes.reduce((soma, aval) => soma + aval.nota, 0) / produto.avaliacoes.length).toFixed(1) 
                     : 0;
@@ -34,14 +35,14 @@ function loadProductDetails() {
                         <p class="marca">Marca: ${produto.marca}</p>
                         <p>${produto.descricaoCompleta}</p>
                         <div class="price-info">
-                            <span class="price">${precoFormatado(precoComDesconto)}</span>
+                            <span class="price">${precoFormatado(precoAVista)}</span>
                             <span class="price-label">À vista</span>
                             <div class="installments">
-                                ou <strong>${produto.parcelas}x</strong> de <strong>${precoFormatado(valorParcela)}</strong> sem juros
-                                <span class="total-parcelado">Total: ${precoFormatado(produto.precoParcelado)}</span>
+                                ou <strong>${produto.parcelas || 12}x</strong> de <strong>${precoFormatado(valorParcela)}</strong> sem juros
+                                <span class="total-parcelado">Total: ${precoFormatado(precoParcelado)}</span>
                             </div>
                             <div class="discount-info">
-                                Economia de ${precoFormatado(produto.precoParcelado - produto.precoAVista)} pagando à vista
+                                Acréscimo de ${precoFormatado(precoParcelado - precoAVista)} no parcelamento
                             </div>
                         </div>
                         <p class="stock-info">${produto.disponibilidade} (${produto.estoque} unidades disponíveis)</p>
@@ -58,7 +59,7 @@ function loadProductDetails() {
                                 tabindex="0"
                                 data-id="${produto.id}" 
                                 data-nome="${produto.nome}" 
-                                data-preco="${precoComDesconto}" 
+                                data-preco="${precoAVista}" 
                                 data-imagem="${produto.imagem}"
                                 ${produto.estoque === 0 ? 'disabled' : ''}>
                                 ${produto.estoque === 0 ? 'Indisponível' : 'Adicionar ao Carrinho'}
@@ -67,20 +68,23 @@ function loadProductDetails() {
                 `;
 
                 if (produto.estoque > 0) {
-                    document.querySelector('.btn-add-cart').addEventListener('click', () => {
-                        console.log('Botão clicado na página de detalhes:', {
-                            id: produto.id,
-                            nome: produto.nome,
-                            preco: precoComDesconto,
-                            imagem: produto.imagem
+                    const addButton = document.querySelector('.btn-add-cart');
+                    if (addButton) {
+                        addButton.addEventListener('click', () => {
+                            const cartItem = {
+                                id: produto.id,
+                                nome: produto.nome,
+                                preco: precoAVista,
+                                imagem: produto.imagem
+                            };
+                            console.log('Adicionando ao carrinho (detalhes):', cartItem);
+                            if (typeof adicionarAoCarrinho === 'function') {
+                                adicionarAoCarrinho(cartItem);
+                            } else {
+                                console.error('Função adicionarAoCarrinho não definida');
+                            }
                         });
-                        adicionarAoCarrinho({
-                            id: produto.id,
-                            nome: produto.nome,
-                            preco: precoComDesconto,
-                            imagem: produto.imagem
-                        });
-                    });
+                    }
                 }
 
                 const avaliacoesSection = document.getElementById('avaliacoes');
@@ -92,7 +96,7 @@ function loadProductDetails() {
                             <div class="review">
                                 <span class="user">${aval.usuario} - ${aval.data}</span>
                                 <br>
-                                <span class= "stars">${renderStars(aval.nota)}</span>
+                                <span class="stars">${renderStars(aval.nota)}</span>
                                 <p>${aval.comentario}</p>                              
                             </div>
                         `).join('')}
@@ -142,6 +146,11 @@ function formatKey(key) {
 function renderStars(nota) {
     const estrelas = Math.round(nota);
     return '★'.repeat(estrelas) + '☆'.repeat(5 - estrelas);
+}
+
+function handleFetchError(error, element) {
+    console.error('Erro ao carregar detalhes do produto:', error);
+    element.innerHTML = '<p>Erro ao carregar os detalhes do produto. Tente novamente mais tarde.</p>';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

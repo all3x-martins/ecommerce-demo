@@ -44,6 +44,11 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
     }, 3000);
 }
 
+function precoFormatado(valor) {
+    // Formata o preço em reais
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
 function adicionarAoCarrinho(produto) {
     fetch('../data/produtos.json')
         .then(res => {
@@ -74,7 +79,6 @@ function adicionarAoCarrinho(produto) {
         })
         .catch(error => {
             console.error('Erro ao verificar estoque:', error);
-            // Feedback visual para o usuário em caso de erro
             mostrarFeedback('Erro ao adicionar ao carrinho. Tente novamente.', 'erro');
         });
 }
@@ -107,16 +111,16 @@ function renderizarCarrinho() {
     }
 
     const fragment = document.createDocumentFragment();
-    let totalVista = 0;
+    let totalVista = 0; // Total à vista (base, sem desconto adicional)
 
     carrinho.forEach((item, index) => {
-        const precoAVista = item.preco;
-        totalVista += precoAVista * item.quantidade;
+        const precoUnitario = item.preco; // Preço à vista unitário (já com desconto)
+        totalVista += precoUnitario * item.quantidade;
 
         const linha = document.createElement('tr');
         linha.innerHTML = `
             <td><img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">${item.nome}</td>
-            <td>${precoFormatado(precoAVista)}</td>
+            <td>${precoFormatado(precoUnitario)}</td>
             <td>
                 <div class="cart-item-quantity-container">
                     <button class="cart-item-qty-decrease" data-index="${index}" aria-label="Diminuir quantidade de ${item.nome}">
@@ -128,7 +132,7 @@ function renderizarCarrinho() {
                     </button>
                 </div>
             </td>
-            <td>${precoFormatado(precoAVista * item.quantidade)}</td>
+            <td>${precoFormatado(precoUnitario * item.quantidade)}</td>
             <td><button data-index="${index}" class="cart-item-remove" aria-label="Remover ${item.nome} do carrinho">Remover</button></td>
         `;
         fragment.appendChild(linha);
@@ -136,39 +140,35 @@ function renderizarCarrinho() {
 
     tabelaCorpo.appendChild(fragment);
 
-    const desconto = 0.05;
-    const totalComDesconto = totalVista * (1 - desconto);
-    const totalParcelado = totalVista / 0.95;
+    // Cálculos
+    const acrescimoParcelado = 0.05;
+    const totalParcelado = totalVista * (1 + acrescimoParcelado); // Total parcelado com 5% a mais
 
     totalContainer.innerHTML = `
         <div class="cart-total-info">
             <h1 class="cart-total-title">Resumo</h1>
-            <p>Total à Vista: <span id="discounted-total">${precoFormatado(totalComDesconto)}</span></p>
-            <p>Economia: <span id="discount">${precoFormatado(totalVista - totalComDesconto)}</span></p>
+            <p>Total à Vista: <span id="discounted-total">${precoFormatado(totalVista)}</span></p>
+            <p>Acréscimo Parcelado: <span id="discount">${precoFormatado(totalParcelado - totalVista)}</span></p>
             <label for="cart-installment-select">Parcelamento:</label>
             <select id="cart-installment-select">
-                <option value="1">1x ${precoFormatado(totalComDesconto)}</option>
+                <option value="1">1x ${precoFormatado(totalVista)}</option>
                 ${Array.from({ length: 12 }, (_, i) => i + 1).filter(n => n > 1).map(n => `
                     <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
                 `).join('')}
             </select>
-            <p>Total: <span id="total-price">${precoFormatado(totalComDesconto)}</span></p>
+            <p>Total: <span id="total-price">${precoFormatado(totalVista)}</span></p>
         </div>
-        <button id="cart-finalize-button" class="cart-finalize-button" aria-label="Finalizar Compra" tabindex="0">Finalizar Compra</button>
+        <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">Finalizar Compra</button>
     `;
     totalContainer.style.display = 'block';
 
-    // Verifica a existência dos elementos antes de adicionar eventos
+    // Evento para atualizar o total com base no parcelamento
     const selectParcelas = document.getElementById('cart-installment-select');
     const totalPrecoSpan = document.getElementById('total-price');
     if (selectParcelas && totalPrecoSpan) {
         selectParcelas.addEventListener('change', () => {
             const numParcelas = parseInt(selectParcelas.value, 10);
-            if (numParcelas === 1) {
-                totalPrecoSpan.textContent = precoFormatado(totalComDesconto);
-            } else {
-                totalPrecoSpan.textContent = precoFormatado(totalParcelado);
-            }
+            totalPrecoSpan.textContent = precoFormatado(numParcelas === 1 ? totalVista : totalParcelado);
         });
     }
 
@@ -206,13 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabelaCorpo = document.querySelector('#cart-table tbody');
     if (tabelaCorpo) {
         tabelaCorpo.addEventListener('click', (e) => {
-            const carrinho = getCarrinho();
-            const index = parseInt(e.target.getAttribute('data-index'), 10);
+            const button = e.target.closest('button'); // Delegação para o botão mais próximo
+            if (!button || isNaN(parseInt(button.getAttribute('data-index'), 10))) return;
 
-            if (e.target.classList.contains('cart-item-remove')) {
+            const carrinho = getCarrinho();
+            const index = parseInt(button.getAttribute('data-index'), 10);
+
+            if (button.classList.contains('cart-item-remove')) {
                 carrinho.splice(index, 1);
                 saveCarrinho(carrinho);
-            } else if (e.target.classList.contains('cart-item-qty-increase')) {
+            } else if (button.classList.contains('cart-item-qty-increase')) {
                 fetch('../data/produtos.json')
                     .then(res => res.json())
                     .then(produtos => {
@@ -223,8 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                             mostrarFeedback('Quantidade máxima atingida para este produto.', 'erro');
                         }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao verificar estoque:', error);
+                        mostrarFeedback('Erro ao aumentar quantidade. Tente novamente.', 'erro');
                     });
-            } else if (e.target.classList.contains('cart-item-qty-decrease')) {
+            } else if (button.classList.contains('cart-item-qty-decrease')) {
                 if (carrinho[index].quantidade > 1) {
                     carrinho[index].quantidade--;
                     saveCarrinho(carrinho);
