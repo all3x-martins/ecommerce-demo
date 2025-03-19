@@ -119,8 +119,8 @@ function renderizarCarrinho() {
 
         const linha = document.createElement('tr');
         linha.innerHTML = `
-            <td><img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">${item.nome}</td>
-            <td>${precoFormatado(precoUnitario)}</td>
+            <td><img src="${item.imagem}" alt="${item.nome}" class="cart-item-image"></td>
+            <td>${item.nome}</td> 
             <td>
                 <div class="cart-item-quantity-container">
                     <button class="cart-item-qty-decrease" data-index="${index}" aria-label="Diminuir quantidade de ${item.nome}">
@@ -133,7 +133,7 @@ function renderizarCarrinho() {
                 </div>
             </td>
             <td>${precoFormatado(precoUnitario * item.quantidade)}</td>
-            <td><button data-index="${index}" class="cart-item-remove" aria-label="Remover ${item.nome} do carrinho">Remover</button></td>
+            <td><button data-index="${index}" class="cart-item-remove" aria-label="Remover ${item.nome} do carrinho"><i class="fa-solid fa-trash"></i></button></td>
         `;
         fragment.appendChild(linha);
     });
