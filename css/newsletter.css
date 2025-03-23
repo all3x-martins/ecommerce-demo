@@ -55,7 +55,7 @@
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 0 0 15.375rem;
+    flex-basis: 15.375rem;
     font-size: 1.125rem;
     font-weight: 800;
 }
