@@ -34,6 +34,7 @@ function loadProductDetails() {
                         <h1>${produto.nome}</h1>
                         <p class="marca">Marca: ${produto.marca}</p>
                         <p>${produto.descricaoCompleta}</p>
+                        <p class="stock-info">${produto.disponibilidade} (${produto.estoque} unidades disponíveis)</p>
                         <div class="price-info">
                             <span class="price">${precoFormatado(precoAVista)}</span>
                             <span class="price-label">À vista</span>
@@ -45,15 +46,6 @@ function loadProductDetails() {
                                 Acréscimo de ${precoFormatado(precoParcelado - precoAVista)} no parcelamento
                             </div>
                         </div>
-                        <p class="stock-info">${produto.disponibilidade} (${produto.estoque} unidades disponíveis)</p>
-                        <div class="specifications">
-                            <h3>Especificações</h3>
-                            <ul>
-                                ${Object.entries(produto.especificacoes).map(([key, value]) => `
-                                    <li><strong>${formatKey(key)}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
                         <button class="btn-add-cart"
                                 aria-label="Adicionar ao carrinho"
                                 tabindex="0"
@@ -64,6 +56,16 @@ function loadProductDetails() {
                                 ${produto.estoque === 0 ? 'disabled' : ''}>
                                 ${produto.estoque === 0 ? 'Indisponível' : 'Adicionar ao Carrinho'}
                         </button>
+                    </div>
+                    <div class="specifications-container">
+                        <div class="product-specifications__content">
+                        <h3 class="specifications-title">Especificações</h3>
+                        <ul>
+                            ${Object.entries(produto.especificacoes).map(([key, value]) => `
+                                <li><strong>${formatKey(key)}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</li>
+                            `).join('')}
+                        </ul>
+                    </div>
                     </div>
                 `;
 
