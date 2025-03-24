@@ -19,7 +19,7 @@
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 270px;
+    min-width: 270px;
 }
 
 .card:hover {
@@ -150,12 +150,33 @@
     margin-bottom: 20px;
 }
 
+.stock-info {
+    color: green !important;
+}
+
+.specifications-container {
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.product-specifications__content {
+   margin-top: 1rem;
+}
+
 .avaliacoes-content {
     max-width: 1200px;
     margin: 1rem auto;
     padding: 0.75rem;
 }
 
+.specifications-title {
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.product-specifications__content ul li{
+    padding: 0 0.5rem 0.5rem 0;
+}
 .rating {
     font-size: 1.5rem;
     color: var(--cor-primaria-laranja);
