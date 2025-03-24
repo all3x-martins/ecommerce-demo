@@ -2,147 +2,141 @@
 
 /* Smartphones pequenos (até 480px) */
 @media (max-width: 480px) {
-    /* Components */
+    /* Header */
+    .header-nav {
+        padding: 8px;
+    }
+    .header-nav-content {
+        gap: 25px;
+    }
+    .header-site-logo {
+        max-width: 8.5rem;
+    }
+    .header-search-bar {
+        padding: 6px 10px;
+    }
+    .header-search-bar input {
+        font-size: 12px;
+        padding: 10px;
+    }
     .header-cart-button {
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 6px;
+    }
+    .header-cart-button i {
+        font-size: 20px;
     }
 
     /* Footer */
     .footer-wrapper {
-        padding: 20px 12px;
+        padding: 16px 8px;
+        flex-direction: column;
+        gap: 16px;
     }
-    .payment-icons {
-        flex-basis: 100%;
+    .footer-menu {
+        flex-direction: column;
+        gap: 16px;
     }
-
-    /* Navigation */
-    .header-nav {
-        padding: 12px;
+    .payment-methods{
+        justify-content: center;
+        width: 220px;
+        margin: 0 auto;
     }
-    .header-nav .search-bar {
-        padding: 8px 12px;
-    }
-    .header-nav .search-bar input {
-        font-size: 14px;
-    }
-    .header-nav .header-button-mobile {
-        max-width: 180px;
-        height: 36px;
-        font-size: 14px;
-    }
-    .header-nav-list {
+    .footer-section {
         width: 100%;
+        text-align: center;
+    }
+    .payment-icons-wrapper {
+        flex-basis: 25%;
+        justify-content: center;
     }
 
     /* Login Form */
     .login-form {
-        padding: 16px;
+        padding: 12px;
     }
     .input-group input {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 12px;
+        padding: 6px;
     }
     .btn-login {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 12px;
+        padding: 8px;
     }
     .links a {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     /* Newsletter */
     .newsletter {
-        padding: 16px 12px;
+        padding: 12px 8px;
     }
     .newsletter-title {
-        font-size: 20px;
+        font-size: 18px;
     }
     .newsletter-input {
-        font-size: 14px;
+        font-size: 12px;
     }
     .newsletter-button {
-        font-size: 14px;
-        padding: 8px 16px;
+        font-size: 12px;
+        padding: 6px 12px;
     }
 
     /* Products */
-    .card_container {
-        padding: 8px;
-        gap: 12px;
+    .card-container {
+        padding: 4px;
+        gap: 8px;
     }
     .card h3 {
-        font-size: 14px;
+        font-size: 12px;
     }
-    .produto_preco {
-        font-size: 20px;
+    .produto-price {
+        font-size: 16px;
     }
-    .btn-add-carrinho {
-        font-size: 14px;
-        padding: 8px 16px;
+    .btn-add-cart {
+        font-size: 12px;
+        padding: 6px 12px;
     }
-    #produto-detalhes {
-        padding: 12px;
+    #produto-details {
+        padding: 8px;
     }
     .product-details h1 {
-        font-size: 22px;
+        font-size: 20px;
     }
     .product-details .price {
-        font-size: 18px;
+        font-size: 20px;
     }
     .product-details p {
-        font-size: 14px;
-    }
-
-    /* Layout */
-    .site-header {
-        padding: 12px;
-    }
-    .site-header .site-logo {
-        max-width: 160px;
+        font-size: 12px;
     }
 }
 
-/* Tablets e smartphones maiores (até 768px) */
+/* Smartphones médios e tablets pequenos (até 768px) */
 @media (max-width: 768px) {
+    /* Header */
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-nav-menu {
+        width: 300px;
+        height: 100vh;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+    #close-menu {
+        display: block;
+    }
+
     /* Footer */
     .footer-menu {
-        gap: 24px;
+        gap: 16px;
     }
     .footer-section {
         min-width: auto;
     }
-    .payment-icons {
+    .payment-icons-wrapper {
         flex-basis: 45%;
-    }
-
-    /* Navigation */
-    .header-nav {
-        align-items: flex-start;
-    }
-    .header-nav .header-button-mobile {
-        display: block;
-    }
-    .header-nav-list {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 300px;
-        height: 100vh;
-        z-index: 1000;
-        padding: 20px;
-        overflow-y: auto;
-        transition: transform 0.3s ease;
-        transform: translateX(-100%);
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-    }
-    .header-nav-list.show {
-        display: flex;
-        transform: translateX(0);
-    }
-    #close-menu {
-        display: block;
     }
 
     /* Login Form */
@@ -166,7 +160,7 @@
     .card {
         width: 100%;
     }
-    .card_container {
+    .card-container {
         gap: 16px;
         padding: 8px;
     }
@@ -179,35 +173,34 @@
         flex: 1 1 100%;
         max-width: 100%;
     }
-    .product-details .btn-comprar,
-    .product-details .btn-voltar {
-        width: 100%;
+    .specifications-container {
+        border-top: none;
+        margin-top: 1rem;
+    }
+    .product-specifications__content ul li {
+        padding: 0.25rem 0;
     }
 
-    /* Layout */
-    .site-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .header-menu .menu-items {
-        display: none;
-    }
-    .carrinho_container {
+    /* Cart */
+    .cart-page-container {
         min-height: auto;
-    }
-
-    .carrinho_container {
         padding: 10px;
     }
-    #tabela-carrinho th,
-    #tabela-carrinho td {
+    .cart-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    #cart-table th,
+    #cart-table td {
         padding: 8px;
     }
-    .carrinho-imagem {
+    .cart-item-image {
         width: 40px;
         height: 40px;
     }
-    #total-container {
+    #cart-total-container {
+        width: 100%;
+        padding: 15px;
         text-align: center;
     }
     .total-info {
@@ -223,25 +216,70 @@
         width: 100%;
         margin: 10px 0;
     }
-    .btn-finalizar {
+    .cart-finalize-button {
         width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .cart-total-title {
+        font-size: 20px;
+    }
+    .cart-total-info p,
+    .cart-total-info label,
+    #cart-installment-select {
+        font-size: 14px;
+    }
+    #total-price {
+        font-size: 18px;
     }
 }
 
 /* Breakpoint adicional (até 900px) */
 @media (max-width: 900px) {
-   
+    /* Header */
+    .header-actions-auth {
+        display: none;
+    }
+    .header-site-logo {
+        width: 12.5rem;
+    }
+    #produto-detalhes{
+        justify-content: center;
+    }
+    .product-image {
+        border-bottom: 1px solid var( --cor-cinza-borda);
+    }
 }
 
-/* Tablets grandes e laptops pequenos (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .site-header {
-        align-items: flex-start;
+/* Tablets grandes e laptops pequenos (até 1080px) */
+@media (max-width: 1080px) {
+    /* Header */
+    .header-nav {
+        flex-wrap: wrap;
     }
+    .header-search-bar {
+        min-width: 100%;
+        order: 1;
+        margin: 0;
+    }
+
+    /* Newsletter */
+    .newsletter-form {
+        flex-wrap: wrap;
+    }
+    .newsletter-button {
+        flex: 1;
+    }
+}
+
+/* Tablets grandes (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Products */
     .card {
         width: calc(50% - 20px);
     }
 
+    /* Footer */
     .footer-section {
         min-width: 200px;
     }
@@ -249,18 +287,27 @@
 
 /* Laptops médios (1025px - 1280px) */
 @media (min-width: 1025px) and (max-width: 1280px) {
+    /* Products */
     .card {
         width: calc(33.33% - 20px);
     }
+
+    /* Cart */
+    .cart-container {
+        flex-wrap: wrap;
+    }
 }
 
-/* Desktops (1281px+) */
+/* Desktops (1281px e acima) */
 @media (min-width: 1281px) {
+    /* Header */
     .site-header {
         flex-direction: row;
         align-items: center;
     }
+
+    /* Products */
     .card {
-        width: calc(33.33% - 20px);
+        width: calc(16.88rem - 20px);
     }
 }
