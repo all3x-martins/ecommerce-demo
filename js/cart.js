@@ -85,7 +85,7 @@ function adicionarAoCarrinho(produto) {
 
 function renderizarCarrinho() {
     const carrinho = getCarrinho();
-    const tabelaCorpo = document.querySelector('#cart-table tbody');
+    const tabelaCorpo = document.querySelector('#cart-table');
     const totalContainer = document.querySelector('#cart-total-container');
     const carrinhoContainer = document.querySelector('#carrinho');
 
@@ -117,24 +117,42 @@ function renderizarCarrinho() {
         const precoUnitario = item.preco; // Preço à vista unitário (já com desconto)
         totalVista += precoUnitario * item.quantidade;
 
-        const linha = document.createElement('tr');
+        const linha = document.createElement('div');
+        linha.classList.add('cart-item-container'); // Adiciona a classe 'cart-item' para o layout flex
+
         linha.innerHTML = `
-            <td><img src="${item.imagem}" alt="${item.nome}" class="cart-item-image"></td>
-            <td>${item.nome}</td> 
-            <td>
-                <div class="cart-item-quantity-container">
-                    <button class="cart-item-qty-decrease" data-index="${index}" aria-label="Diminuir quantidade de ${item.nome}">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                    <span class="cart-item-quantity">${item.quantidade}</span>
-                    <button class="cart-item-qty-increase" data-index="${index}" aria-label="Aumentar quantidade de ${item.nome}">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="${item.imagem}" alt="${item.nome}" />
                 </div>
-            </td>
-            <td>${precoFormatado(precoUnitario * item.quantidade)}</td>
-            <td><button data-index="${index}" class="cart-item-remove" aria-label="Remover ${item.nome} do carrinho"><i class="fa-solid fa-trash"></i></button></td>
+
+                <div class="item-info">
+                    <div class="cart-item-header">
+                        <h5 class="cart-item-name">${item.nome}</h5>
+                        <div class="cart-item-remove">
+                            <button data-index="${index}" aria-label="Remover ${item.nome} do carrinho">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-price">
+                            ${precoFormatado(precoUnitario * item.quantidade)}
+                        </div>
+                        <div class="cart-item-quantity-container">
+                            <button class="cart-item-qty-decrease" data-index="${index}" aria-label="Diminuir quantidade de ${item.nome}">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </button>
+                            <span class="cart-item-quantity">${item.quantidade}</span>
+                            <button class="cart-item-qty-increase" data-index="${index}" aria-label="Aumentar quantidade de ${item.nome}">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `;
+
         fragment.appendChild(linha);
     });
 
@@ -145,32 +163,26 @@ function renderizarCarrinho() {
     const totalParcelado = totalVista * (1 + acrescimoParcelado); // Total parcelado com 5% a mais
 
     totalContainer.innerHTML = `
-        <div class="cart-total-info">
-            <h1 class="cart-total-title">Resumo</h1>
-            <p>Total à Vista: <span id="discounted-total">${precoFormatado(totalVista)}</span></p>
-            <p>Acréscimo Parcelado: <span id="discount">${precoFormatado(totalParcelado - totalVista)}</span></p>
-            <label for="cart-installment-select">Parcelamento:</label>
-            <select id="cart-installment-select">
-                <option value="1">1x ${precoFormatado(totalVista)}</option>
-                ${Array.from({ length: 12 }, (_, i) => i + 1).filter(n => n > 1).map(n => `
-                    <option value="${n}">${n}x ${precoFormatado(totalParcelado / n)}</option>
-                `).join('')}
-            </select>
-            <p>Total: <span id="total-price">${precoFormatado(totalVista)}</span></p>
-        </div>
-        <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">Finalizar Compra</button>
+    <div class="cart-total-info">
+        <p>Subtotal: <span id="discount">${precoFormatado(totalParcelado)}</span></p>
+        <p><i class="fa fa-credit-card"></i>:<span id="discounted-total"> ${precoFormatado(totalParcelado / 10)}</span></p>
+        <p><i class="fa fa-barcode"></i>:<span id="total-price"> ${precoFormatado(totalVista)}</span></p>
+    </div>
     `;
-    totalContainer.style.display = 'block';
 
-    // Evento para atualizar o total com base no parcelamento
-    const selectParcelas = document.getElementById('cart-installment-select');
-    const totalPrecoSpan = document.getElementById('total-price');
-    if (selectParcelas && totalPrecoSpan) {
-        selectParcelas.addEventListener('change', () => {
-            const numParcelas = parseInt(selectParcelas.value, 10);
-            totalPrecoSpan.textContent = precoFormatado(numParcelas === 1 ? totalVista : totalParcelado);
-        });
+    const bottomCartFixed = document.querySelector('.bottomCart');
+    if (!bottomCartFixed) {
+        const bottomCart = document.createElement('div');
+        bottomCart.className = 'bottomCart';
+        bottomCart.innerHTML = `
+            <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">
+                Finalizar Compra
+            </button>
+            <a class="closeContinua">Continuar comprando</a>
+        `;
+        document.querySelector('#carrinho')?.appendChild(bottomCart); // Substitua pelo ID/Classe do menu lateral
     }
+    totalContainer.style.display = 'block';
 
     const finalizarCompra = totalContainer.querySelector('#cart-finalize-button');
     if (finalizarCompra) {
@@ -203,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrinho();
     atualizarContadorCarrinho();
 
-    const tabelaCorpo = document.querySelector('#cart-table tbody');
+    const tabelaCorpo = document.querySelector('#cart-table');
     if (tabelaCorpo) {
         tabelaCorpo.addEventListener('click', (e) => {
             const button = e.target.closest('button'); // Delegação para o botão mais próximo

@@ -11,16 +11,28 @@
 }
 
 /* Botão de alternância do menu móvel */
-.header-menu-toggle {
+.header-menu-toggle, 
+.header-cart-toggle {
     display: block;
     border: none;
     background-color: transparent;
 }
 
+.header-cart-toggle i,
 .header-menu-toggle i {
     pointer-events: none;
     font-size: 25px;
     color: var(--cor-primaria-branco);
+}
+
+.header-cart-content 
+.header-cart-toggle {
+    display: flex;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    align-items: center;
 }
 
 /* Menu de navegação móvel */
