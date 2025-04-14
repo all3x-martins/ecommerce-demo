@@ -75,7 +75,6 @@ function handleAddToCart(id, nome, preco, imagem) {
     console.log('Adicionando ao carrinho (lista):', cartItem);
     if (typeof adicionarAoCarrinho === 'function') {
         adicionarAoCarrinho(cartItem);
-        window.location.href = '/pages/carrinho';
     } else {
         console.error('Função adicionarAoCarrinho não definida');
     }
