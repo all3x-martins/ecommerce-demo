@@ -1,14 +1,14 @@
 function loadProductDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
-    const produtoDetalhes = document.getElementById('produto-detalhes');
+    const productDetailsElement = document.getElementById('products-details');
 
-    if (!produtoDetalhes) {
-        console.error('Elemento #produto-detalhes não encontrado');
+    if (!productDetailsElement) {
+        console.error('Elemento #products-details não encontrado');
         return;
     }
 
-    produtoDetalhes.innerHTML = '<p>Carregando detalhes do produto...</p>';
+    productDetailsElement.innerHTML = '<p>Carregando detalhes do produto...</p>';
     console.log('Iniciando fetch de produtos...');
 
     fetch('/data/produtos.json')
@@ -16,138 +16,131 @@ function loadProductDetails() {
             if (!res.ok) throw new Error(`Erro ${res.status}: Não foi possível carregar produtos.json`);
             return res.json();
         })
-        .then(produtos => {
-            const produto = produtos.find(p => p.id == productId);
-            if (produto) {
-                const precoAVista = produto.precoAVista;
-                const precoParcelado = precoAVista * 1.05;
-                const valorParcela = precoParcelado / (produto.parcelas || 12);
-                const mediaAvaliacoes = produto.avaliacoes && produto.avaliacoes.length > 0 
-                    ? (produto.avaliacoes.reduce((soma, aval) => soma + aval.nota, 0) / produto.avaliacoes.length).toFixed(1) 
-                    : 0;
-
-                produtoDetalhes.innerHTML = `
+        .then(products => {
+            const product = products.find(p => p.id == productId);
+            if (product) {
+                // Supondo que o JSON atualizado possui os campos:
+                // id, name, image, brand, fullDescription, priceCash, availability, specifications e reviews
+                const priceCash = product.priceCash || 0;
+                productDetailsElement.innerHTML = `
                     <div class="product-image">
-                        <img src="${produto.imagem}" alt="${produto.nome}" onerror="this.src='placeholder.jpg'">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='placeholder.jpg'">
                     </div>
                     <div class="product-details">
-                        <h1>${produto.nome}</h1>
-                        <p class="marca">Marca: ${produto.marca}</p>
-                        <p>${produto.descricaoCompleta}</p>
-                        <p class="stock-info">${produto.disponibilidade} (${produto.estoque} unidades disponíveis)</p>
+                        <h1>${product.name}</h1>
+                        <p class="brand">Marca: ${product.brand}</p>
+                        <p>${product.fullDescription}</p>
+                        <p class="availability">${product.availability}</p>
                         <div class="price-info">
-                            <span class="price">${precoFormatado(precoAVista)}</span>
+                            <span class="price">${precoFormatado(priceCash)}</span>
                             <span class="price-label">À vista</span>
-                            <div class="installments">
-                                ou <strong>${produto.parcelas || 12}x</strong> de <strong>${precoFormatado(valorParcela)}</strong> sem juros
-                                <span class="total-parcelado">Total: ${precoFormatado(precoParcelado)}</span>
-                            </div>
-                            <div class="discount-info">
-                                Acréscimo de ${precoFormatado(precoParcelado - precoAVista)} no parcelamento
-                            </div>
                         </div>
                         <button class="btn-add-cart"
                                 aria-label="Adicionar ao carrinho"
                                 tabindex="0"
-                                data-id="${produto.id}" 
-                                data-nome="${produto.nome}" 
-                                data-preco="${precoAVista}" 
-                                data-imagem="${produto.imagem}"
-                                ${produto.estoque === 0 ? 'disabled' : ''}>
-                                ${produto.estoque === 0 ? 'Indisponível' : 'Adicionar ao Carrinho'}
+                                data-id="${product.id}"
+                                data-name="${product.name}"
+                                data-price="${priceCash}"
+                                data-image="${product.image}">
+                            Adicionar ao Carrinho
                         </button>
                     </div>
                     <div class="specifications-container">
                         <div class="product-specifications__content">
-                        <h3 class="specifications-title">Especificações</h3>
-                        <ul>
-                            ${Object.entries(produto.especificacoes).map(([key, value]) => `
-                                <li><strong>${formatKey(key)}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</li>
-                            `).join('')}
-                        </ul>
-                    </div>
+                            <h3 class="specifications-title">Especificações</h3>
+                            <ul>
+                                ${Object.entries(product.specifications).map(([key, value]) => `
+                                    <li><strong>${formatKey(key)}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     </div>
                 `;
 
-                if (produto.estoque > 0) {
-                    const addButton = document.querySelector('.btn-add-cart');
-                    if (addButton) {
-                        addButton.addEventListener('click', () => {
-                            const cartItem = {
-                                id: produto.id,
-                                nome: produto.nome,
-                                preco: precoAVista,
-                                imagem: produto.imagem
-                            };
-                            console.log('Adicionando ao carrinho (detalhes):', cartItem);
-                            if (typeof adicionarAoCarrinho === 'function') {
-                                adicionarAoCarrinho(cartItem);
-                            } else {
-                                console.error('Função adicionarAoCarrinho não definida');
-                            }
-                        });
-                    }
+                const addButton = document.querySelector('.btn-add-cart');
+                if (addButton) {
+                    addButton.addEventListener('click', () => {
+                        const cartItem = {
+                            id: product.id,
+                            name: product.name,
+                            price: priceCash,
+                            image: product.image
+                        };
+                        console.log('Adicionando ao carrinho (detalhes):', cartItem);
+                        if (typeof adicionarAoCarrinho === 'function') {
+                            adicionarAoCarrinho(cartItem);
+                        } else {
+                            console.error('Função adicionarAoCarrinho não definida');
+                        }
+                    });
                 }
 
-                const avaliacoesSection = document.getElementById('avaliacoes');
-                if (avaliacoesSection && produto.avaliacoes && produto.avaliacoes.length > 0) {
-                    avaliacoesSection.innerHTML = `
-                        <h2>Avaliações dos usuários</h2>
-                        <p class="rating">${renderStars(mediaAvaliacoes)} (${mediaAvaliacoes}/5)</p>
-                        ${produto.avaliacoes.map(aval => `
-                            <div class="review">
-                                <span class="user">${aval.usuario} - ${aval.data}</span>
-                                <br>
-                                <span class="stars">${renderStars(aval.nota)}</span>
-                                <p>${aval.comentario}</p>                              
-                            </div>
-                        `).join('')}
-                    `;
-                } else if (avaliacoesSection) {
-                    avaliacoesSection.innerHTML = '<p>Sem avaliações disponíveis.</p>';
+                const reviewsSection = document.getElementById('reviews');
+                if (reviewsSection) {
+                    if (product.reviews && product.reviews.length > 0) {
+                        const averageRating = (product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length).toFixed(1);
+                        reviewsSection.innerHTML = `
+                            <h2>Avaliações dos usuários</h2>
+                            <p class="rating">${renderStars(averageRating)} (${averageRating}/5)</p>
+                            ${product.reviews.map(review => `
+                                <div class="review">
+                                    <span class="user">${review.user} - ${review.date}</span>
+                                    <br>
+                                    <span class="stars">${renderStars(review.rating)}</span>
+                                    <p>${review.comment}</p>                              
+                                </div>
+                            `).join('')}
+                        `;
+                    } else {
+                        reviewsSection.innerHTML = '<p>Sem avaliações disponíveis.</p>';
+                    }
                 }
             } else {
-                produtoDetalhes.innerHTML = '<p>Produto não encontrado.</p>';
+                productDetailsElement.innerHTML = '<p>Produto não encontrado.</p>';
             }
         })
-        .catch(error => handleFetchError(error, produtoDetalhes));
+        .catch(error => handleFetchError(error, productDetailsElement));
+}
+
+function precoFormatado(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function formatKey(key) {
     const map = {
         socket: 'Socket',
         chipset: 'Chipset',
-        memoria: 'Memória',
-        slotsPCIe: 'Slots PCIe',
-        conexoes: 'Conexões',
-        potencia: 'Potência',
-        certificacao: 'Certificação',
-        clockBoost: 'Clock Boost',
-        nucleos: 'Núcleos',
+        memory: 'Memória',
+        pcieSlots: 'Slots PCIe',
+        connections: 'Conexões',
+        power: 'Potência',
+        certification: 'Certificação',
+        boostClock: 'Clock Boost',
+        cores: 'Núcleos',
         threads: 'Threads',
         cache: 'Cache',
         tdp: 'TDP',
-        capacidade: 'Capacidade',
+        capacity: 'Capacidade',
         interface: 'Interface',
-        leitura: 'Leitura',
-        gravacao: 'Gravação',
-        tamanho: 'Tamanho',
-        resolucao: 'Resolução',
-        taxaAtualizacao: 'Taxa de Atualização',
-        tempoResposta: 'Tempo de Resposta',
+        read: 'Leitura',
+        write: 'Gravação',
+        size: 'Tamanho',
+        resolution: 'Resolução',
+        refreshRate: 'Taxa de Atualização',
+        responseTime: 'Tempo de Resposta',
         cooling: 'Resfriamento',
-        tecnologias: 'Tecnologias',
-        cor: 'Cor',
+        technologies: 'Tecnologias',
+        color: 'Cor',
         material: 'Material',
-        ajustes: 'Ajustes',
-        suporteCooling: 'Suporte a Refrigeração'
+        adjustments: 'Ajustes',
+        coolingSupport: 'Suporte a Refrigeração'
     };
     return map[key] || key.charAt(0).toUpperCase() + key.slice(1);
 }
 
-function renderStars(nota) {
-    const estrelas = Math.round(nota);
-    return '★'.repeat(estrelas) + '☆'.repeat(5 - estrelas);
+function renderStars(rating) {
+    const stars = Math.round(rating);
+    return '★'.repeat(stars) + '☆'.repeat(5 - stars);
 }
 
 function handleFetchError(error, element) {

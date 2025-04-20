@@ -1,9 +1,9 @@
 let produtosCache = null;
 
 function createProductCard(product) {
-    console.log('Criando card para:', product.nome);
+    console.log('Criando card para:', product.name);
 
-    if (!product || !product.id || !product.nome) {
+    if (!product || !product.id || !product.name) {
         console.warn('Produto inválido:', product);
         return document.createElement('div');
     }
@@ -11,24 +11,22 @@ function createProductCard(product) {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
 
-    const precoAVista = product.precoAVista || 0;
-    const precoParcelado = precoAVista * 1.05;
-    const valorParcela = precoParcelado / (product.parcelas || 12);
+    const priceCash = product.priceCash || 0;
 
     const productLink = document.createElement('a');
     productLink.href = `/pages/produto.html?id=${product.id}`;
-    productLink.setAttribute('aria-label', `Ver detalhes do produto ${product.nome}`);
+    productLink.setAttribute('aria-label', `Ver detalhes do produto ${product.name}`);
     productLink.setAttribute('tabindex', '0');
 
     const productImage = document.createElement('img');
     productImage.setAttribute('loading', 'lazy');
-    productImage.src = product.imagem || 'placeholder.jpg';
-    productImage.alt = product.nome;
+    productImage.src = product.image || 'placeholder.jpg';
+    productImage.alt = product.name;
     productImage.classList.add('product-image');
     productImage.onerror = () => { productImage.src = 'placeholder.jpg'; };
 
     const productTitle = document.createElement('h3');
-    productTitle.textContent = product.nome;
+    productTitle.textContent = product.name;
 
     productLink.appendChild(productImage);
     productLink.appendChild(productTitle);
@@ -36,18 +34,13 @@ function createProductCard(product) {
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
     productInfo.innerHTML = `
-        <span class="produto-price">${typeof precoFormatado === 'function' ? precoFormatado(precoAVista) : precoAVista.toFixed(2)}</span>
-        <span class="produto-payment"> à vista</span>
-        <br>
-        <span>ou até</span>
-        <span class="installment-product">${product.parcelas || 12}x</span>
-        <small class="installment-product">de</small>
-        <span class="installment-product">${typeof precoFormatado === 'function' ? precoFormatado(valorParcela) : valorParcela.toFixed(2)}</span>
+        <span class="product-price">${typeof precoFormatado === 'function' ? precoFormatado(priceCash) : priceCash.toFixed(2)}</span>
+        <span class="product-payment"> à vista</span>
     `;
 
     const addButton = document.createElement('button');
     addButton.classList.add('btn-add-cart');
-    addButton.setAttribute('aria-label', `Adicionar ${product.nome} ao carrinho`);
+    addButton.setAttribute('aria-label', `Adicionar ${product.name} ao carrinho`);
 
     const iconElement = document.createElement('i');
     iconElement.classList.add('fas', 'fa-shopping-cart');
@@ -56,7 +49,7 @@ function createProductCard(product) {
     addButton.appendChild(document.createTextNode(' COMPRAR'));
 
     addButton.dataset.id = product.id;
-    addButton.addEventListener('click', () => handleAddToCart(product.id, product.nome, precoAVista, product.imagem));
+    addButton.addEventListener('click', () => handleAddToCart(product.id, product.name, priceCash, product.image));
 
     cardDiv.appendChild(productLink);
     cardDiv.appendChild(productInfo);
@@ -65,12 +58,12 @@ function createProductCard(product) {
     return cardDiv;
 }
 
-function handleAddToCart(id, nome, preco, imagem) {
+function handleAddToCart(id, name, price, image) {
     const cartItem = {
         id: id,
-        nome: nome,
-        preco: preco,
-        imagem: imagem || 'placeholder.jpg'
+        name: name,
+        price: price,
+        image: image || 'placeholder.jpg'
     };
     console.log('Adicionando ao carrinho (lista):', cartItem);
     if (typeof adicionarAoCarrinho === 'function') {

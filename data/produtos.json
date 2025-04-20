@@ -1,267 +1,247 @@
 [
     {
         "id": "1",
-        "nome": "Placa Mãe ASRock B450M Steel Legend DDR4 Socket AM4 Chipset AMD B450",
-        "precoAVista": 699.90,
-        "precoParcelado": 799.90,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/placa-mae-asrock-b450m-steel-legend.jpg",
-        "descricaoCurta": "Placa mãe compacta com socket AM4 e suporte a DDR4.",
-        "descricaoCompleta": "A Placa Mãe ASRock B450M Steel Legend oferece uma base sólida para PCs compactos com excelente desempenho e durabilidade. Projetada para processadores AMD de socket AM4, suporta memória DDR4 até 128GB e é ideal para jogos e tarefas intensivas. Possui design Steel Legend com iluminação RGB e suporte a PCIe 3.0.",
-        "categoria": "Hardware",
-        "marca": "ASRock",
-        "estoque": 25,
-        "especificacoes": {
+        "name": "Placa Mãe ASRock B450M Steel Legend DDR4 Socket AM4 Chipset AMD B450",
+        "priceCash": 699.90,
+        "priceInstallments": 799.90,
+        "image": "/assets/images/products/placa-mae-asrock-b450m-steel-legend.jpg",
+        "shortDescription": "Placa mãe compacta com socket AM4 e suporte a DDR4.",
+        "fullDescription": "A Placa Mãe ASRock B450M Steel Legend oferece uma base sólida para PCs compactos com excelente desempenho e durabilidade. Projetada para processadores AMD de socket AM4, suporta memória DDR4 até 128GB e é ideal para jogos e tarefas intensivas. Possui design Steel Legend com iluminação RGB e suporte a PCIe 3.0.",
+        "category": "Hardware",
+        "brand": "ASRock",
+        "specifications": {
             "socket": "AM4",
             "chipset": "AMD B450",
-            "memoria": "DDR4 até 128GB",
+            "memory": "DDR4 até 128GB",
             "slotsPCIe": "1 x PCIe 3.0 x16, 1 x PCIe 2.0 x1",
-            "conexoes": ["USB 3.2", "HDMI", "DisplayPort"]
+            "connections": ["USB 3.2", "HDMI", "DisplayPort"]
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Carlos M.",
-                "comentario": "Ótima placa para builds compactas, fácil instalação.",
-                "nota": 4,
-                "data": "10/02/2025"
+                "user": "Carlos M.",
+                "comment": "Ótima placa para builds compactas, fácil instalação.",
+                "rating": 4,
+                "date": "10/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["placa-mãe", "AM4", "DDR4", "Steel Legend", "RGB"]
     },
     {
         "id": "2",
-        "nome": "Fonte Corsair RM850x Shift Series, 850W, Full-Modular, 80 Plus Gold",
-        "precoAVista": 749.99,
-        "precoParcelado": 849.99,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/Fonte Corsair RMx Series RM850x.jpg",
-        "descricaoCurta": "Fonte 850W full-modular com certificação 80 Plus Gold.",
-        "descricaoCompleta": "A Fonte Corsair RM850x Shift Series combina eficiência, flexibilidade e potência para sistemas que exigem alto desempenho e organização no gerenciamento de cabos. Com 850W de capacidade e certificação 80 Plus Gold, ela proporciona uma entrega de energia altamente eficiente e estável, ideal para configurações avançadas e uso prolongado em setups de alto consumo.",
-        "categoria": "Hardware",
-        "marca": "Corsair",
-        "estoque": 18,
-        "especificacoes": {
-            "potencia": "850W",
-            "certificacao": "80 Plus Gold",
-            "modularidade": "Full-Modular",
-            "conexoes": ["ATX 24-pin", "EPS 8-pin", "PCIe 8-pin"]
+        "name": "Fonte Corsair RM850x Shift Series, 850W, Full-Modular, 80 Plus Gold",
+        "priceCash": 749.99,
+        "priceInstallments": 849.99,
+        "image": "/assets/images/products/Fonte Corsair RMx Series RM850x.jpg",
+        "shortDescription": "Fonte 850W full-modular com certificação 80 Plus Gold.",
+        "fullDescription": "A Fonte Corsair RM850x Shift Series combina eficiência, flexibilidade e potência para sistemas que exigem alto desempenho e organização no gerenciamento de cabos. Com 850W de capacidade e certificação 80 Plus Gold, ela proporciona uma entrega de energia altamente eficiente e estável, ideal para configurações avançadas e uso prolongado em setups de alto consumo.",
+        "category": "Hardware",
+        "brand": "Corsair",
+        "specifications": {
+            "power": "850W",
+            "certification": "80 Plus Gold",
+            "modularity": "Full-Modular",
+            "connections": ["ATX 24-pin", "EPS 8-pin", "PCIe 8-pin"]
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Ana P.",
-                "comentario": "Silenciosa e eficiente, ótimo custo-benefício.",
-                "nota": 5,
-                "data": "15/02/2025"
+                "user": "Ana P.",
+                "comment": "Silenciosa e eficiente, ótimo custo-benefício.",
+                "rating": 5,
+                "date": "15/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["fonte", "850W", "80 Plus Gold", "full-modular"]
     },
     {
         "id": "3",
-        "nome": "Placa de Vídeo RTX 3090 Asus ROG Strix, 24GB, GDDR6X",
-        "precoAVista": 12599.99,
-        "precoParcelado": 13999.99,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/Placa-De-Video-Asus-Geforce-Rtx-3090-Oc.jpg",
-        "descricaoCurta": "GPU de alto desempenho com 24GB GDDR6X.",
-        "descricaoCompleta": "A Placa de Vídeo Asus ROG Strix RTX 3090 é uma das GPUs mais poderosas já lançadas pela NVIDIA, voltada para entusiastas, gamers e profissionais que demandam desempenho extremo. Com 24GB de memória GDDR6X e a arquitetura Ampere, essa placa é capaz de lidar com jogos em resoluções 4K e 8K, além de tarefas pesadas como renderização 3D, edição de vídeo e machine learning.",
-        "categoria": "Hardware",
-        "marca": "Asus",
-        "estoque": 5,
-        "especificacoes": {
-            "memoria": "24GB GDDR6X",
-            "arquitetura": "Ampere",
+        "name": "Placa de Vídeo RTX 3090 Asus ROG Strix, 24GB, GDDR6X",
+        "priceCash": 12599.99,
+        "priceInstallments": 13999.99,
+        "image": "/assets/images/products/Placa-De-Video-Asus-Geforce-Rtx-3090-Oc.jpg",
+        "shortDescription": "GPU de alto desempenho com 24GB GDDR6X.",
+        "fullDescription": "A Placa de Vídeo Asus ROG Strix RTX 3090 é uma das GPUs mais poderosas já lançadas pela NVIDIA, voltada para entusiastas, gamers e profissionais que demandam desempenho extremo.",
+        "category": "Hardware",
+        "brand": "Asus",
+        "specifications": {
+            "memory": "24GB GDDR6X",
+            "architecture": "Ampere",
             "clockBoost": "1860 MHz",
-            "conexoes": ["3 x DisplayPort 1.4a", "2 x HDMI 2.1"]
+            "connections": ["3 x DisplayPort 1.4a", "2 x HDMI 2.1"]
         },
-        "avaliacoes": [],
-        "disponibilidade": "Em estoque",
+        "reviews": [],
+        "availability": "Em estoque",
         "tags": ["placa de vídeo", "RTX 3090", "24GB", "4K", "ROG"]
     },
     {
         "id": "4",
-        "nome": "Processador AMD Ryzen 9 5950X, 16-Core, 32-Threads, 3.4GHz",
-        "precoAVista": 2576.51,
-        "precoParcelado": 2899.99,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/Processador-AMD-Ryzen-9-5950X.jpg",
-        "descricaoCurta": "Processador 16-core com 32 threads para alto desempenho.",
-        "descricaoCompleta": "O Processador AMD Ryzen 9 5950X oferece 16 núcleos e 32 threads, com clock base de 3.4GHz e boost até 4.9GHz. Suporta PCIe 4.0 e memória DDR4 Dual Channel até 3200MHz. Ideal para jogos, renderização e multitarefa pesada. Não inclui cooler.",
-        "categoria": "Hardware",
-        "marca": "AMD",
-        "estoque": 12,
-        "especificacoes": {
-            "nucleos": "16",
+        "name": "Processador AMD Ryzen 9 5950X, 16-Core, 32-Threads, 3.4GHz",
+        "priceCash": 2576.51,
+        "priceInstallments": 2899.99,
+        "image": "/assets/images/products/Processador-AMD-Ryzen-9-5950X.jpg",
+        "shortDescription": "Processador 16-core com 32 threads para alto desempenho.",
+        "fullDescription": "O Processador AMD Ryzen 9 5950X oferece 16 núcleos e 32 threads, com clock base de 3.4GHz e boost até 4.9GHz. Suporta PCIe 4.0 e memória DDR4 Dual Channel até 3200MHz.",
+        "category": "Hardware",
+        "brand": "AMD",
+        "specifications": {
+            "cores": "16",
             "threads": "32",
-            "clockBase": "3.4GHz",
-            "clockBoost": "4.9GHz",
+            "baseClock": "3.4GHz",
+            "boostClock": "4.9GHz",
             "cache": "72MB",
             "tdp": "105W"
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Lucas R.",
-                "comentario": "Desempenho incrível para renderização!",
-                "nota": 5,
-                "data": "12/02/2025"
+                "user": "Lucas R.",
+                "comment": "Desempenho incrível para renderização!",
+                "rating": 5,
+                "date": "12/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["processador", "Ryzen 9", "16-core", "AM4"]
     },
     {
         "id": "5",
-        "nome": "Memória Corsair Dominator Platinum RGB, 32GB (2x16GB), DDR5, 5600MHz",
-        "precoAVista": 2004.90,
-        "precoParcelado": 2199.90,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/memoria-corsair-dominator-rgb-32gb.jpg",
-        "descricaoCurta": "Memória DDR5 32GB com RGB e 5600MHz.",
-        "descricaoCompleta": "A Memória Corsair Dominator Platinum RGB DDR5 oferece 32GB (2x16GB) com frequência de 5600MHz e latência C36. Otimizada para Intel, possui iluminação RGB personalizável via iCUE, ideal para desempenho extremo em jogos e aplicações pesadas.",
-        "categoria": "Hardware",
-        "marca": "Corsair",
-        "estoque": 20,
-        "especificacoes": {
-            "capacidade": "32GB (2x16GB)",
-            "tipo": "DDR5",
-            "frequencia": "5600MHz",
-            "latencia": "C36"
+        "name": "Memória Corsair Dominator Platinum RGB, 32GB (2x16GB), DDR5, 5600MHz",
+        "priceCash": 2004.90,
+        "priceInstallments": 2199.90,
+        "image": "/assets/images/products/memoria-corsair-dominator-rgb-32gb.jpg",
+        "shortDescription": "Memória DDR5 32GB com RGB e 5600MHz.",
+        "fullDescription": "A Memória Corsair Dominator Platinum RGB DDR5 oferece 32GB (2x16GB) com frequência de 5600MHz e latência C36. Otimizada para Intel, possui iluminação RGB personalizável.",
+        "category": "Hardware",
+        "brand": "Corsair",
+        "specifications": {
+            "capacity": "32GB (2x16GB)",
+            "type": "DDR5",
+            "frequency": "5600MHz",
+            "latency": "C36"
         },
-        "avaliacoes": [],
-        "disponibilidade": "Em estoque",
+        "reviews": [],
+        "availability": "Em estoque",
         "tags": ["memória", "DDR5", "32GB", "RGB", "Corsair"]
     },
     {
         "id": "6",
-        "nome": "SSD Gigabyte Aorus Gen4, 1TB, M.2 2280, PCIe 4.0 x4",
-        "precoAVista": 2311.90,
-        "precoParcelado": 2599.90,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/SSD-M-2-Gigabyte-Aorus-Gen4-2TB.jpg",
-        "descricaoCurta": "SSD 1TB PCIe 4.0 com 5000 MB/s de leitura.",
-        "descricaoCompleta": "O SSD Gigabyte Aorus Gen4 utiliza interface PCIe 4.0 x4 no formato M.2 2280, oferecendo 1TB de capacidade e velocidades de leitura de 5000 MB/s e gravação de 4400 MB/s. Perfeito para gamers e profissionais que precisam de armazenamento rápido.",
-        "categoria": "Hardware",
-        "marca": "Gigabyte",
-        "estoque": 10,
-        "especificacoes": {
-            "capacidade": "1TB",
+        "name": "SSD Gigabyte Aorus Gen4, 1TB, M.2 2280, PCIe 4.0 x4",
+        "priceCash": 2311.90,
+        "priceInstallments": 2599.90,
+        "image": "/assets/images/products/SSD-M-2-Gigabyte-Aorus-Gen4-2TB.jpg",
+        "shortDescription": "SSD 1TB PCIe 4.0 com 5000 MB/s de leitura.",
+        "fullDescription": "O SSD Gigabyte Aorus Gen4 utiliza interface PCIe 4.0 x4 no formato M.2 2280, oferecendo 1TB de capacidade e velocidades de leitura de 5000 MB/s e gravação de 4400 MB/s.",
+        "category": "Hardware",
+        "brand": "Gigabyte",
+        "specifications": {
+            "capacity": "1TB",
             "interface": "PCIe 4.0 x4",
-            "leitura": "5000 MB/s",
-            "gravacao": "4400 MB/s"
+            "readSpeed": "5000 MB/s",
+            "writeSpeed": "4400 MB/s"
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Fernanda T.",
-                "comentario": "Super rápido, mudou meu setup!",
-                "nota": 5,
-                "data": "18/02/2025"
+                "user": "Fernanda T.",
+                "comment": "Super rápido, mudou meu setup!",
+                "rating": 5,
+                "date": "18/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["SSD", "1TB", "PCIe 4.0", "Aorus"]
     },
     {
         "id": "7",
-        "nome": "Monitor Gamer MSI Optix G271, 27\", 1ms, 144Hz, FHD",
-        "precoAVista": 1775.00,
-        "precoParcelado": 1999.00,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/Monitor Gamer MSI Optix G272.jpg",
-        "descricaoCurta": "Monitor 27\" 144Hz com painel IPS Full HD.",
-        "descricaoCompleta": "O Monitor Gamer MSI Optix G271 possui painel IPS de 27 polegadas, resolução Full HD (1920x1080), tempo de resposta de 1ms e taxa de atualização de 144Hz. Suporta FreeSync e inclui conexões HDMI e DisplayPort, ideal para jogos competitivos.",
-        "categoria": "Monitores",
-        "marca": "MSI",
-        "estoque": 15,
-        "especificacoes": {
-            "tamanho": "27 polegadas",
-            "resolucao": "1920x1080",
-            "taxaAtualizacao": "144Hz",
-            "tempoResposta": "1ms",
-            "conexoes": ["HDMI", "DisplayPort"]
+        "name": "Monitor Gamer MSI Optix G271, 27\", 1ms, 144Hz, FHD",
+        "priceCash": 1775.00,
+        "priceInstallments": 1999.00,
+        "image": "/assets/images/products/Monitor Gamer MSI Optix G272.jpg",
+        "shortDescription": "Monitor 27\" 144Hz com painel IPS Full HD.",
+        "fullDescription": "O Monitor Gamer MSI Optix G271 possui painel IPS de 27 polegadas, resolução Full HD (1920x1080), tempo de resposta de 1ms e taxa de atualização de 144Hz.",
+        "category": "Monitores",
+        "brand": "MSI",
+        "specifications": {
+            "size": "27 polegadas",
+            "resolution": "1920x1080",
+            "refreshRate": "144Hz",
+            "responseTime": "1ms",
+            "connections": ["HDMI", "DisplayPort"]
         },
-        "avaliacoes": [],
-        "disponibilidade": "Em estoque",
+        "reviews": [],
+        "availability": "Em estoque",
         "tags": ["monitor", "gamer", "144Hz", "IPS"]
     },
     {
         "id": "8",
-        "nome": "Placa de Vídeo Asus ROG Astral RTX 5090 OC, 32GB, GDDR7",
-        "precoAVista": 23999.90,
-        "precoParcelado": 25999.90,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/rog-astral-rtx5090-o32g-gaming9.jpg",
-        "descricaoCurta": "GPU futurista com 32GB GDDR7 e quad-fan.",
-        "descricaoCompleta": "A Placa de Vídeo Asus ROG Astral RTX 5090 apresenta 32GB GDDR7, design quad-fan e câmara de vapor patenteada. Com arquitetura avançada, suporta DLSS e Ray Tracing, sendo ideal para jogos em 8K e aplicações de IA.",
-        "categoria": "Hardware",
-        "marca": "Asus",
-        "estoque": 3,
-        "especificacoes": {
-            "memoria": "32GB GDDR7",
+        "name": "Placa de Vídeo Asus ROG Astral RTX 5090 OC, 32GB, GDDR7",
+        "priceCash": 23999.90,
+        "priceInstallments": 25999.90,
+        "image": "/assets/images/products/rog-astral-rtx5090-o32g-gaming9.jpg",
+        "shortDescription": "GPU futurista com 32GB GDDR7 e quad-fan.",
+        "fullDescription": "A Placa de Vídeo Asus ROG Astral RTX 5090 apresenta 32GB GDDR7, design quad-fan e câmara de vapor patenteada. Ideal para gamers e criadores de conteúdo.",
+        "category": "Hardware",
+        "brand": "Asus",
+        "specifications": {
+            "memory": "32GB GDDR7",
             "cooling": "Quad-Fan",
-            "tecnologias": ["DLSS", "Ray Tracing"],
-            "conexoes": ["3 x DisplayPort 2.0", "1 x HDMI 2.1"]
+            "technologies": ["DLSS", "Ray Tracing"],
+            "connections": ["3 x DisplayPort 2.0", "1 x HDMI 2.1"]
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Rafael G.",
-                "comentario": "Desempenho surreal, vale cada centavo.",
-                "nota": 5,
-                "data": "20/02/2025"
+                "user": "Rafael G.",
+                "comment": "Desempenho surreal, vale cada centavo.",
+                "rating": 5,
+                "date": "20/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["placa de vídeo", "RTX 5090", "32GB", "GDDR7", "ROG"]
     },
     {
         "id": "9",
-        "nome": "Cadeira Gamer Cougar Hotrod Royal, Preto",
-        "precoAVista": 1975.00,
-        "precoParcelado": 2199.00,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/3marxglb0001.jpg",
-        "descricaoCurta": "Cadeira gamer ergonômica com design esportivo.",
-        "descricaoCompleta": "A Cadeira Gamer Cougar Hotrod Royal combina estilo e conforto com design inspirado em carros esportivos. Feita com materiais premium, oferece suporte lombar ajustável e inclinação de até 180°, ideal para longas sessões de jogo ou trabalho.",
-        "categoria": "Periféricos",
-        "marca": "Cougar",
-        "estoque": 8,
-        "especificacoes": {
-            "cor": "Preto",
+        "name": "Cadeira Gamer Cougar Hotrod Royal, Preto",
+        "priceCash": 1975.00,
+        "priceInstallments": 2199.00,
+        "image": "/assets/images/products/3marxglb0001.jpg",
+        "shortDescription": "Cadeira gamer ergonômica com design esportivo.",
+        "fullDescription": "A Cadeira Gamer Cougar Hotrod Royal combina estilo e conforto com design inspirado em carros esportivos. Feita com materiais premium, oferece suporte lombar ajustável.",
+        "category": "Periféricos",
+        "brand": "Cougar",
+        "specifications": {
+            "color": "Preto",
             "material": "Couro sintético",
-            "ajustes": ["Altura", "Inclinação 180°", "Suporte lombar"]
+            "adjustments": ["Altura", "Inclinação 180°", "Suporte lombar"]
         },
-        "avaliacoes": [],
-        "disponibilidade": "Em estoque",
+        "reviews": [],
+        "availability": "Em estoque",
         "tags": ["cadeira", "gamer", "ergonômica", "Cougar"]
     },
     {
         "id": "10",
-        "nome": "Gabinete Lian Li O11 Dynamic XL ROG, Preto, Vidro Temperado",
-        "precoAVista": 1900.00,
-        "precoParcelado": 2099.00,
-        "parcelas": 12,
-        "imagem": "/assets/images/products/o11dxl-x00110_2.jpg",
-        "descricaoCurta": "Gabinete premium com lateral de vidro temperado.",
-        "descricaoCompleta": "O Gabinete Lian Li O11 Dynamic XL ROG é ideal para montagens high-end. Com design em colaboração com a ROG, possui lateral de vidro temperado, suporte para refrigeração líquida e excelente gerenciamento de cabos.",
-        "categoria": "Hardware",
-        "marca": "Lian Li",
-        "estoque": 7,
-        "especificacoes": {
-            "cor": "Preto",
+        "name": "Gabinete Lian Li O11 Dynamic XL ROG, Preto, Vidro Temperado",
+        "priceCash": 1900.00,
+        "priceInstallments": 2099.00,
+        "image": "/assets/images/products/o11dxl-x00110_2.jpg",
+        "shortDescription": "Gabinete premium com lateral de vidro temperado.",
+        "fullDescription": "O Gabinete Lian Li O11 Dynamic XL ROG é ideal para montagens high-end. Com design em colaboração com a ROG, possui lateral de vidro temperado e amplo espaço interno.",
+        "category": "Hardware",
+        "brand": "Lian Li",
+        "specifications": {
+            "color": "Preto",
             "material": "Aço e vidro temperado",
-            "suporteCooling": "Até 3 radiadores 360mm",
-            "conexoes": ["USB 3.0", "USB-C"]
+            "coolingSupport": "Até 3 radiadores 360mm",
+            "connections": ["USB 3.0", "USB-C"]
         },
-        "avaliacoes": [
+        "reviews": [
             {
-                "usuario": "Juliana S.",
-                "comentario": "Lindo e espaçoso, perfeito para watercooling.",
-                "nota": 5,
-                "data": "17/02/2025"
+                "user": "Juliana S.",
+                "comment": "Lindo e espaçoso, perfeito para watercooling.",
+                "rating": 5,
+                "date": "17/02/2025"
             }
         ],
-        "disponibilidade": "Em estoque",
+        "availability": "Em estoque",
         "tags": ["gabinete", "Lian Li", "ROG", "vidro temperado"]
     }
 ]

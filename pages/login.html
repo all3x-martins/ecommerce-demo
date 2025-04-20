@@ -8,6 +8,7 @@
     <title>Acesse sua conta | PC Master</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/cart-menu.css">
     <link rel="stylesheet" href="../css/navigation.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/login-form.css">
@@ -65,10 +66,13 @@
                         <a id="linkCadastroHeader" href="cadastro.html" tabindex="0">CADASTRE-SE</a>
                     </span>
                 </div>
-                <a class="header-cart-button" href="carrinho.html" tabindex="0">
-                    <i class="fas fa-shopping-cart" title="Carrinho"></i>
-                    <span class="header-cart-item-count"></span>
-                </a>
+                <div class="header-cart-content">
+                    <button id="cart-toggle" class="header-cart-toggle" aria-expanded="false" aria-controls="header-cart-menu" tabindex="0">
+                        <i class="fas fa-shopping-cart" title="Carrinho"></i>
+                        <span class="header-cart-item-count">0</span>
+                    </button>
+                    <div id="cart-placeholder"></div>
+                </div>
             </div>
         </nav>
     </header>

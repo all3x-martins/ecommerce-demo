@@ -1,18 +1,21 @@
 <!-- cart-panel.html -->
-<ul id="cart-list" class="header-cart-menu" role="menu">
+<nav id="cart-list" class="header-cart-menu" role="menu">
     <div id="carrinho">
-            <div class="summary">
-                <h3 class="header-cart-title">Resumo do carrinho</h3>
-                <button id="close-cart" class="close-cart-button" aria-label="Fechar carrinho">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+        <div class="summary">
+            <h3 class="header-cart-title">Resumo do carrinho</h3>
+            <button id="close-cart" class="close-cart-button" aria-label="Fechar carrinho">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cart-scrollable-area">
             <div id="cart-table">
                 <!-- Itens do carrinho serão inseridos aqui -->
             </div>
-            <div id="cart-total-container">
-                <!-- Preço total e parcelamento serão inseridos via JS -->
-            </div>
+        </div>
+
+        <div id="cart-total-container">
+            <!-- Preço total e parcelamento serão inseridos via JS -->
+        </div>
     </div>
-</ul>
-<script src="ui.js" defer></script>
+</nav>

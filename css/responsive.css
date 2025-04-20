@@ -19,12 +19,6 @@
         font-size: 12px;
         padding: 10px;
     }
-    .header-cart-button {
-        padding: 6px;
-    }
-    .header-cart-button i {
-        font-size: 20px;
-    }
 
     /* Footer */
     .footer-wrapper {
@@ -128,6 +122,73 @@
         display: block;
     }
 
+    /* Cart */
+    .header-cart-menu {
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        transform: translateX(100%);
+        display: block !important; /* para permitir transições */
+      }
+    
+      .header-cart-menu.show {
+        transform: translateX(0);
+        transition: transform 0.3s ease-in-out;
+      }
+    
+      .summary {
+        padding: 0.75rem;
+      }
+    
+      .header-cart-title {
+        font-size: 1rem;
+      }
+    
+      .close-cart-button {
+        font-size: 1.2rem;
+      }
+    
+      #cart-table {
+        gap: 1rem;
+        padding: 0.75rem;
+      }
+    
+      .cart-item-name {
+        font-size: 0.85rem;
+      }
+    
+      .item-image img {
+        width: 60px;
+      }
+    
+      .cart-item-price {
+        font-size: 0.95rem;
+      }
+    
+      .bottom-Cart {
+        width: 100%;
+        padding: 0.75rem;
+      }
+    
+      .cart-total-wrapper {
+        padding: 0.75rem;
+      }
+    
+      .cart-total-title {
+        font-size: 1rem;
+      }
+    
+      .cart-finalize-button {
+        font-size: 0.95rem;
+      }
+    
+      .shipping-label,
+      .shipping-input,
+      .calcFrete,
+      .shipping-help {
+        font-size: 0.9rem;
+      }
+
     /* Footer */
     .footer-menu {
         gap: 16px;
@@ -180,63 +241,11 @@
     .product-specifications__content ul li {
         padding: 0.25rem 0;
     }
-
-    /* Cart */
-    .cart-page-container {
-        min-height: auto;
-        padding: 10px;
-    }
-    .cart-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    #cart-table th,
-    #cart-table td {
-        padding: 8px;
-    }
-    .cart-item-image {
-        width: 40px;
-        height: 40px;
-    }
-    #cart-total-container {
-        width: 100%;
-        padding: 15px;
-        text-align: center;
-    }
-    .total-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .total-info p {
-        font-size: 16px;
-        margin: 5px 0;
-    }
-    #parcelas-select-total {
-        width: 100%;
-        margin: 10px 0;
-    }
-    .cart-finalize-button {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-    }
-    .cart-total-title {
-        font-size: 20px;
-    }
-    .cart-total-info p,
-    .cart-total-info label,
-    #cart-installment-select {
-        font-size: 14px;
-    }
-    #total-price {
-        font-size: 18px;
-    }
 }
 
 /* Breakpoint adicional (até 900px) */
 @media (max-width: 900px) {
-    /* Header */
+    
     .header-actions-auth {
         display: none;
     }
@@ -290,11 +299,6 @@
     /* Products */
     .card {
         width: calc(33.33% - 20px);
-    }
-
-    /* Cart */
-    .cart-container {
-        flex-wrap: wrap;
     }
 }
 

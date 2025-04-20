@@ -2,15 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Carrega dinamicamente o carrinho lateral
     async function loadCartPanel() {
         try {
-            const response = await fetch('/pages/cart-panel.html');
+            const response = await fetch('../pages/cart-panel.html');
             if (!response.ok) throw new Error('Erro ao carregar o carrinho');
 
             const html = await response.text();
             const cartWrapper = document.createElement('div');
             cartWrapper.innerHTML = html;
-            document.body.appendChild(cartWrapper);
 
-            initCartMenu(); // Inicializa eventos após carregar
+            // Blindagem: evita múltiplos carregamentos
+            if (!document.getElementById('cart-list')) {
+                document.body.appendChild(cartWrapper);
+
+                // Garante que o DOM foi inserido antes de iniciar
+                requestAnimationFrame(() => {
+                    console.log('[UI] Carrinho lateral injetado com sucesso.');
+                    initCartMenu(); // Inicializa o carrinho apenas após o DOM estar disponível
+                });
+            }
         } catch (error) {
             console.error('Falha ao carregar cart-panel.html:', error);
         }
@@ -157,15 +165,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         document.addEventListener('click', (e) => {
-            if (cartList.classList.contains('show') &&
-                !cartList.contains(e.target) &&
-                e.target !== cartToggle) {
+            const isClickForaCarrinho = !cartList.contains(e.target) && e.target !== cartToggle;
+            const isBotaoControleCarrinho = e.target.closest('.cart-control') !== null;
+
+            if (cartList.classList.contains('show') && isClickForaCarrinho && !isBotaoControleCarrinho) {
                 closeCart();
             }
         });
     }
 
-    // Cria overlay
+    // Cria overlay para o menu mobile
     const overlay = document.createElement('div');
     overlay.classList.add('menu-open-overlay');
     document.body.appendChild(overlay);
