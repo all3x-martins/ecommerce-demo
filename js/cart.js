@@ -1,12 +1,11 @@
 let carrinho = [];
 
-// Exibe um feedback de sucesso ou erro
+// Função para mostrar feedback
 function mostrarFeedback(mensagem, tipo = 'sucesso') {
     const feedback = document.createElement('div');
     feedback.textContent = mensagem;
     feedback.classList.add('feedback-message');
     
-    // Define o estilo do feedback dinamicamente
     Object.assign(feedback.style, {
         position: 'fixed',
         top: '20px',
@@ -28,7 +27,7 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
     }, 3000);
 }
 
-// Adiciona produto ao carrinho
+// Função para adicionar ao carrinho
 function adicionarAoCarrinho(produto) {
     fetch('../data/produtos.json')
         .then(res => res.ok ? res.json() : Promise.reject('Erro ao carregar produtos.json'))
@@ -59,7 +58,7 @@ function adicionarAoCarrinho(produto) {
         });
 }
 
-// Renderiza o carrinho na interface
+// Função para renderizar o carrinho
 function renderizarCarrinho() {
     const tabelaCorpo = document.querySelector('#cart-table');
     const totalContainer = document.querySelector('#cart-total-container');
@@ -74,11 +73,11 @@ function renderizarCarrinho() {
     const freteExistente = document.querySelector('.cart-shipping');
     if (freteExistente) freteExistente.remove();
 
-    // Exibe mensagem caso o carrinho esteja vazio
+    const bottomCartExistente = document.querySelector('.bottom-Cart');
+    if (bottomCartExistente) bottomCartExistente.remove();
+
     if (carrinho.length === 0) {
-        carrinhoContainer.innerHTML = `
-            <p id="carrinho-vazio" style="text-align:center;font-size:18px;color:#666;margin:20px 0;">Seu carrinho está vazio.</p>
-        `;
+        tabelaCorpo.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
         return;
     }
 
@@ -86,7 +85,6 @@ function renderizarCarrinho() {
     let totalVista = 0;
     let totalParcelamentoOverall = 0;
 
-    // Itera pelos itens no carrinho para renderizá-los
     carrinho.forEach((item) => {
         const precoUnitario = item.priceCash;
         totalVista += precoUnitario * item.quantidade;
@@ -129,7 +127,6 @@ function renderizarCarrinho() {
 
     tabelaCorpo.appendChild(fragment);
 
-    // Adiciona a seção de frete
     const freteContainer = document.createElement('div');
     freteContainer.classList.add('cart-shipping');
     freteContainer.innerHTML = `
@@ -148,38 +145,31 @@ function renderizarCarrinho() {
     `;
     totalContainer.parentNode.insertBefore(freteContainer, totalContainer);
 
-    // Exibe o total do carrinho
     totalContainer.innerHTML = `
         <div class="cart-total-info">
             <p class="subtotal">Subtotal: <span id="total-price">${precoFormatado(totalVista)}</span></p>
-            <p class="formasPgtCart"><i class="fa fa-credit-card"></i> 10x de <span id="total-installments">${precoFormatado(totalParcelamentoOverall)}</span> s/ juros</p>
-            <p class="formasPgtCart">
+            <p class="formas-pgt-cart"><i class="fa fa-credit-card"></i> 10x de <span id="total-installments">${precoFormatado(totalParcelamentoOverall)}</span> s/ juros</p>
+            <p class="formas-pgt-cash">
                 <i class="fa fa-barcode"></i> <span class="In-cash">${precoFormatado(totalVista)}</span>
-                <br>
                 <span class="text-In-cash">com desconto à vista no boleto ou pix</span>
             </p>
         </div>
     `;
-
     totalContainer.style.display = 'block';
 
-    // Cria o botão de finalizar compra
-    const bottomCartExistente = document.querySelector('.bottom-Cart');
-    if (!bottomCartExistente) {
-        const bottomCart = document.createElement('div');
-        bottomCart.className = 'bottom-Cart';
-        bottomCart.innerHTML = `
-            <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">Finalizar Compra</button>
-            <a class="closeContinua">Continuar comprando</a>
-        `;
-        carrinhoContainer.appendChild(bottomCart);
-    }
+    const bottomCart = document.createElement('div');
+    bottomCart.className = 'bottom-Cart';
+    bottomCart.innerHTML = `
+        <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">Finalizar Compra</button>
+        <a class="closeContinua">Continuar comprando</a>
+    `;
+    carrinhoContainer.appendChild(bottomCart);
 
     atualizarContadorCarrinho();
     aplicarEventosCarrinho();
 }
 
-// Aplica eventos de controle do carrinho (aumentar, diminuir, remover)
+// Função para aplicar eventos no carrinho
 function aplicarEventosCarrinho() {
     const tabelaCorpo = document.querySelector('#cart-table');
     if (!tabelaCorpo) return;
@@ -190,7 +180,6 @@ function aplicarEventosCarrinho() {
             const produtoIndex = carrinho.findIndex(p => p.id == id);
             if (produtoIndex === -1) return;
 
-            // Ações de remoção ou alteração de quantidade
             if (btn.closest('.cart-item-remove')) {
                 carrinho.splice(produtoIndex, 1);
             } else if (btn.classList.contains('cart-item-qty-increase')) {
@@ -208,19 +197,17 @@ function aplicarEventosCarrinho() {
     });
 }
 
-// Atualiza o contador de itens no carrinho
+// Função para atualizar o contador do carrinho
 function atualizarContadorCarrinho() {
     const contador = document.querySelector('.header-cart-item-count');
     if (!contador) return;
 
     const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-
-    // Garante que o número 0 seja exibido se estiver vazio
     contador.textContent = totalItens.toString();
     contador.style.display = 'inline-block';
 }
 
-// Inicializa a renderização do carrinho quando a página for carregada
+// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrinho();
 });
