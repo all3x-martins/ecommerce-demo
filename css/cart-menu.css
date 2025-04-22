@@ -1,3 +1,31 @@
+/*------------------------------ Mensagem de Feedback ------------------------------ */
+.feedback-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.feedback-sucesso {
+    background-color: #28a745;
+}
+
+.feedback-erro {
+    background-color: #e74c3c;
+}
+
+.feedback-hidden {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
 /* ------------------------------ Painel Lateral ------------------------------ */
 .header-cart-menu {
     position: fixed;

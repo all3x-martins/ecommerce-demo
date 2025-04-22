@@ -4,25 +4,12 @@ let carrinho = [];
 function mostrarFeedback(mensagem, tipo = 'sucesso') {
     const feedback = document.createElement('div');
     feedback.textContent = mensagem;
-    feedback.classList.add('feedback-message');
-    
-    Object.assign(feedback.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '10px 20px',
-        backgroundColor: tipo === 'sucesso' ? '#28a745' : '#e74c3c',
-        color: '#fff',
-        borderRadius: '5px',
-        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-        zIndex: '1001',
-        transition: 'opacity 0.5s ease',
-        opacity: '1'
-    });
+    feedback.classList.add('feedback-message', `feedback-${tipo}`);
+    feedback.setAttribute('role', 'alert');
 
     document.body.appendChild(feedback);
     setTimeout(() => {
-        feedback.style.opacity = '0';
+        feedback.classList.add('feedback-hidden');
         setTimeout(() => feedback.remove(), 500);
     }, 3000);
 }
@@ -58,6 +45,13 @@ function adicionarAoCarrinho(produto) {
         });
 }
 
+// Função para limpar o carrinho
+function limparCarrinho() {
+    carrinho = [];
+    renderizarCarrinho();
+    mostrarFeedback('Carrinho limpo com sucesso!', 'sucesso');
+}
+
 // Função para renderizar o carrinho
 function renderizarCarrinho() {
     const tabelaCorpo = document.querySelector('#cart-table');
@@ -78,6 +72,7 @@ function renderizarCarrinho() {
 
     if (carrinho.length === 0) {
         tabelaCorpo.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
+        atualizarContadorCarrinho();
         return;
     }
 
@@ -127,6 +122,12 @@ function renderizarCarrinho() {
 
     tabelaCorpo.appendChild(fragment);
 
+    const cartclean = document.createElement('div');
+    cartclean.classList.add('cart-clean');
+    cartclean.innerHTML = `
+            <button id="cart-clear-button" class="cart-clear-button" role="button" aria-label="Limpar carrinho">Limpar Carrinho</button>
+    `;
+
     const freteContainer = document.createElement('div');
     freteContainer.classList.add('cart-shipping');
     freteContainer.innerHTML = `
@@ -164,6 +165,12 @@ function renderizarCarrinho() {
         <a class="closeContinua">Continuar comprando</a>
     `;
     carrinhoContainer.appendChild(bottomCart);
+
+    // Adiciona evento ao botão de limpar carrinho
+    const clearButton = document.querySelector('#cart-clear-button');
+    if (clearButton) {
+        clearButton.addEventListener('click', limparCarrinho);
+    }
 
     atualizarContadorCarrinho();
     aplicarEventosCarrinho();
