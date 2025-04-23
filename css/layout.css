@@ -26,9 +26,11 @@
     gap: 50px;
 }
 
-.header .header-site-logo {
-    max-width: 13.5rem;
-    height: 100%;
+.header-site-logo {
+    display: block; 
+    max-width: 13.5rem; 
+    height: auto;
+    width: auto; 
 }
 
 .header-actions {

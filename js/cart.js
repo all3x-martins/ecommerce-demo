@@ -1,30 +1,30 @@
-let carrinho = [];
+let carrinho = []; // Inicializa o carrinho como um array vazio
 
-// Função para mostrar feedback
+// Função para mostrar feedback (mensagens de sucesso ou erro)
 function mostrarFeedback(mensagem, tipo = 'sucesso') {
-    const feedback = document.createElement('div');
-    feedback.textContent = mensagem;
-    feedback.classList.add('feedback-message', `feedback-${tipo}`);
-    feedback.setAttribute('role', 'alert');
+    const feedback = document.createElement('div'); // Cria o elemento para feedback
+    feedback.textContent = mensagem; // Define o texto do feedback
+    feedback.classList.add('feedback-message', `feedback-${tipo}`); // Adiciona as classes CSS para estilo
+    feedback.setAttribute('role', 'alert'); // Define o atributo 'role' para acessibilidade
 
-    document.body.appendChild(feedback);
+    document.body.appendChild(feedback); // Adiciona o feedback no corpo da página
     setTimeout(() => {
-        feedback.classList.add('feedback-hidden');
-        setTimeout(() => feedback.remove(), 500);
+        feedback.classList.add('feedback-hidden'); // Adiciona a classe para esconder o feedback após 3 segundos
+        setTimeout(() => feedback.remove(), 500); // Remove o feedback após 500ms
     }, 3000);
 }
 
-// Função para adicionar ao carrinho
+// Função para adicionar um produto ao carrinho
 function adicionarAoCarrinho(produto) {
-    fetch('../data/produtos.json')
-        .then(res => res.ok ? res.json() : Promise.reject('Erro ao carregar produtos.json'))
+    fetch('../data/produtos.json') // Carrega os dados dos produtos
+        .then(res => res.ok ? res.json() : Promise.reject('Erro ao carregar produtos.json')) // Verifica se a resposta é válida
         .then(produtos => {
-            const produtoOriginal = produtos.find(p => p.id === produto.id);
-            if (!produtoOriginal) return mostrarFeedback('Produto não encontrado.', 'erro');
+            const produtoOriginal = produtos.find(p => p.id === produto.id); // Encontra o produto original no JSON
+            if (!produtoOriginal) return mostrarFeedback('Produto não encontrado.', 'erro'); // Exibe erro se o produto não for encontrado
 
-            const existente = carrinho.find(p => p.id === produto.id);
+            const existente = carrinho.find(p => p.id === produto.id); // Verifica se o produto já está no carrinho
             if (existente) {
-                existente.quantidade++;
+                existente.quantidade++; // Se o produto já está no carrinho, aumenta a quantidade
             } else {
                 carrinho.push({
                     id: produtoOriginal.id,
@@ -33,61 +33,54 @@ function adicionarAoCarrinho(produto) {
                     priceInstallments: produtoOriginal.priceInstallments,
                     image: produtoOriginal.image,
                     quantidade: 1
-                });
+                }); // Adiciona o produto ao carrinho
             }
 
-            renderizarCarrinho();
-            mostrarFeedback(`${produtoOriginal.name} adicionado ao carrinho!`);
+            renderizarCarrinho(); // Atualiza o carrinho na página
+            mostrarFeedback(`${produtoOriginal.name} adicionado ao carrinho!`); // Exibe o feedback de sucesso
         })
         .catch(error => {
-            console.error('Erro ao adicionar ao carrinho:', error);
-            mostrarFeedback('Erro ao adicionar ao carrinho. Tente novamente.', 'erro');
+            console.error('Erro ao adicionar ao carrinho:', error); // Exibe o erro no console
+            mostrarFeedback('Erro ao adicionar ao carrinho. Tente novamente.', 'erro'); // Exibe o feedback de erro
         });
 }
 
-// Função para limpar o carrinho
-function limparCarrinho() {
-    carrinho = [];
-    renderizarCarrinho();
-    mostrarFeedback('Carrinho limpo com sucesso!', 'sucesso');
-}
-
-// Função para renderizar o carrinho
+// Função para renderizar o conteúdo do carrinho na página
 function renderizarCarrinho() {
-    const tabelaCorpo = document.querySelector('#cart-table');
-    const totalContainer = document.querySelector('#cart-total-container');
-    const carrinhoContainer = document.querySelector('#carrinho');
+    const tabelaCorpo = document.querySelector('#cart-table'); // Elemento onde os itens do carrinho serão renderizados
+    const totalContainer = document.querySelector('#cart-total-container'); // Elemento para exibir o total do carrinho
+    const carrinhoContainer = document.querySelector('#carrinho'); // Contêiner do carrinho
 
-    if (!tabelaCorpo || !totalContainer || !carrinhoContainer) return;
+    if (!tabelaCorpo || !totalContainer || !carrinhoContainer) return; // Verifica se os elementos existem na página
 
-    tabelaCorpo.innerHTML = '';
-    totalContainer.innerHTML = '';
-    totalContainer.style.display = 'none';
+    tabelaCorpo.innerHTML = ''; // Limpa a tabela de itens
+    totalContainer.innerHTML = ''; // Limpa o total
+    totalContainer.style.display = 'none'; // Esconde o total por padrão
 
-    const freteExistente = document.querySelector('.cart-shipping');
-    if (freteExistente) freteExistente.remove();
+    const freteExistente = document.querySelector('.cart-shipping'); // Verifica se a seção de frete já foi renderizada
+    if (freteExistente) freteExistente.remove(); // Remove o frete existente
 
-    const bottomCartExistente = document.querySelector('.bottom-Cart');
-    if (bottomCartExistente) bottomCartExistente.remove();
+    const bottomCartExistente = document.querySelector('.bottom-Cart'); // Verifica se o rodapé do carrinho já existe
+    if (bottomCartExistente) bottomCartExistente.remove(); // Remove o rodapé do carrinho existente
 
     if (carrinho.length === 0) {
-        tabelaCorpo.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
-        atualizarContadorCarrinho();
+        tabelaCorpo.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>'; // Exibe mensagem caso o carrinho esteja vazio
+        atualizarContadorCarrinho(); // Atualiza o contador de itens do carrinho
         return;
     }
 
-    const fragment = document.createDocumentFragment();
-    let totalVista = 0;
-    let totalParcelamentoOverall = 0;
+    const fragment = document.createDocumentFragment(); // Cria um fragmento de documento para inserir os itens
+    let totalVista = 0; // Inicializa o total à vista
+    let totalParcelamentoOverall = 0; // Inicializa o total do parcelamento
 
     carrinho.forEach((item) => {
-        const precoUnitario = item.priceCash;
-        totalVista += precoUnitario * item.quantidade;
-        const installmentValue = Number(item.priceInstallments || 0);
-        totalParcelamentoOverall += (installmentValue / 10) * item.quantidade;
+        const precoUnitario = item.priceCash; // Preço à vista do item
+        totalVista += precoUnitario * item.quantidade; // Calcula o total à vista
+        const installmentValue = Number(item.priceInstallments || 0); // Preço do parcelamento do item
+        totalParcelamentoOverall += (installmentValue / 10) * item.quantidade; // Calcula o total do parcelamento
 
-        const linha = document.createElement('div');
-        linha.classList.add('cart-item-container');
+        const linha = document.createElement('div'); // Cria uma linha para o item do carrinho
+        linha.classList.add('cart-item-container'); // Adiciona a classe CSS
         linha.innerHTML = `
             <div class="cart-item">
                 <div class="item-info">
@@ -115,19 +108,14 @@ function renderizarCarrinho() {
                     </div>
                 </div>
             </div>
-        `;
+        `; // Adiciona o HTML do item ao carrinho
 
-        fragment.appendChild(linha);
+        fragment.appendChild(linha); // Adiciona a linha no fragmento
     });
 
-    tabelaCorpo.appendChild(fragment);
+    tabelaCorpo.appendChild(fragment); // Insere o fragmento na tabela
 
-    const cartclean = document.createElement('div');
-    cartclean.classList.add('cart-clean');
-    cartclean.innerHTML = `
-            <button id="cart-clear-button" class="cart-clear-button" role="button" aria-label="Limpar carrinho">Limpar Carrinho</button>
-    `;
-
+    // Renderiza a seção de frete
     const freteContainer = document.createElement('div');
     freteContainer.classList.add('cart-shipping');
     freteContainer.innerHTML = `
@@ -144,7 +132,7 @@ function renderizarCarrinho() {
             </p>
         </form>
     `;
-    totalContainer.parentNode.insertBefore(freteContainer, totalContainer);
+    totalContainer.parentNode.insertBefore(freteContainer, totalContainer); // Insere o container de frete acima do total
 
     totalContainer.innerHTML = `
         <div class="cart-total-info">
@@ -156,27 +144,21 @@ function renderizarCarrinho() {
             </p>
         </div>
     `;
-    totalContainer.style.display = 'block';
+    totalContainer.style.display = 'block'; // Exibe o total do carrinho
 
-    const bottomCart = document.createElement('div');
+    const bottomCart = document.createElement('div'); // Cria o rodapé do carrinho
     bottomCart.className = 'bottom-Cart';
     bottomCart.innerHTML = `
         <button id="cart-finalize-button" class="cart-finalize-button" role="button" aria-label="Finalizar compra">Finalizar Compra</button>
         <a class="closeContinua">Continuar comprando</a>
     `;
-    carrinhoContainer.appendChild(bottomCart);
+    carrinhoContainer.appendChild(bottomCart); // Adiciona o rodapé ao carrinho
 
-    // Adiciona evento ao botão de limpar carrinho
-    const clearButton = document.querySelector('#cart-clear-button');
-    if (clearButton) {
-        clearButton.addEventListener('click', limparCarrinho);
-    }
-
-    atualizarContadorCarrinho();
-    aplicarEventosCarrinho();
+    atualizarContadorCarrinho(); // Atualiza o contador de itens no carrinho
+    aplicarEventosCarrinho(); // Aplica os eventos de interação no carrinho
 }
 
-// Função para aplicar eventos no carrinho
+// Função para aplicar eventos nos botões do carrinho
 function aplicarEventosCarrinho() {
     const tabelaCorpo = document.querySelector('#cart-table');
     if (!tabelaCorpo) return;
@@ -188,33 +170,33 @@ function aplicarEventosCarrinho() {
             if (produtoIndex === -1) return;
 
             if (btn.closest('.cart-item-remove')) {
-                carrinho.splice(produtoIndex, 1);
+                carrinho.splice(produtoIndex, 1); // Remove o item do carrinho
             } else if (btn.classList.contains('cart-item-qty-increase')) {
-                carrinho[produtoIndex].quantidade++;
+                carrinho[produtoIndex].quantidade++; // Aumenta a quantidade do item
             } else if (btn.classList.contains('cart-item-qty-decrease')) {
                 if (carrinho[produtoIndex].quantidade > 1) {
-                    carrinho[produtoIndex].quantidade--;
+                    carrinho[produtoIndex].quantidade--; // Diminui a quantidade do item
                 } else {
-                    carrinho.splice(produtoIndex, 1);
+                    carrinho.splice(produtoIndex, 1); // Remove o item se a quantidade for 1
                 }
             }
 
-            renderizarCarrinho();
+            renderizarCarrinho(); // Atualiza o carrinho após a alteração
         });
     });
 }
 
-// Função para atualizar o contador do carrinho
+// Função para atualizar o contador de itens no carrinho
 function atualizarContadorCarrinho() {
     const contador = document.querySelector('.header-cart-item-count');
     if (!contador) return;
 
-    const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-    contador.textContent = totalItens.toString();
-    contador.style.display = 'inline-block';
+    const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0); // Conta os itens no carrinho
+    contador.textContent = totalItens.toString(); // Atualiza o contador
+    contador.style.display = 'inline-block'; // Exibe o contador
 }
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
-    renderizarCarrinho();
+    renderizarCarrinho(); // Renderiza o carrinho quando o DOM for carregado
 });

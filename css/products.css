@@ -136,6 +136,19 @@
     font-weight: 700;
     margin-bottom: 15px;
 }
+.product-installment {
+    color: var(--cor-primaria-laranja);
+}
+
+
+.installment-price {
+    font-size: 1rem;
+    color: var(--cor-cinza-medio);
+}
+
+.installment-price span {
+    color: var(--cor-primaria-laranja);
+}
 
 .product-details p {
     font-size: 16px;
@@ -144,23 +157,10 @@
     margin-bottom: 20px;
 }
 
-/* .product-specifications__content {
-   margin-top: 1rem;
-} */
-
 .reviews-content {
     max-width: 1200px;
     margin: 1rem auto;
     padding: 0.75rem;
-}
-
-.specifications-title {
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
-.product-specifications__content ul li {
-    padding: 0 0.5rem 0.5rem 0;
 }
 
 .rating {
@@ -183,4 +183,60 @@
 
 .reviews p {
     margin-top: 1rem;
+}
+
+.specifications-container {
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+    background-color: var(--cor-primaria-cinza-claro);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 96, 177, 0.1);
+    max-width: 1200px;
+    color: var(--cor-texto-principal);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.specifications-container:hover {
+    background-color: #f0f8ff;
+}
+
+.product-specifications__content .specifications-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--cor-primaria-azul);
+    padding-bottom: 0.5rem;
+    color: var(--cor-azul-escuro);
+    text-align: center;
+}
+
+.product-specifications__content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.product-specifications__content li {
+    background-color: var(--cor-primaria-branco);
+    border: 1px solid var(--cor-cinza-borda);
+    padding: 1rem;
+    border-radius: 8px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-specifications__content li:hover {
+    transform: scale(1.03);
+    border-color: var(--cor-azul-escuro-hover);
+    background-color: var(--cor-primaria-branco);
+}
+
+.product-specifications__content li strong {
+    color: var(--cor-primaria-azul);
+    display: block;
+    margin-bottom: 0.3rem;
 }
