@@ -1,63 +1,94 @@
 # Projeto de Loja Virtual
+**Simulação de loja online para praticar habilidades de desenvolvimento frontend.**
 
-Este é um pequeno projeto desenvolvido com HTML5, CSS3 e JavaScript para simular o funcionamento básico de uma loja online. O objetivo é praticar e demonstrar habilidades de desenvolvimento frontend.
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
-## Table of Contents
+## 📋 Tabela de Conteúdos
 - [Sobre](#sobre)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Demonstração](#demonstração)
 - [Instalação](#instalação)
-  - [Pré-requisitos](#pré-requisitos)
-  - [Passos para Instalação](#passos-para-instalação)
+- [Uso de Inteligência Artificial (IA)](#uso-de-inteligência-artificial-ia)
 - [Contribuindo](#contribuindo)
 - [Licença](#licença)
 
-## Sobre
+## 🛍️ Sobre
 Este projeto foi criado para simular o funcionamento básico de uma loja online, com o objetivo de praticar e demonstrar habilidades de desenvolvimento frontend.
 
-## Funcionalidades
+## ⚙️ Funcionalidades
 - Página inicial com exibição de produtos em um layout estático e responsivo.
 - Design minimalista utilizando CSS puro.
+- Interatividade básica com JavaScript, incluindo manipulação de eventos.
 
-## Tecnologias Utilizadas
-- HTML5: Estrutura semântica do projeto.
-- CSS3: Estilização e design responsivo.
-- JavaScript: Para interatividade.
+## 💻 Tecnologias Utilizadas
+- **HTML5**: Estrutura semântica do projeto.
+- **CSS3**: Estilização e design responsivo.
+- **JavaScript**: Para interatividade, como manipulação de carrinho de compras.
 
-## Demonstração
-![pc-master](https://github.com/user-attachments/assets/8b1beb4a-6da4-4ed1-96ae-281c577b28c7)
+## 📸 Demonstração
+![Demonstração do Projeto](https://github.com/user-attachments/assets/8b1beb4a-6da4-4ed1-96ae-281c577b28c7)
 
-## Instalação
-
+## 🚀 Instalação
 ### Pré-requisitos
 - Navegador web moderno (ex.: Chrome, Firefox, Edge)
 - Git
 
 ### Passos para Instalação
-```sh
-# Clone o repositório
-git clone https://github.com/all3x-martins/Loja-Virtual.git
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/all3x-martins/Loja-Virtual.git
+   ```
+2. Navegue até o diretório do projeto:
+   ```sh
+   cd Loja-Virtual
+   ```
+3. Abra o arquivo `index.html` no navegador:
+   ```sh
+   open index.html
+   ```
 
-# Navegue até o diretório do projeto
-cd Loja-Virtual
-```
-```sh
-# Abra o arquivo index.html no seu navegador
-open index.html
-```
+### Executando o Projeto Localmente
+Para garantir que todos os arquivos (como o JSON) sejam carregados corretamente, execute o projeto em um servidor local:
 
-## Contribuindo
-Contribuições são o que tornam a comunidade open source um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
+#### Usando o VS Code com Live Server:
+1. Abra o projeto no VS Code.
+2. Instale a extensão "Live Server".
+3. Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
 
-Se você tiver uma sugestão que possa melhorar o projeto, por favor faça um fork do repositório e crie uma pull request. Você também pode simplesmente abrir uma issue com a tag "enhancement".
-Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
+#### Usando Python:
+1. Abra o terminal na pasta do projeto.
+2. Execute:
+   ```sh
+   python -m http.server 8000
+   ```
+3. Acesse: [http://localhost:8000](http://localhost:8000).
 
-1. Fork o projeto
-2. Crie sua Branch de Funcionalidade (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a Branch (`git push origin feature/AmazingFeature`)
-5. Abra uma Pull Request
+#### Usando Node.js com http-server:
+1. Instale o http-server globalmente:
+   ```sh
+   npm install -g http-server
+   ```
+2. Navegue até a pasta do projeto e execute:
+   ```sh
+   http-server
+   ```
+3. Acesse: [http://localhost:8080](http://localhost:8080).
 
-## Licença
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+## 🤖 Uso de Inteligência Artificial (IA)
+Ferramentas como o ChatGPT foram utilizadas para:
+- Auxiliar no desenvolvimento do código JavaScript.
+- Corrigir erros e sugerir melhorias.
+- Garantir boas práticas de programação.
+
+## 🤝 Contribuindo
+Contribuições são muito bem-vindas! Siga os passos abaixo para contribuir:
+1. Faça um fork do projeto.
+2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`).
+3. Faça commit das suas mudanças (`git commit -m 'Adicionei uma nova funcionalidade'`).
+4. Envie para a branch (`git push origin feature/NovaFuncionalidade`).
+5. Abra um Pull Request.
+
+## 📜 Licença
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais informações.
