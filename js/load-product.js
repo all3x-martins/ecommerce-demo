@@ -48,19 +48,24 @@ function loadProductDetails() {
                         <h1>${product.name}</h1>
                         <p class="brand">Marca: ${product.brand}</p>
                         <p>${product.fullDescription}</p>
-                        <p class="availability">${product.availability}</p>
+                        <strong class="availability">${product.availability}</strong>
                         <div class="price-info">
-                            <i class="fa fa-barcode"></i>
-                            <span class="price">${precoFormatado(priceCash)}</span>
-                            <span class="price-label">À vista</span>
-                            <br>
+                            <div class="price-container">
+                                <i class="fa fa-barcode"></i>
+                                <span class="price">${precoFormatado(priceCash)}</span>
+                                <span class="price-label">À vista</span>
+                            </div>
                             ${priceInstallments ? `
-                                <i class="fa fa-credit-card"></i>
-                                <span>${precoFormatado(priceInstallments)}</span>
-                                <br>
-                                <span class="installment-price">
-                                    ${installmentCount}x de <span>${precoFormatado(installmentValue)}</span> sem juros 
-                                </span>
+                                <div class="price-container-installment">
+                                    <i class="fa fa-credit-card"></i>
+                                    <div class="installments-info">
+                                        <span class="installment-total">${precoFormatado(priceInstallments)}</span>
+                                        <br>
+                                        <span class="installment-price">
+                                        ${installmentCount}x de <span>${precoFormatado(installmentValue)}</span> sem juros 
+                                        </span>
+                                    </div>
+                                </div>    
                             ` : ''}
                         </div>
                         <button class="btn-add-cart"

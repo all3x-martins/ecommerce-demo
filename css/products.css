@@ -1,4 +1,6 @@
-/* Cards */
+/* ========================== */
+/* Cards principais da listagem de produtos */
+/* ========================== */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -67,6 +69,9 @@
     color: var(--cor-primaria-azul);
 }
 
+/* ========================== */
+/* Botão para adicionar ao carrinho */
+/* ========================== */
 .btn-add-cart {
     width: 90%;
     height: 2.25rem;
@@ -86,6 +91,9 @@
     background-color: var(--cor-laranja-claro-hover);
 }
 
+/* ========================== */
+/* Seção de detalhes do produto */
+/* ========================== */
 #products-details {
     max-width: 1200px;
     margin: 20px auto;
@@ -98,6 +106,9 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ========================== */
+/* Breadcrumbs (caminho de navegação) */
+/* ========================== */
 .breadcrumbs-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -105,6 +116,9 @@
     margin-top: 0.5rem;
 }
 
+/* ========================== */
+/* Imagem do produto nos detalhes */
+/* ========================== */
 .product-image {
     flex: 1 1 45%;
     max-width: 400px;
@@ -117,9 +131,16 @@
     object-fit: contain;
 }
 
+/* ========================== */
+/* Informações do produto (detalhes) */
+/* ========================== */
 .product-details {
     flex: 1 1 55%;
-    padding: 10px;
+    padding: 25px;
+}
+
+.availability {
+    color: #1f9050;
 }
 
 .product-details h1 {
@@ -130,16 +151,49 @@
     margin-bottom: 10px;
 }
 
+.installment-total {
+    color: #FF7F00;
+    font-weight: 600;
+}
+
 .product-details .price {
-    font-size: 2.3rem;
+    font-size: 2rem;
     color: var(--cor-primaria-azul);
     font-weight: 700;
-    margin-bottom: 15px;
+    margin: 0px 5px 0px 15px;
 }
+
+/* ========================== */
+/* Informações adicionais de preço */
+/* ========================== */
+.price-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.price-info i {
+    font-size: 1.5rem;
+}
+
+.installments-info {
+    margin: 5px 0px 0px 15px;
+}
+
+.price-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.price-container-installment {
+    display: flex;
+    align-items: center;
+}
+
 .product-installment {
     color: var(--cor-primaria-laranja);
 }
-
 
 .installment-price {
     font-size: 1rem;
@@ -148,6 +202,7 @@
 
 .installment-price span {
     color: var(--cor-primaria-laranja);
+    font-weight: 600;
 }
 
 .product-details p {
@@ -157,6 +212,9 @@
     margin-bottom: 20px;
 }
 
+/* ========================== */
+/* Avaliações dos usuários */
+/* ========================== */
 .reviews-content {
     max-width: 1200px;
     margin: 1rem auto;
@@ -185,6 +243,9 @@
     margin-top: 1rem;
 }
 
+/* ========================== */
+/* Especificações do produto */
+/* ========================== */
 .specifications-container {
     margin: 3rem auto;
     padding: 2.5rem 2rem;
