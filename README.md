@@ -1,6 +1,6 @@
-# 🛒 E-commerce Demo - PC Master
+# E-commerce Demo (PC Master)
 
-**Simulação de loja online para praticar habilidades de desenvolvimento frontend.**
+**Simulação de loja online desenvolvida para praticar e demonstrar habilidades de frontend.**
 
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
@@ -8,35 +8,33 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
-
-
-## 📋 Tabela de Conteúdos
+## Tabela de Conteúdos
 - [Sobre](#sobre)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Demonstração](#demonstração)
+- [Demonstração Online](#demonstração-online)
 - [Instalação](#instalação)
-- [Uso de Inteligência Artificial (IA)](#uso-de-inteligência-artificial-ia)
 - [Contribuindo](#contribuindo)
+- [Uso de Inteligência Artificial (IA)](#uso-de-inteligência-artificial-ia)
 - [Licença](#licença)
 
-## 🛍️ Sobre
-Este projeto foi criado para simular o funcionamento básico de uma loja online, com o objetivo de praticar e demonstrar habilidades de desenvolvimento frontend.
+## Sobre
+Este projeto foi criado para simular o funcionamento de uma loja online, com o objetivo de praticar e demonstrar habilidades de desenvolvimento frontend.
 
-## ⚙️ Funcionalidades
-- Página inicial com exibição de produtos em um layout estático e responsivo.
+## Funcionalidades
+- Exibição de produtos em layout responsivo.
 - Design minimalista utilizando CSS puro.
-- Interatividade básica com JavaScript, incluindo manipulação de eventos.
+- Interatividade com JavaScript (ex.: manipulação de carrinho de compras).
 
-## 💻 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - **HTML5**: Estrutura semântica do projeto.
 - **CSS3**: Estilização e design responsivo.
-- **JavaScript**: Para interatividade, como manipulação de carrinho de compras.
+- **JavaScript**: Interatividade e manipulação do DOM.
 
-## 📸 Demonstração
-![Demonstração do Projeto](https://github.com/user-attachments/assets/8b1beb4a-6da4-4ed1-96ae-281c577b28c7)
+## Demonstração Online
+Acesse a versão hospedada do projeto na Vercel: [E-commerce Demo](https://ecommerce-demo-beta-five.vercel.app)
 
-## 🚀 Instalação
+## Instalação
 ### Pré-requisitos
 - Navegador web moderno (ex.: Chrome, Firefox, Edge)
 - Git
@@ -44,16 +42,13 @@ Este projeto foi criado para simular o funcionamento básico de uma loja online,
 ### Passos para Instalação
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/all3x-martins/Loja-Virtual.git
+   git clone https://github.com/all3x-martins/ecommerce-demo.git
    ```
 2. Navegue até o diretório do projeto:
    ```sh
-   cd Loja-Virtual
+   cd ecommerce-demo
    ```
-3. Abra o arquivo `index.html` no navegador:
-   ```sh
-   open index.html
-   ```
+3. Abra o arquivo `index.html` diretamente no navegador.
 
 ### Executando o Projeto Localmente
 Para garantir que todos os arquivos (como o JSON) sejam carregados corretamente, execute o projeto em um servidor local:
@@ -61,7 +56,7 @@ Para garantir que todos os arquivos (como o JSON) sejam carregados corretamente,
 #### Usando o VS Code com Live Server:
 1. Abra o projeto no VS Code.
 2. Instale a extensão "Live Server".
-3. Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+3. Clique com o botão direito no arquivo `index.html` e selecione **Open with Live Server**.
 
 #### Usando Python:
 1. Abra o terminal na pasta do projeto.
@@ -82,19 +77,19 @@ Para garantir que todos os arquivos (como o JSON) sejam carregados corretamente,
    ```
 3. Acesse: [http://localhost:8080](http://localhost:8080).
 
-## 🤖 Uso de Inteligência Artificial (IA)
-Ferramentas como o ChatGPT foram utilizadas para:
-- Auxiliar no desenvolvimento do código JavaScript.
-- Corrigir erros e sugerir melhorias.
-- Garantir boas práticas de programação.
-
-## 🤝 Contribuindo
-Contribuições são muito bem-vindas! Siga os passos abaixo para contribuir:
+## Contribuindo
+Contribuições são bem-vindas. Para contribuir:
 1. Faça um fork do projeto.
 2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`).
-3. Faça commit das suas mudanças (`git commit -m 'Adicionei uma nova funcionalidade'`).
+3. Faça commit das suas mudanças (`git commit -m 'Adicione nova funcionalidade'`).
 4. Envie para a branch (`git push origin feature/NovaFuncionalidade`).
 5. Abra um Pull Request.
 
-## 📜 Licença
+## Uso de Inteligência Artificial (IA)
+Ferramentas como o ChatGPT foram utilizadas para:
+- Apoiar no desenvolvimento do código JavaScript.
+- Auxiliar na correção de erros e sugestões de melhorias.
+- Reforçar boas práticas de programação.
+
+## Licença
 Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais informações.
